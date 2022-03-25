@@ -1,0 +1,263 @@
+/* Sets all the text color to red! */
+body {
+    color: red;
+}
+
+.oRPGPage {
+    background-color: var(--background-secondary-alt);
+}
+
+#oRPGheader {
+    border: 2px solid var(--headers);
+}
+.oRPGMenu {
+    width: auto;
+}
+
+.oRPGBuilder {
+    padding: 0;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    width: 75vw;
+    min-height: 650px;
+    overflow: visible;
+}
+
+.oRPGBuilder .modal-content {
+    margin-top: 0px;
+}
+
+#oRPGControlsContainerDiv {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 10vw;
+}
+
+#oRPGContentContainerDiv textarea {
+    width: 95%;
+    min-height: 345px;
+    padding-left:  5px;
+}
+
+#oRPGheader {
+    text-align: center;
+}
+
+
+#noteInfo {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-normal);
+    height: auto;
+    min-height: 40px;
+}
+
+.oRPGFloatRight {
+    float: right;
+}
+
+
+.modal.oRPGBuilder button:not(.mod-cta):not(.mod-warning) {
+    background-color: var(--dark-accent);
+}
+
+
+.oRPG-setting-label {
+    display: block;
+}
+
+.oRPG-setting-radio-label {
+    display: inline-block;
+}
+
+#oRPGPopulations {
+    display: inline-block;
+    width: 100%;
+}
+
+#oRPGPopulations setting-item-info {
+    margin-right: 0px;
+}
+
+.oRPGPopulationsRadioDiv {
+    display: inline-block;
+}
+
+#oRPGPopulationsRadioInput {
+    display: inline;
+    float: right;
+}
+
+.oRPGPopulationField {
+    height: 150px;
+    vertical-align: top;
+    float: right;
+}
+
+#oRPGPopulationInput {
+    width: 110px;
+    margin-left: 2px;
+}
+
+#oRPGPopulationSlider {
+    width: 110px;
+}
+
+table.oRPGLocationHeader thead {
+    display: none;
+}
+
+
+
+blockquote.oRPGLocationHeader h1::after,
+blockquote.oRPGLocationHeader .HyperMD-header-1::after,
+blockquote.oRPGLocationHeader h2::after,
+blockquote.oRPGLocationHeader .HyperMD-header-2::after,
+blockquote.oRPGLocationHeader h3::after,
+blockquote.oRPGLocationHeader .HyperMD-header-3::after,
+blockquote.oRPGLocationHeader h4::after,
+blockquote.oRPGLocationHeader .HyperMD-header-4::after {
+    content: "";
+    display: block;
+    background: var(--table);
+    height: 0px;
+}
+
+
+/* following is for DATAVIEW tables on an oRPG page ----------------------- */
+/* List View Default Styling; rendered internally as a table. */
+.oRPGPage .table-view-table {
+    width: 100%;
+}
+
+.oRPGPage .table-view-table > thead > tr, .oRPGPage  .table-view-table > tbody > tr {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+.oRPGPage .table-view-table > thead > tr > th {
+    font-weight: 700;
+    font-size: larger;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid;
+
+    max-width: 100%;
+
+    background-color: var(--th);
+    color: var(--th-text);
+    border: 0px;
+}
+
+.oRPGPage .table-view-table > tbody > tr > td {
+    text-align: left;
+    border: none;
+    font-weight: 400;
+
+    max-width: 100%;
+}
+
+/** Rendered value styling for any view. */
+.oRPGPage .dataview-result-list-root-ul {
+    padding: 0em !important;
+    margin: 0em !important;
+}
+
+/** Generic grouping styling. */
+.oRPGPage .dataview.result-group {
+    padding-left: 8px;
+}
+
+/** Inline Field Rendering. */
+
+.oRPGPage .dataview.inline-field-key {
+    border-top-left-radius: 250px;
+    border-bottom-left-radius: 250px;
+    padding-left: 16px;
+    padding-right: 8px;
+    font-family: var(--font-monospace);
+    background-color: var(--background-primary-alt);
+    color: var(--text-nav-selected);
+}
+
+.oRPGPage .dataview.inline-field-value {
+    border-top-right-radius: 250px;
+    border-bottom-right-radius: 250px;
+    padding-left: 8px;
+    padding-right: 16px;
+    font-family: var(--font-monospace);
+    background-color: var(--background-secondary-alt);
+    color: var(--text-nav-selected);
+}
+
+.oRPGPage .dataview.inline-field-standalone-value {
+    border-radius: 250px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-family: var(--font-monospace);
+    background-color: var(--background-secondary-alt);
+    color: var(--text-nav-selected);
+}
+
+#oRGP-generatedNameDiv {
+    padding-top: 20px;
+}
+
+
+/* following stypes are for Admonition layout use -------------------- */
+/* Snippet for admonition infobox */
+div:not(.setting-item) > .admonition.admonition-oRPG-Layout {
+    float: right;
+    max-width: 350px;
+    border: 0;
+    box-shadow: none;
+}
+
+div:not(.setting-item) > .oRPGPage .admonition-oRPG-Layout .admonition-title {
+    display: none;
+}
+
+.admonition-oRPG-Layout table {
+    width: 100%;
+    margin-top: 15px;
+}
+.admonition-oRPG-Layout .admonition-content {
+    padding: 0;
+    border: 1px solid var(--background-modifier-border);
+    margin: 0;
+}
+
+.admonition-oRPG-Layout .admonition-title-content {
+   justify-content: center;
+}
+
+.admonition-oRPG-Layout .admonition-content > h1 {
+   color: #ffffff;
+}
+
+.admonition-oRPG-Layout .admonition-content > h1 + p{
+   margin-left: 10px;
+}
+
+.admonition-oRPG-Layout .admonition-content p,
+.admonition-oRPG-Layout table {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin: 0;
+}
+.admonition-oRPG-Layout h1,
+.admonition-oRPG-Layout h2,
+.admonition-oRPG-Layout h3,
+.admonition-oRPG-Layout h4,
+.admonition-oRPG-Layout h5,
+.admonition-oRPG-Layout h6 {
+    font-size: var(--editor-font-size);
+    text-align: center;
+    margin: 0;
+    padding: 2px;
+}
+.admonition-oRPG-Layout h1 { background: var(--interactive-accent); }
+.admonition-oRPG-Layout h6 { background: var(--interactive-normal); }
