@@ -13,3 +13,6 @@ The code expects  certain plugins to properly format and such.
 The following admonition settings are required for proper layout named "oRPG-Layout".
 ![Admonition Settings](https://miniworld.com/obsidian/admonition-settings.jpg)
 
+
+### Known Issues
+- Radio Buttons selection for population sizes not working.
