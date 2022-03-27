@@ -4,7 +4,8 @@ body {
 }
 
 .oRPGPage {
-    background-color: var(--background-secondary-alt);
+    /*background-color: var(--background-secondary-alt); */
+    background-color: var(--background-primary);
 }
 
 #oRPGheader {
@@ -124,6 +125,54 @@ blockquote.oRPGLocationHeader .HyperMD-header-4::after {
     height: 0px;
 }
 
+.markdown-preview-view.oRPGPage blockquote.statblock,
+.reveal .oRPGPage blockquote.statblock {
+    border: none;
+    box-shadow: 0px 0px 20px var(--outline);
+    
+    border-left-width: 0px;
+    
+}
+
+.oRPGPage blockquote.statblock ul  {
+    border-left: none;
+    padding-inline-start: 0px;
+}
+.oRPGPage blockquote.statblock ul li  {
+    border-left: none;
+}
+
+.oRPGPage blockquote.statblock ul li:nth-child(even) {
+    border-left: none;
+}
+.oRPGPage blockquote.statblock ul li::before {
+    content: none;
+}
+.oRPGPage blockquote.statblock ul li strong {
+    color: var(--headers);
+}
+
+.oRPGPage blockquote.statblock hr {
+    width: auto;
+    margin: 0.5em 0;
+    height: 5px;
+    background: -webkit-linear-gradient(
+            0deg,
+            var(--statblock-rule-color) 0%,
+            var(--statblock-rule-color) 50%,
+            var(--statblock-background-color) 95%,
+            var(--statblock-background-color) 100%
+        );
+    clip-path: polygon(0 0, 0 100%, 95% 50%);
+    -webkit-clip-path: polygon(0 0, 0 100%, 95% 50%);
+}
+
+.oRPGPage blockquote.statblock hr::after {
+    content: none;
+}
+
+
+
 
 /* following is for DATAVIEW tables on an oRPG page ----------------------- */
 /* List View Default Styling; rendered internally as a table. */
@@ -206,6 +255,9 @@ blockquote.oRPGLocationHeader .HyperMD-header-4::after {
     padding-top: 20px;
 }
 
+.oRPGCopy {
+    float: right;
+}
 
 /* following stypes are for Admonition layout use -------------------- */
 /* Snippet for admonition infobox */

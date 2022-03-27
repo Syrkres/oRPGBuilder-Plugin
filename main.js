@@ -16,8 +16,8 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __export = (target, all) => {
   __markAsModule(target);
-  for (var name2 in all)
-    __defProp(target, name2, { get: all[name2], enumerable: true });
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
 };
 var __reExport = (target, module2, desc) => {
   if (module2 && typeof module2 === "object" || typeof module2 === "function") {
@@ -181,7 +181,7 @@ var require_jquery = __commonJS({
         splice: arr.splice
       };
       jQuery2.extend = jQuery2.fn.extend = function() {
-        var options, name2, src, copy, copyIsArray, clone, target = arguments[0] || {}, i2 = 1, length = arguments.length, deep = false;
+        var options, name, src, copy, copyIsArray, clone, target = arguments[0] || {}, i2 = 1, length = arguments.length, deep = false;
         if (typeof target === "boolean") {
           deep = target;
           target = arguments[i2] || {};
@@ -196,13 +196,13 @@ var require_jquery = __commonJS({
         }
         for (; i2 < length; i2++) {
           if ((options = arguments[i2]) != null) {
-            for (name2 in options) {
-              copy = options[name2];
-              if (name2 === "__proto__" || target === copy) {
+            for (name in options) {
+              copy = options[name];
+              if (name === "__proto__" || target === copy) {
                 continue;
               }
               if (deep && copy && (jQuery2.isPlainObject(copy) || (copyIsArray = Array.isArray(copy)))) {
-                src = target[name2];
+                src = target[name];
                 if (copyIsArray && !Array.isArray(src)) {
                   clone = [];
                 } else if (!copyIsArray && !jQuery2.isPlainObject(src)) {
@@ -211,9 +211,9 @@ var require_jquery = __commonJS({
                   clone = src;
                 }
                 copyIsArray = false;
-                target[name2] = jQuery2.extend(deep, clone, copy);
+                target[name] = jQuery2.extend(deep, clone, copy);
               } else if (copy !== void 0) {
-                target[name2] = copy;
+                target[name] = copy;
               }
             }
           }
@@ -241,8 +241,8 @@ var require_jquery = __commonJS({
           return typeof Ctor === "function" && fnToString.call(Ctor) === ObjectFunctionString;
         },
         isEmptyObject: function(obj) {
-          var name2;
-          for (name2 in obj) {
+          var name;
+          for (name in obj) {
             return false;
           }
           return true;
@@ -326,8 +326,8 @@ var require_jquery = __commonJS({
       if (typeof Symbol === "function") {
         jQuery2.fn[Symbol.iterator] = arr[Symbol.iterator];
       }
-      jQuery2.each("Boolean Number String Function Array Date RegExp Object Error Symbol".split(" "), function(_i, name2) {
-        class2type["[object " + name2 + "]"] = name2.toLowerCase();
+      jQuery2.each("Boolean Number String Function Array Date RegExp Object Error Symbol".split(" "), function(_i, name) {
+        class2type["[object " + name + "]"] = name.toLowerCase();
       });
       function isArrayLike(obj) {
         var length = !!obj && "length" in obj && obj.length, type = toType(obj);
@@ -508,14 +508,14 @@ var require_jquery = __commonJS({
         }
         function createInputPseudo(type) {
           return function(elem) {
-            var name2 = elem.nodeName.toLowerCase();
-            return name2 === "input" && elem.type === type;
+            var name = elem.nodeName.toLowerCase();
+            return name === "input" && elem.type === type;
           };
         }
         function createButtonPseudo(type) {
           return function(elem) {
-            var name2 = elem.nodeName.toLowerCase();
-            return (name2 === "input" || name2 === "button") && elem.type === type;
+            var name = elem.nodeName.toLowerCase();
+            return (name === "input" || name === "button") && elem.type === type;
           };
         }
         function createDisabledPseudo(disabled) {
@@ -797,12 +797,12 @@ var require_jquery = __commonJS({
           }
           return contains(context, elem);
         };
-        Sizzle2.attr = function(elem, name2) {
+        Sizzle2.attr = function(elem, name) {
           if ((elem.ownerDocument || elem) != document3) {
             setDocument(elem);
           }
-          var fn = Expr.attrHandle[name2.toLowerCase()], val = fn && hasOwn2.call(Expr.attrHandle, name2.toLowerCase()) ? fn(elem, name2, !documentIsHTML) : void 0;
-          return val !== void 0 ? val : support2.attributes || !documentIsHTML ? elem.getAttribute(name2) : (val = elem.getAttributeNode(name2)) && val.specified ? val.value : null;
+          var fn = Expr.attrHandle[name.toLowerCase()], val = fn && hasOwn2.call(Expr.attrHandle, name.toLowerCase()) ? fn(elem, name, !documentIsHTML) : void 0;
+          return val !== void 0 ? val : support2.attributes || !documentIsHTML ? elem.getAttribute(name) : (val = elem.getAttributeNode(name)) && val.specified ? val.value : null;
         };
         Sizzle2.escape = function(sel) {
           return (sel + "").replace(rcssescape, fcssescape);
@@ -910,9 +910,9 @@ var require_jquery = __commonJS({
                 return pattern.test(typeof elem.className === "string" && elem.className || typeof elem.getAttribute !== "undefined" && elem.getAttribute("class") || "");
               });
             },
-            "ATTR": function(name2, operator, check) {
+            "ATTR": function(name, operator, check) {
               return function(elem) {
-                var result = Sizzle2.attr(elem, name2);
+                var result = Sizzle2.attr(elem, name);
                 if (result == null) {
                   return operator === "!=";
                 }
@@ -928,13 +928,13 @@ var require_jquery = __commonJS({
               return first === 1 && last === 0 ? function(elem) {
                 return !!elem.parentNode;
               } : function(elem, _context, xml) {
-                var cache, uniqueCache, outerCache, node, nodeIndex, start, dir2 = simple !== forward ? "nextSibling" : "previousSibling", parent = elem.parentNode, name2 = ofType && elem.nodeName.toLowerCase(), useCache = !xml && !ofType, diff = false;
+                var cache, uniqueCache, outerCache, node, nodeIndex, start, dir2 = simple !== forward ? "nextSibling" : "previousSibling", parent = elem.parentNode, name = ofType && elem.nodeName.toLowerCase(), useCache = !xml && !ofType, diff = false;
                 if (parent) {
                   if (simple) {
                     while (dir2) {
                       node = elem;
                       while (node = node[dir2]) {
-                        if (ofType ? node.nodeName.toLowerCase() === name2 : node.nodeType === 1) {
+                        if (ofType ? node.nodeName.toLowerCase() === name : node.nodeType === 1) {
                           return false;
                         }
                       }
@@ -968,7 +968,7 @@ var require_jquery = __commonJS({
                     }
                     if (diff === false) {
                       while (node = ++nodeIndex && node && node[dir2] || (diff = nodeIndex = 0) || start.pop()) {
-                        if ((ofType ? node.nodeName.toLowerCase() === name2 : node.nodeType === 1) && ++diff) {
+                        if ((ofType ? node.nodeName.toLowerCase() === name : node.nodeType === 1) && ++diff) {
                           if (useCache) {
                             outerCache = node[expando] || (node[expando] = {});
                             uniqueCache = outerCache[node.uniqueID] || (outerCache[node.uniqueID] = {});
@@ -1090,8 +1090,8 @@ var require_jquery = __commonJS({
               return rinputs.test(elem.nodeName);
             },
             "button": function(elem) {
-              var name2 = elem.nodeName.toLowerCase();
-              return name2 === "input" && elem.type === "button" || name2 === "button";
+              var name = elem.nodeName.toLowerCase();
+              return name === "input" && elem.type === "button" || name === "button";
             },
             "text": function(elem) {
               var attr;
@@ -1429,12 +1429,12 @@ var require_jquery = __commonJS({
           return cached;
         };
         select = Sizzle2.select = function(selector, context, results, seed) {
-          var i3, tokens, token2, type, find, compiled = typeof selector === "function" && selector, match = !seed && tokenize(selector = compiled.selector || selector);
+          var i3, tokens, token, type, find, compiled = typeof selector === "function" && selector, match = !seed && tokenize(selector = compiled.selector || selector);
           results = results || [];
           if (match.length === 1) {
             tokens = match[0] = match[0].slice(0);
-            if (tokens.length > 2 && (token2 = tokens[0]).type === "ID" && context.nodeType === 9 && documentIsHTML && Expr.relative[tokens[1].type]) {
-              context = (Expr.find["ID"](token2.matches[0].replace(runescape, funescape), context) || [])[0];
+            if (tokens.length > 2 && (token = tokens[0]).type === "ID" && context.nodeType === 9 && documentIsHTML && Expr.relative[tokens[1].type]) {
+              context = (Expr.find["ID"](token.matches[0].replace(runescape, funescape), context) || [])[0];
               if (!context) {
                 return results;
               } else if (compiled) {
@@ -1444,12 +1444,12 @@ var require_jquery = __commonJS({
             }
             i3 = matchExpr["needsContext"].test(selector) ? 0 : tokens.length;
             while (i3--) {
-              token2 = tokens[i3];
-              if (Expr.relative[type = token2.type]) {
+              token = tokens[i3];
+              if (Expr.relative[type = token.type]) {
                 break;
               }
               if (find = Expr.find[type]) {
-                if (seed = find(token2.matches[0].replace(runescape, funescape), rsibling.test(tokens[0].type) && testContext(context.parentNode) || context)) {
+                if (seed = find(token.matches[0].replace(runescape, funescape), rsibling.test(tokens[0].type) && testContext(context.parentNode) || context)) {
                   tokens.splice(i3, 1);
                   selector = seed.length && toSelector(tokens);
                   if (!selector) {
@@ -1474,9 +1474,9 @@ var require_jquery = __commonJS({
           el.innerHTML = "<a href='#'></a>";
           return el.firstChild.getAttribute("href") === "#";
         })) {
-          addHandle("type|href|height|width", function(elem, name2, isXML2) {
+          addHandle("type|href|height|width", function(elem, name, isXML2) {
             if (!isXML2) {
-              return elem.getAttribute(name2, name2.toLowerCase() === "type" ? 1 : 2);
+              return elem.getAttribute(name, name.toLowerCase() === "type" ? 1 : 2);
             }
           });
         }
@@ -1494,10 +1494,10 @@ var require_jquery = __commonJS({
         if (!assert(function(el) {
           return el.getAttribute("disabled") == null;
         })) {
-          addHandle(booleans, function(elem, name2, isXML2) {
+          addHandle(booleans, function(elem, name, isXML2) {
             var val;
             if (!isXML2) {
-              return elem[name2] === true ? name2.toLowerCase() : (val = elem.getAttributeNode(name2)) && val.specified ? val.value : null;
+              return elem[name] === true ? name.toLowerCase() : (val = elem.getAttributeNode(name)) && val.specified ? val.value : null;
             }
           });
         }
@@ -1533,8 +1533,8 @@ var require_jquery = __commonJS({
         return matched;
       };
       var rneedsContext = jQuery2.expr.match.needsContext;
-      function nodeName(elem, name2) {
-        return elem.nodeName && elem.nodeName.toLowerCase() === name2.toLowerCase();
+      function nodeName(elem, name) {
+        return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
       }
       var rsingleTag = /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i;
       function winnow(elements, qualifier, not) {
@@ -1742,20 +1742,20 @@ var require_jquery = __commonJS({
           }
           return jQuery2.merge([], elem.childNodes);
         }
-      }, function(name2, fn) {
-        jQuery2.fn[name2] = function(until, selector) {
+      }, function(name, fn) {
+        jQuery2.fn[name] = function(until, selector) {
           var matched = jQuery2.map(this, fn, until);
-          if (name2.slice(-5) !== "Until") {
+          if (name.slice(-5) !== "Until") {
             selector = until;
           }
           if (selector && typeof selector === "string") {
             matched = jQuery2.filter(selector, matched);
           }
           if (this.length > 1) {
-            if (!guaranteedUnique[name2]) {
+            if (!guaranteedUnique[name]) {
               jQuery2.uniqueSort(matched);
             }
-            if (rparentsprev.test(name2)) {
+            if (rparentsprev.test(name)) {
               matched.reverse();
             }
           }
@@ -2246,10 +2246,10 @@ var require_jquery = __commonJS({
         return data;
       }
       function dataAttr(elem, key, data) {
-        var name2;
+        var name;
         if (data === void 0 && elem.nodeType === 1) {
-          name2 = "data-" + key.replace(rmultiDash, "-$&").toLowerCase();
-          data = elem.getAttribute(name2);
+          name = "data-" + key.replace(rmultiDash, "-$&").toLowerCase();
+          data = elem.getAttribute(name);
           if (typeof data === "string") {
             try {
               data = getData(data);
@@ -2266,22 +2266,22 @@ var require_jquery = __commonJS({
         hasData: function(elem) {
           return dataUser.hasData(elem) || dataPriv.hasData(elem);
         },
-        data: function(elem, name2, data) {
-          return dataUser.access(elem, name2, data);
+        data: function(elem, name, data) {
+          return dataUser.access(elem, name, data);
         },
-        removeData: function(elem, name2) {
-          dataUser.remove(elem, name2);
+        removeData: function(elem, name) {
+          dataUser.remove(elem, name);
         },
-        _data: function(elem, name2, data) {
-          return dataPriv.access(elem, name2, data);
+        _data: function(elem, name, data) {
+          return dataPriv.access(elem, name, data);
         },
-        _removeData: function(elem, name2) {
-          dataPriv.remove(elem, name2);
+        _removeData: function(elem, name) {
+          dataPriv.remove(elem, name);
         }
       });
       jQuery2.fn.extend({
         data: function(key, value) {
-          var i2, name2, data, elem = this[0], attrs = elem && elem.attributes;
+          var i2, name, data, elem = this[0], attrs = elem && elem.attributes;
           if (key === void 0) {
             if (this.length) {
               data = dataUser.get(elem);
@@ -2289,10 +2289,10 @@ var require_jquery = __commonJS({
                 i2 = attrs.length;
                 while (i2--) {
                   if (attrs[i2]) {
-                    name2 = attrs[i2].name;
-                    if (name2.indexOf("data-") === 0) {
-                      name2 = camelCase(name2.slice(5));
-                      dataAttr(elem, name2, data[name2]);
+                    name = attrs[i2].name;
+                    if (name.indexOf("data-") === 0) {
+                      name = camelCase(name.slice(5));
+                      dataAttr(elem, name, data[name]);
                     }
                   }
                 }
@@ -2873,8 +2873,8 @@ var require_jquery = __commonJS({
           }
           return handlerQueue;
         },
-        addProp: function(name2, hook) {
-          Object.defineProperty(jQuery2.Event.prototype, name2, {
+        addProp: function(name, hook) {
+          Object.defineProperty(jQuery2.Event.prototype, name, {
             enumerable: true,
             configurable: true,
             get: isFunction2(hook) ? function() {
@@ -2883,11 +2883,11 @@ var require_jquery = __commonJS({
               }
             } : function() {
               if (this.originalEvent) {
-                return this.originalEvent[name2];
+                return this.originalEvent[name];
               }
             },
             set: function(value) {
-              Object.defineProperty(this, name2, {
+              Object.defineProperty(this, name, {
                 enumerable: true,
                 configurable: true,
                 writable: true,
@@ -3406,8 +3406,8 @@ var require_jquery = __commonJS({
         insertBefore: "before",
         insertAfter: "after",
         replaceAll: "replaceWith"
-      }, function(name2, original) {
-        jQuery2.fn[name2] = function(selector) {
+      }, function(name, original) {
+        jQuery2.fn[name] = function(selector) {
           var elems, ret = [], insert = jQuery2(selector), last = insert.length - 1, i2 = 0;
           for (; i2 <= last; i2++) {
             elems = i2 === last ? this : this.clone(true);
@@ -3426,14 +3426,14 @@ var require_jquery = __commonJS({
         return view.getComputedStyle(elem);
       };
       var swap = function(elem, options, callback) {
-        var ret, name2, old = {};
-        for (name2 in options) {
-          old[name2] = elem.style[name2];
-          elem.style[name2] = options[name2];
+        var ret, name, old = {};
+        for (name in options) {
+          old[name] = elem.style[name];
+          elem.style[name] = options[name];
         }
         ret = callback.call(elem);
-        for (name2 in options) {
-          elem.style[name2] = old[name2];
+        for (name in options) {
+          elem.style[name] = old[name];
         }
         return ret;
       };
@@ -3508,15 +3508,15 @@ var require_jquery = __commonJS({
           }
         });
       })();
-      function curCSS(elem, name2, computed) {
+      function curCSS(elem, name, computed) {
         var width, minWidth, maxWidth, ret, style = elem.style;
         computed = computed || getStyles(elem);
         if (computed) {
-          ret = computed.getPropertyValue(name2) || computed[name2];
+          ret = computed.getPropertyValue(name) || computed[name];
           if (ret === "" && !isAttached(elem)) {
-            ret = jQuery2.style(elem, name2);
+            ret = jQuery2.style(elem, name);
           }
-          if (!support.pixelBoxStyles() && rnumnonpx.test(ret) && rboxStyle.test(name2)) {
+          if (!support.pixelBoxStyles() && rnumnonpx.test(ret) && rboxStyle.test(name)) {
             width = style.width;
             minWidth = style.minWidth;
             maxWidth = style.maxWidth;
@@ -3541,24 +3541,24 @@ var require_jquery = __commonJS({
         };
       }
       var cssPrefixes = ["Webkit", "Moz", "ms"], emptyStyle = document2.createElement("div").style, vendorProps = {};
-      function vendorPropName(name2) {
-        var capName = name2[0].toUpperCase() + name2.slice(1), i2 = cssPrefixes.length;
+      function vendorPropName(name) {
+        var capName = name[0].toUpperCase() + name.slice(1), i2 = cssPrefixes.length;
         while (i2--) {
-          name2 = cssPrefixes[i2] + capName;
-          if (name2 in emptyStyle) {
-            return name2;
+          name = cssPrefixes[i2] + capName;
+          if (name in emptyStyle) {
+            return name;
           }
         }
       }
-      function finalPropName(name2) {
-        var final = jQuery2.cssProps[name2] || vendorProps[name2];
+      function finalPropName(name) {
+        var final = jQuery2.cssProps[name] || vendorProps[name];
         if (final) {
           return final;
         }
-        if (name2 in emptyStyle) {
-          return name2;
+        if (name in emptyStyle) {
+          return name;
         }
-        return vendorProps[name2] = vendorPropName(name2) || name2;
+        return vendorProps[name] = vendorPropName(name) || name;
       }
       var rdisplayswap = /^(none|table(?!-c[ea]).+)/, rcustomProp = /^--/, cssShow = { position: "absolute", visibility: "hidden", display: "block" }, cssNormalTransform = {
         letterSpacing: "0",
@@ -3650,19 +3650,19 @@ var require_jquery = __commonJS({
           "zoom": true
         },
         cssProps: {},
-        style: function(elem, name2, value, extra) {
+        style: function(elem, name, value, extra) {
           if (!elem || elem.nodeType === 3 || elem.nodeType === 8 || !elem.style) {
             return;
           }
-          var ret, type, hooks, origName = camelCase(name2), isCustomProp = rcustomProp.test(name2), style = elem.style;
+          var ret, type, hooks, origName = camelCase(name), isCustomProp = rcustomProp.test(name), style = elem.style;
           if (!isCustomProp) {
-            name2 = finalPropName(origName);
+            name = finalPropName(origName);
           }
-          hooks = jQuery2.cssHooks[name2] || jQuery2.cssHooks[origName];
+          hooks = jQuery2.cssHooks[name] || jQuery2.cssHooks[origName];
           if (value !== void 0) {
             type = typeof value;
             if (type === "string" && (ret = rcssNum.exec(value)) && ret[1]) {
-              value = adjustCSS(elem, name2, ret);
+              value = adjustCSS(elem, name, ret);
               type = "number";
             }
             if (value == null || value !== value) {
@@ -3671,37 +3671,37 @@ var require_jquery = __commonJS({
             if (type === "number" && !isCustomProp) {
               value += ret && ret[3] || (jQuery2.cssNumber[origName] ? "" : "px");
             }
-            if (!support.clearCloneStyle && value === "" && name2.indexOf("background") === 0) {
-              style[name2] = "inherit";
+            if (!support.clearCloneStyle && value === "" && name.indexOf("background") === 0) {
+              style[name] = "inherit";
             }
             if (!hooks || !("set" in hooks) || (value = hooks.set(elem, value, extra)) !== void 0) {
               if (isCustomProp) {
-                style.setProperty(name2, value);
+                style.setProperty(name, value);
               } else {
-                style[name2] = value;
+                style[name] = value;
               }
             }
           } else {
             if (hooks && "get" in hooks && (ret = hooks.get(elem, false, extra)) !== void 0) {
               return ret;
             }
-            return style[name2];
+            return style[name];
           }
         },
-        css: function(elem, name2, extra, styles) {
-          var val, num, hooks, origName = camelCase(name2), isCustomProp = rcustomProp.test(name2);
+        css: function(elem, name, extra, styles) {
+          var val, num, hooks, origName = camelCase(name), isCustomProp = rcustomProp.test(name);
           if (!isCustomProp) {
-            name2 = finalPropName(origName);
+            name = finalPropName(origName);
           }
-          hooks = jQuery2.cssHooks[name2] || jQuery2.cssHooks[origName];
+          hooks = jQuery2.cssHooks[name] || jQuery2.cssHooks[origName];
           if (hooks && "get" in hooks) {
             val = hooks.get(elem, true, extra);
           }
           if (val === void 0) {
-            val = curCSS(elem, name2, styles);
+            val = curCSS(elem, name, styles);
           }
-          if (val === "normal" && name2 in cssNormalTransform) {
-            val = cssNormalTransform[name2];
+          if (val === "normal" && name in cssNormalTransform) {
+            val = cssNormalTransform[name];
           }
           if (extra === "" || extra) {
             num = parseFloat(val);
@@ -3758,19 +3758,19 @@ var require_jquery = __commonJS({
         }
       });
       jQuery2.fn.extend({
-        css: function(name2, value) {
-          return access(this, function(elem, name3, value2) {
+        css: function(name, value) {
+          return access(this, function(elem, name2, value2) {
             var styles, len, map = {}, i2 = 0;
-            if (Array.isArray(name3)) {
+            if (Array.isArray(name2)) {
               styles = getStyles(elem);
-              len = name3.length;
+              len = name2.length;
               for (; i2 < len; i2++) {
-                map[name3[i2]] = jQuery2.css(elem, name3[i2], false, styles);
+                map[name2[i2]] = jQuery2.css(elem, name2[i2], false, styles);
               }
               return map;
             }
-            return value2 !== void 0 ? jQuery2.style(elem, name3, value2) : jQuery2.css(elem, name3);
-          }, name2, value, arguments.length > 1);
+            return value2 !== void 0 ? jQuery2.style(elem, name2, value2) : jQuery2.css(elem, name2);
+          }, name, value, arguments.length > 1);
         }
       });
       function Tween(elem, options, prop, end, easing) {
@@ -4007,23 +4007,23 @@ var require_jquery = __commonJS({
         }
       }
       function propFilter(props, specialEasing) {
-        var index, name2, easing, value, hooks;
+        var index, name, easing, value, hooks;
         for (index in props) {
-          name2 = camelCase(index);
-          easing = specialEasing[name2];
+          name = camelCase(index);
+          easing = specialEasing[name];
           value = props[index];
           if (Array.isArray(value)) {
             easing = value[1];
             value = props[index] = value[0];
           }
-          if (index !== name2) {
-            props[name2] = value;
+          if (index !== name) {
+            props[name] = value;
             delete props[index];
           }
-          hooks = jQuery2.cssHooks[name2];
+          hooks = jQuery2.cssHooks[name];
           if (hooks && "expand" in hooks) {
             value = hooks.expand(value);
-            delete props[name2];
+            delete props[name];
             for (index in value) {
               if (!(index in props)) {
                 props[index] = value[index];
@@ -4031,7 +4031,7 @@ var require_jquery = __commonJS({
               }
             }
           } else {
-            specialEasing[name2] = easing;
+            specialEasing[name] = easing;
           }
         }
       }
@@ -4253,10 +4253,10 @@ var require_jquery = __commonJS({
           });
         }
       });
-      jQuery2.each(["toggle", "show", "hide"], function(_i, name2) {
-        var cssFn = jQuery2.fn[name2];
-        jQuery2.fn[name2] = function(speed, easing, callback) {
-          return speed == null || typeof speed === "boolean" ? cssFn.apply(this, arguments) : this.animate(genFx(name2, true), speed, easing, callback);
+      jQuery2.each(["toggle", "show", "hide"], function(_i, name) {
+        var cssFn = jQuery2.fn[name];
+        jQuery2.fn[name] = function(speed, easing, callback) {
+          return speed == null || typeof speed === "boolean" ? cssFn.apply(this, arguments) : this.animate(genFx(name, true), speed, easing, callback);
         };
       });
       jQuery2.each({
@@ -4266,8 +4266,8 @@ var require_jquery = __commonJS({
         fadeIn: { opacity: "show" },
         fadeOut: { opacity: "hide" },
         fadeToggle: { opacity: "toggle" }
-      }, function(name2, props) {
-        jQuery2.fn[name2] = function(speed, easing, callback) {
+      }, function(name, props) {
+        jQuery2.fn[name] = function(speed, easing, callback) {
           return this.animate(props, speed, easing, callback);
         };
       });
@@ -4328,42 +4328,42 @@ var require_jquery = __commonJS({
       })();
       var boolHook, attrHandle = jQuery2.expr.attrHandle;
       jQuery2.fn.extend({
-        attr: function(name2, value) {
-          return access(this, jQuery2.attr, name2, value, arguments.length > 1);
+        attr: function(name, value) {
+          return access(this, jQuery2.attr, name, value, arguments.length > 1);
         },
-        removeAttr: function(name2) {
+        removeAttr: function(name) {
           return this.each(function() {
-            jQuery2.removeAttr(this, name2);
+            jQuery2.removeAttr(this, name);
           });
         }
       });
       jQuery2.extend({
-        attr: function(elem, name2, value) {
+        attr: function(elem, name, value) {
           var ret, hooks, nType = elem.nodeType;
           if (nType === 3 || nType === 8 || nType === 2) {
             return;
           }
           if (typeof elem.getAttribute === "undefined") {
-            return jQuery2.prop(elem, name2, value);
+            return jQuery2.prop(elem, name, value);
           }
           if (nType !== 1 || !jQuery2.isXMLDoc(elem)) {
-            hooks = jQuery2.attrHooks[name2.toLowerCase()] || (jQuery2.expr.match.bool.test(name2) ? boolHook : void 0);
+            hooks = jQuery2.attrHooks[name.toLowerCase()] || (jQuery2.expr.match.bool.test(name) ? boolHook : void 0);
           }
           if (value !== void 0) {
             if (value === null) {
-              jQuery2.removeAttr(elem, name2);
+              jQuery2.removeAttr(elem, name);
               return;
             }
-            if (hooks && "set" in hooks && (ret = hooks.set(elem, value, name2)) !== void 0) {
+            if (hooks && "set" in hooks && (ret = hooks.set(elem, value, name)) !== void 0) {
               return ret;
             }
-            elem.setAttribute(name2, value + "");
+            elem.setAttribute(name, value + "");
             return value;
           }
-          if (hooks && "get" in hooks && (ret = hooks.get(elem, name2)) !== null) {
+          if (hooks && "get" in hooks && (ret = hooks.get(elem, name)) !== null) {
             return ret;
           }
-          ret = jQuery2.find.attr(elem, name2);
+          ret = jQuery2.find.attr(elem, name);
           return ret == null ? void 0 : ret;
         },
         attrHooks: {
@@ -4381,32 +4381,32 @@ var require_jquery = __commonJS({
           }
         },
         removeAttr: function(elem, value) {
-          var name2, i2 = 0, attrNames = value && value.match(rnothtmlwhite);
+          var name, i2 = 0, attrNames = value && value.match(rnothtmlwhite);
           if (attrNames && elem.nodeType === 1) {
-            while (name2 = attrNames[i2++]) {
-              elem.removeAttribute(name2);
+            while (name = attrNames[i2++]) {
+              elem.removeAttribute(name);
             }
           }
         }
       });
       boolHook = {
-        set: function(elem, value, name2) {
+        set: function(elem, value, name) {
           if (value === false) {
-            jQuery2.removeAttr(elem, name2);
+            jQuery2.removeAttr(elem, name);
           } else {
-            elem.setAttribute(name2, name2);
+            elem.setAttribute(name, name);
           }
-          return name2;
+          return name;
         }
       };
-      jQuery2.each(jQuery2.expr.match.bool.source.match(/\w+/g), function(_i, name2) {
-        var getter = attrHandle[name2] || jQuery2.find.attr;
-        attrHandle[name2] = function(elem, name3, isXML) {
-          var ret, handle, lowercaseName = name3.toLowerCase();
+      jQuery2.each(jQuery2.expr.match.bool.source.match(/\w+/g), function(_i, name) {
+        var getter = attrHandle[name] || jQuery2.find.attr;
+        attrHandle[name] = function(elem, name2, isXML) {
+          var ret, handle, lowercaseName = name2.toLowerCase();
           if (!isXML) {
             handle = attrHandle[lowercaseName];
             attrHandle[lowercaseName] = ret;
-            ret = getter(elem, name3, isXML) != null ? lowercaseName : null;
+            ret = getter(elem, name2, isXML) != null ? lowercaseName : null;
             attrHandle[lowercaseName] = handle;
           }
           return ret;
@@ -4414,35 +4414,35 @@ var require_jquery = __commonJS({
       });
       var rfocusable = /^(?:input|select|textarea|button)$/i, rclickable = /^(?:a|area)$/i;
       jQuery2.fn.extend({
-        prop: function(name2, value) {
-          return access(this, jQuery2.prop, name2, value, arguments.length > 1);
+        prop: function(name, value) {
+          return access(this, jQuery2.prop, name, value, arguments.length > 1);
         },
-        removeProp: function(name2) {
+        removeProp: function(name) {
           return this.each(function() {
-            delete this[jQuery2.propFix[name2] || name2];
+            delete this[jQuery2.propFix[name] || name];
           });
         }
       });
       jQuery2.extend({
-        prop: function(elem, name2, value) {
+        prop: function(elem, name, value) {
           var ret, hooks, nType = elem.nodeType;
           if (nType === 3 || nType === 8 || nType === 2) {
             return;
           }
           if (nType !== 1 || !jQuery2.isXMLDoc(elem)) {
-            name2 = jQuery2.propFix[name2] || name2;
-            hooks = jQuery2.propHooks[name2];
+            name = jQuery2.propFix[name] || name;
+            hooks = jQuery2.propHooks[name];
           }
           if (value !== void 0) {
-            if (hooks && "set" in hooks && (ret = hooks.set(elem, value, name2)) !== void 0) {
+            if (hooks && "set" in hooks && (ret = hooks.set(elem, value, name)) !== void 0) {
               return ret;
             }
-            return elem[name2] = value;
+            return elem[name] = value;
           }
-          if (hooks && "get" in hooks && (ret = hooks.get(elem, name2)) !== null) {
+          if (hooks && "get" in hooks && (ret = hooks.get(elem, name)) !== null) {
             return ret;
           }
-          return elem[name2];
+          return elem[name];
         },
         propHooks: {
           tabIndex: {
@@ -4876,7 +4876,7 @@ var require_jquery = __commonJS({
       };
       var rbracket = /\[\]$/, rCRLF = /\r?\n/g, rsubmitterTypes = /^(?:submit|button|image|reset|file)$/i, rsubmittable = /^(?:input|select|textarea|keygen)/i;
       function buildParams(prefix, obj, traditional, add) {
-        var name2;
+        var name;
         if (Array.isArray(obj)) {
           jQuery2.each(obj, function(i2, v) {
             if (traditional || rbracket.test(prefix)) {
@@ -4886,8 +4886,8 @@ var require_jquery = __commonJS({
             }
           });
         } else if (!traditional && toType(obj) === "object") {
-          for (name2 in obj) {
-            buildParams(prefix + "[" + name2 + "]", obj[name2], traditional, add);
+          for (name in obj) {
+            buildParams(prefix + "[" + name + "]", obj[name], traditional, add);
           }
         } else {
           add(prefix, obj);
@@ -5153,10 +5153,10 @@ var require_jquery = __commonJS({
             getAllResponseHeaders: function() {
               return completed2 ? responseHeadersString : null;
             },
-            setRequestHeader: function(name2, value) {
+            setRequestHeader: function(name, value) {
               if (completed2 == null) {
-                name2 = requestHeadersNames[name2.toLowerCase()] = requestHeadersNames[name2.toLowerCase()] || name2;
-                requestHeaders[name2] = value;
+                name = requestHeadersNames[name.toLowerCase()] = requestHeadersNames[name.toLowerCase()] || name;
+                requestHeaders[name] = value;
               }
               return this;
             },
@@ -5821,22 +5821,22 @@ var require_jquery = __commonJS({
           }
         });
       });
-      jQuery2.each({ Height: "height", Width: "width" }, function(name2, type) {
+      jQuery2.each({ Height: "height", Width: "width" }, function(name, type) {
         jQuery2.each({
-          padding: "inner" + name2,
+          padding: "inner" + name,
           content: type,
-          "": "outer" + name2
+          "": "outer" + name
         }, function(defaultExtra, funcName) {
           jQuery2.fn[funcName] = function(margin, value) {
             var chainable = arguments.length && (defaultExtra || typeof margin !== "boolean"), extra = defaultExtra || (margin === true || value === true ? "margin" : "border");
             return access(this, function(elem, type2, value2) {
               var doc;
               if (isWindow(elem)) {
-                return funcName.indexOf("outer") === 0 ? elem["inner" + name2] : elem.document.documentElement["client" + name2];
+                return funcName.indexOf("outer") === 0 ? elem["inner" + name] : elem.document.documentElement["client" + name];
               }
               if (elem.nodeType === 9) {
                 doc = elem.documentElement;
-                return Math.max(elem.body["scroll" + name2], doc["scroll" + name2], elem.body["offset" + name2], doc["offset" + name2], doc["client" + name2]);
+                return Math.max(elem.body["scroll" + name], doc["scroll" + name], elem.body["offset" + name], doc["offset" + name], doc["client" + name]);
               }
               return value2 === void 0 ? jQuery2.css(elem, type2, extra) : jQuery2.style(elem, type2, value2, extra);
             }, type, chainable ? margin : void 0, chainable);
@@ -5872,9 +5872,9 @@ var require_jquery = __commonJS({
           return this.mouseenter(fnOver).mouseleave(fnOut || fnOver);
         }
       });
-      jQuery2.each("blur focus focusin focusout resize scroll click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup contextmenu".split(" "), function(_i, name2) {
-        jQuery2.fn[name2] = function(data, fn) {
-          return arguments.length > 0 ? this.on(name2, null, data, fn) : this.trigger(name2);
+      jQuery2.each("blur focus focusin focusout resize scroll click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup contextmenu".split(" "), function(_i, name) {
+        jQuery2.fn[name] = function(data, fn) {
+          return arguments.length > 0 ? this.on(name, null, data, fn) : this.trigger(name);
         };
       });
       var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
@@ -18647,128 +18647,128 @@ var require_speciesGenerator = __commonJS({
     };
     exports.cavePerson = function(gender) {
       var nameArr = names_1.names.primitive;
-      var name2 = capitalize(sample(nameArr.names));
+      var name = capitalize(sample(nameArr.names));
       var roll2 = dieRoll(10);
       if (gender === "male") {
         if (roll2 > 3) {
-          name2 = name2 + "-" + capitalize(sample(nameArr.names));
+          name = name + "-" + capitalize(sample(nameArr.names));
         }
         if (roll2 > 8) {
-          name2 = name2 + "-" + capitalize(sample(nameArr.names));
+          name = name + "-" + capitalize(sample(nameArr.names));
         }
       } else if (gender === "female") {
         if (roll2 > 5) {
-          name2 = name2 + "-" + capitalize(sample(nameArr.names));
+          name = name + "-" + capitalize(sample(nameArr.names));
         }
-        name2 = name2 + "-" + capitalize(sample(nameArr.suffixes));
+        name = name + "-" + capitalize(sample(nameArr.suffixes));
       }
-      return name2;
+      return name;
     };
     exports.dwarf = function(gender) {
       var nameArr = names_1.names.doughty;
-      var name2 = capitalize(sample(nameArr.syllables));
+      var name = capitalize(sample(nameArr.syllables));
       var roll2 = dieRoll(10);
       if (gender === "male") {
         if (roll2 > 7) {
-          name2 = "" + name2 + (isVowel(name2.slice(-1)) ? "r" : "i");
+          name = "" + name + (isVowel(name.slice(-1)) ? "r" : "i");
         } else {
-          name2 = "" + name2 + sample(nameArr.maleSuffixes);
+          name = "" + name + sample(nameArr.maleSuffixes);
         }
       } else if (gender === "female") {
         if (roll2 > 7) {
-          name2 = "" + name2 + (isVowel(name2.slice(-1)) ? "ra" : "a");
+          name = "" + name + (isVowel(name.slice(-1)) ? "ra" : "a");
         } else {
-          name2 = "" + name2 + sample(nameArr.femaleSuffixes);
+          name = "" + name + sample(nameArr.femaleSuffixes);
         }
       }
-      return name2;
+      return name;
     };
     exports.halfling = function(gender) {
       var nameArr = names_1.names.homely;
-      var name2 = capitalize(sample(nameArr.syllables));
+      var name = capitalize(sample(nameArr.syllables));
       var roll2 = dieRoll(10);
       if (nameArr[genderSuffixesKey(gender)]) {
-        name2 = "" + name2 + sample(nameArr[genderSuffixesKey(gender)]);
+        name = "" + name + sample(nameArr[genderSuffixesKey(gender)]);
       }
       if (roll2 > 6) {
-        name2 = name2 + " " + sample(names_1.names.familyName.english);
+        name = name + " " + sample(names_1.names.familyName.english);
       }
-      return name2;
+      return name;
     };
     exports.gnome = function(gender) {
-      var name2 = capitalize(sample(names_1.names.doughty.syllables));
+      var name = capitalize(sample(names_1.names.doughty.syllables));
       var roll2 = dieRoll(10);
       if (names_1.names.homely[genderSuffixesKey(gender)]) {
-        name2 = "" + name2 + sample(names_1.names.homely[genderSuffixesKey(gender)]);
+        name = "" + name + sample(names_1.names.homely[genderSuffixesKey(gender)]);
       }
       if (roll2 > 6) {
-        name2 = name2 + " " + sample(names_1.names.familyName.scottish);
+        name = name + " " + sample(names_1.names.familyName.scottish);
       }
-      return name2;
+      return name;
     };
     exports.elf = function(gender) {
       var nameArr = names_1.names.fairAndNoble;
-      var name2 = "" + capitalize(sample(nameArr.elfPrefixes)) + sample(nameArr.middle);
+      var name = "" + capitalize(sample(nameArr.elfPrefixes)) + sample(nameArr.middle);
       if (nameArr[genderSuffixesKey(gender)]) {
-        name2 = "" + name2 + sample(nameArr[genderSuffixesKey(gender)]);
+        name = "" + name + sample(nameArr[genderSuffixesKey(gender)]);
       }
-      return name2;
+      return name;
     };
     exports.highelf = function(gender) {
       var nameArr = names_1.names.fairAndNoble;
-      var name2 = "" + capitalize(sample(nameArr.alternativeElfPrefixes)) + sample(nameArr.middle);
+      var name = "" + capitalize(sample(nameArr.alternativeElfPrefixes)) + sample(nameArr.middle);
       if (nameArr[genderSuffixesKey(gender)]) {
-        name2 = "" + name2 + sample(nameArr[genderSuffixesKey(gender)]);
+        name = "" + name + sample(nameArr[genderSuffixesKey(gender)]);
       }
-      return name2;
+      return name;
     };
     exports.fairy = function(gender) {
       var nameArr = names_1.names.fairy;
-      var name2 = capitalize(sample(nameArr.prefixes));
+      var name = capitalize(sample(nameArr.prefixes));
       if (nameArr[genderSuffixesKey(gender)]) {
-        name2 = "" + name2 + sample(nameArr[genderSuffixesKey(gender)]);
+        name = "" + name + sample(nameArr[genderSuffixesKey(gender)]);
       }
-      return name2;
+      return name;
     };
     exports.highfairy = function(gender) {
       var nameArr = names_1.names.alternateFairy;
-      var name2 = capitalize(sample(nameArr.prefixes));
+      var name = capitalize(sample(nameArr.prefixes));
       if (nameArr[genderSuffixesKey(gender)]) {
-        name2 = "" + name2 + sample(nameArr[genderSuffixesKey(gender)]);
+        name = "" + name + sample(nameArr[genderSuffixesKey(gender)]);
       }
-      return name2;
+      return name;
     };
     exports.darkelf = function(gender) {
       var nameArr = names_1.names.elegantEvil;
-      var name2 = capitalize(sample(nameArr.prefixesDarkElves));
+      var name = capitalize(sample(nameArr.prefixesDarkElves));
       var roll2 = dieRoll(10);
       if (roll2 > 2) {
-        name2 = "" + name2 + sample(nameArr.middle);
+        name = "" + name + sample(nameArr.middle);
       }
       if (nameArr[genderSuffixesKey(gender)]) {
-        name2 = "" + name2 + sample(nameArr[genderSuffixesKey(gender)]);
+        name = "" + name + sample(nameArr[genderSuffixesKey(gender)]);
       }
-      return name2;
+      return name;
     };
     exports.drow = function(gender) {
       var nameArr = names_1.names.elegantEvil;
-      var name2 = capitalize(sample(nameArr.prefixesAlternateDarkElves));
+      var name = capitalize(sample(nameArr.prefixesAlternateDarkElves));
       var roll2 = dieRoll(10);
       if (roll2 > 2) {
-        name2 = "" + name2 + sample(nameArr.middle);
+        name = "" + name + sample(nameArr.middle);
       }
       if (nameArr[genderSuffixesKey(gender)]) {
-        name2 = "" + name2 + sample(nameArr[genderSuffixesKey(gender)]);
+        name = "" + name + sample(nameArr[genderSuffixesKey(gender)]);
       }
-      return name2;
+      return name;
     };
     exports.halfdemon = function(gender) {
       var nameArr = names_1.names.malevolent;
-      var name2 = capitalize(sample(nameArr.prefixes));
+      var name = capitalize(sample(nameArr.prefixes));
       if (nameArr[genderSuffixesKey(gender)]) {
-        name2 = "" + name2 + sample(nameArr[genderSuffixesKey(gender)]);
+        name = "" + name + sample(nameArr[genderSuffixesKey(gender)]);
       }
-      return name2;
+      return name;
     };
     exports.demon = function() {
       var keys = Object.keys(names_1.names.infernal);
@@ -18782,7 +18782,7 @@ var require_speciesGenerator = __commonJS({
     };
     exports.dragon = function(gender) {
       var nameArr = names_1.names.draconic;
-      var name2 = capitalize(sample(nameArr.prefixes));
+      var name = capitalize(sample(nameArr.prefixes));
       var suffix = sample(nameArr.suffixes);
       if (gender === "female") {
         if (suffix === "bazius") {
@@ -18793,24 +18793,24 @@ var require_speciesGenerator = __commonJS({
           suffix = "is";
         }
       }
-      return name2 + suffix;
+      return name + suffix;
     };
     exports.angel = function(gender) {
       var nameArr = names_1.names.empyreal;
       var roll2 = dieRoll(12);
-      var name2 = capitalize(sample(nameArr.prefixes));
+      var name = capitalize(sample(nameArr.prefixes));
       if (roll2 === 1) {
         if (gender === "female") {
-          var aIndex = name2.lastIndexOf("a");
-          name2 = name2.substr(0, aIndex) + "e" + name2.substr(aIndex + 1);
+          var aIndex = name.lastIndexOf("a");
+          name = name.substr(0, aIndex) + "e" + name.substr(aIndex + 1);
         }
-        name2 = "" + capitalize(sample(nameArr.titles)) + name2;
+        name = "" + capitalize(sample(nameArr.titles)) + name;
       } else {
         if (nameArr[genderSuffixesKey(gender)]) {
-          name2 = "" + name2 + sample(nameArr[genderSuffixesKey(gender)]);
+          name = "" + name + sample(nameArr[genderSuffixesKey(gender)]);
         }
       }
-      return name2;
+      return name;
     };
     exports.human = function(allowMultipleNames) {
       var roll2 = dieRoll(20);
@@ -18946,10 +18946,12 @@ var import_jquery = __toModule(require_jquery());
 
 // src/generatorTypes.ts
 var KINGDOM = "Kingdom";
-var AREA = "Area";
+var REGION = "Region";
 var SETTLEMENT = "Settlement";
 var PLACEOFINTEREST = "Place of Interest";
+var URBANAREA = "Urban Area";
 var BUILDING = "Building";
+var ORGANIZATION = "Organization";
 var NPC = "NPC";
 
 // src/professions-2.5.js
@@ -26193,7 +26195,7 @@ function parseTemplate(template, tags) {
   }
   compileTags(tags || mustache.tags);
   var scanner = new Scanner(template);
-  var start, type, value, chr, token2, openSection;
+  var start, type, value, chr, token, openSection;
   while (!scanner.eos()) {
     start = scanner.pos;
     value = scanner.scanUntil(openingTagRe);
@@ -26238,14 +26240,14 @@ function parseTemplate(template, tags) {
     if (!scanner.scan(closingTagRe))
       throw new Error("Unclosed tag at " + scanner.pos);
     if (type == ">") {
-      token2 = [type, value, start, scanner.pos, indentation, tagIndex, lineHasNonSpace];
+      token = [type, value, start, scanner.pos, indentation, tagIndex, lineHasNonSpace];
     } else {
-      token2 = [type, value, start, scanner.pos];
+      token = [type, value, start, scanner.pos];
     }
     tagIndex++;
-    tokens.push(token2);
+    tokens.push(token);
     if (type === "#" || type === "^") {
-      sections.push(token2);
+      sections.push(token);
     } else if (type === "/") {
       openSection = sections.pop();
       if (!openSection)
@@ -26266,16 +26268,16 @@ function parseTemplate(template, tags) {
 }
 function squashTokens(tokens) {
   var squashedTokens = [];
-  var token2, lastToken;
+  var token, lastToken;
   for (var i2 = 0, numTokens = tokens.length; i2 < numTokens; ++i2) {
-    token2 = tokens[i2];
-    if (token2) {
-      if (token2[0] === "text" && lastToken && lastToken[0] === "text") {
-        lastToken[1] += token2[1];
-        lastToken[3] = token2[3];
+    token = tokens[i2];
+    if (token) {
+      if (token[0] === "text" && lastToken && lastToken[0] === "text") {
+        lastToken[1] += token[1];
+        lastToken[3] = token[3];
       } else {
-        squashedTokens.push(token2);
-        lastToken = token2;
+        squashedTokens.push(token);
+        lastToken = token;
       }
     }
   }
@@ -26285,23 +26287,23 @@ function nestTokens(tokens) {
   var nestedTokens = [];
   var collector = nestedTokens;
   var sections = [];
-  var token2, section;
+  var token, section;
   for (var i2 = 0, numTokens = tokens.length; i2 < numTokens; ++i2) {
-    token2 = tokens[i2];
-    switch (token2[0]) {
+    token = tokens[i2];
+    switch (token[0]) {
       case "#":
       case "^":
-        collector.push(token2);
-        sections.push(token2);
-        collector = token2[4] = [];
+        collector.push(token);
+        sections.push(token);
+        collector = token[4] = [];
         break;
       case "/":
         section = sections.pop();
-        section[5] = token2[2];
+        section[5] = token[2];
         collector = sections.length > 0 ? sections[sections.length - 1][4] : nestedTokens;
         break;
       default:
-        collector.push(token2);
+        collector.push(token);
     }
   }
   return nestedTokens;
@@ -26348,17 +26350,17 @@ function Context(view, parentContext) {
 Context.prototype.push = function push(view) {
   return new Context(view, this);
 };
-Context.prototype.lookup = function lookup(name2) {
+Context.prototype.lookup = function lookup(name) {
   var cache = this.cache;
   var value;
-  if (cache.hasOwnProperty(name2)) {
-    value = cache[name2];
+  if (cache.hasOwnProperty(name)) {
+    value = cache[name];
   } else {
     var context = this, intermediateValue, names, index, lookupHit = false;
     while (context) {
-      if (name2.indexOf(".") > 0) {
+      if (name.indexOf(".") > 0) {
         intermediateValue = context.view;
-        names = name2.split(".");
+        names = name.split(".");
         index = 0;
         while (intermediateValue != null && index < names.length) {
           if (index === names.length - 1)
@@ -26366,8 +26368,8 @@ Context.prototype.lookup = function lookup(name2) {
           intermediateValue = intermediateValue[names[index++]];
         }
       } else {
-        intermediateValue = context.view[name2];
-        lookupHit = hasProperty(context.view, name2);
+        intermediateValue = context.view[name];
+        lookupHit = hasProperty(context.view, name);
       }
       if (lookupHit) {
         value = intermediateValue;
@@ -26375,7 +26377,7 @@ Context.prototype.lookup = function lookup(name2) {
       }
       context = context.parent;
     }
-    cache[name2] = value;
+    cache[name] = value;
   }
   if (isFunction(value))
     value = value.call(this.view);
@@ -26419,32 +26421,32 @@ Writer.prototype.render = function render(template, view, partials, config) {
 };
 Writer.prototype.renderTokens = function renderTokens(tokens, context, partials, originalTemplate, config) {
   var buffer = "";
-  var token2, symbol, value;
+  var token, symbol, value;
   for (var i2 = 0, numTokens = tokens.length; i2 < numTokens; ++i2) {
     value = void 0;
-    token2 = tokens[i2];
-    symbol = token2[0];
+    token = tokens[i2];
+    symbol = token[0];
     if (symbol === "#")
-      value = this.renderSection(token2, context, partials, originalTemplate, config);
+      value = this.renderSection(token, context, partials, originalTemplate, config);
     else if (symbol === "^")
-      value = this.renderInverted(token2, context, partials, originalTemplate, config);
+      value = this.renderInverted(token, context, partials, originalTemplate, config);
     else if (symbol === ">")
-      value = this.renderPartial(token2, context, partials, config);
+      value = this.renderPartial(token, context, partials, config);
     else if (symbol === "&")
-      value = this.unescapedValue(token2, context);
+      value = this.unescapedValue(token, context);
     else if (symbol === "name")
-      value = this.escapedValue(token2, context, config);
+      value = this.escapedValue(token, context, config);
     else if (symbol === "text")
-      value = this.rawValue(token2);
+      value = this.rawValue(token);
     if (value !== void 0)
       buffer += value;
   }
   return buffer;
 };
-Writer.prototype.renderSection = function renderSection(token2, context, partials, originalTemplate, config) {
+Writer.prototype.renderSection = function renderSection(token, context, partials, originalTemplate, config) {
   var self2 = this;
   var buffer = "";
-  var value = context.lookup(token2[1]);
+  var value = context.lookup(token[1]);
   function subRender(template) {
     return self2.render(template, context, partials, config);
   }
@@ -26452,25 +26454,25 @@ Writer.prototype.renderSection = function renderSection(token2, context, partial
     return;
   if (isArray(value)) {
     for (var j = 0, valueLength = value.length; j < valueLength; ++j) {
-      buffer += this.renderTokens(token2[4], context.push(value[j]), partials, originalTemplate, config);
+      buffer += this.renderTokens(token[4], context.push(value[j]), partials, originalTemplate, config);
     }
   } else if (typeof value === "object" || typeof value === "string" || typeof value === "number") {
-    buffer += this.renderTokens(token2[4], context.push(value), partials, originalTemplate, config);
+    buffer += this.renderTokens(token[4], context.push(value), partials, originalTemplate, config);
   } else if (isFunction(value)) {
     if (typeof originalTemplate !== "string")
       throw new Error("Cannot use higher-order sections without the original template");
-    value = value.call(context.view, originalTemplate.slice(token2[3], token2[5]), subRender);
+    value = value.call(context.view, originalTemplate.slice(token[3], token[5]), subRender);
     if (value != null)
       buffer += value;
   } else {
-    buffer += this.renderTokens(token2[4], context, partials, originalTemplate, config);
+    buffer += this.renderTokens(token[4], context, partials, originalTemplate, config);
   }
   return buffer;
 };
-Writer.prototype.renderInverted = function renderInverted(token2, context, partials, originalTemplate, config) {
-  var value = context.lookup(token2[1]);
+Writer.prototype.renderInverted = function renderInverted(token, context, partials, originalTemplate, config) {
+  var value = context.lookup(token[1]);
   if (!value || isArray(value) && value.length === 0)
-    return this.renderTokens(token2[4], context, partials, originalTemplate, config);
+    return this.renderTokens(token[4], context, partials, originalTemplate, config);
 };
 Writer.prototype.indentPartial = function indentPartial(partial, indentation, lineHasNonSpace) {
   var filteredIndentation = indentation.replace(/[^ \t]/g, "");
@@ -26482,15 +26484,15 @@ Writer.prototype.indentPartial = function indentPartial(partial, indentation, li
   }
   return partialByNl.join("\n");
 };
-Writer.prototype.renderPartial = function renderPartial(token2, context, partials, config) {
+Writer.prototype.renderPartial = function renderPartial(token, context, partials, config) {
   if (!partials)
     return;
   var tags = this.getConfigTags(config);
-  var value = isFunction(partials) ? partials(token2[1]) : partials[token2[1]];
+  var value = isFunction(partials) ? partials(token[1]) : partials[token[1]];
   if (value != null) {
-    var lineHasNonSpace = token2[6];
-    var tagIndex = token2[5];
-    var indentation = token2[4];
+    var lineHasNonSpace = token[6];
+    var tagIndex = token[5];
+    var indentation = token[4];
     var indentedValue = value;
     if (tagIndex == 0 && indentation) {
       indentedValue = this.indentPartial(value, indentation, lineHasNonSpace);
@@ -26499,19 +26501,19 @@ Writer.prototype.renderPartial = function renderPartial(token2, context, partial
     return this.renderTokens(tokens, context, partials, indentedValue, config);
   }
 };
-Writer.prototype.unescapedValue = function unescapedValue(token2, context) {
-  var value = context.lookup(token2[1]);
+Writer.prototype.unescapedValue = function unescapedValue(token, context) {
+  var value = context.lookup(token[1]);
   if (value != null)
     return value;
 };
-Writer.prototype.escapedValue = function escapedValue(token2, context, config) {
+Writer.prototype.escapedValue = function escapedValue(token, context, config) {
   var escape = this.getConfigEscape(config) || mustache.escape;
-  var value = context.lookup(token2[1]);
+  var value = context.lookup(token[1]);
   if (value != null)
     return typeof value === "number" && escape === mustache.escape ? String(value) : escape(value);
 };
-Writer.prototype.rawValue = function rawValue(token2) {
-  return token2[1];
+Writer.prototype.rawValue = function rawValue(token) {
+  return token[1];
 };
 Writer.prototype.getConfigTags = function getConfigTags(config) {
   if (isArray(config)) {
@@ -26571,14 +26573,14 @@ var npcTemplate = `---
 cssclass: oRPGPage
 fileType: npc
 kingdom: {{kingdomName}}
-area: {{areaName}}
+region: {{regionName}}
 settlement: {{settlementName}}
+urbanArea: {{urbanArea}}
 name: {{name}}
 importance: 1
 race: {{race.name}}
 profession:   {{profession.name}}/ {{profession.category}}
 ---
-___
 > ## {{name}}
 >*{{race.name}}({{gender}}), {{profession.name}}/ {{profession.category}}*
 > ___
@@ -26592,15 +26594,11 @@ ___
 >|{{stats.STR}} ({{#stats.modifier}}{{stats.STR}}{{/stats.modifier}})|{{stats.DEX}} ({{#stats.modifier}}{{stats.DEX}}{{/stats.modifier}})|{{stats.CON}} ({{#stats.modifier}}{{stats.CON}}{{/stats.modifier}})|{{stats.INT}} ({{#stats.modifier}}{{stats.INT}}{{/stats.modifier}})|{{stats.WIS}} ({{#stats.modifier}}{{stats.WIS}}{{/stats.modifier}})|{{stats.CHR}} ({{#stats.modifier}}{{stats.CHR}}{{/stats.modifier}})|
 >___
 > ### Description/Background
-> ***Appearance*** : {{appearance.height}} {{appearance.build}} build, with {{appearance.eyes}} eyes and {{appearance.hair}} {{appearance.hairColor}} hair. Their face {{appearance.facialFeatures}} and their speech is {{appearance.speech}} 
->
-> ***Characteristics*** :  {{appearance.characteristics.text}}
->
-> ***Personality*** :  {{appearance.personality}}
-> 
-> ***Trait*** : {{backgroundTrait}}
->
-> ***Ideal*** : {{backgroundIdea}}
+> - ***Appearance*** : {{appearance.height}} {{appearance.build}} build, with {{appearance.eyes}} eyes and {{appearance.hair}} {{appearance.hairColor}} hair. Their face {{appearance.facialFeatures}} and their speech is {{appearance.speech}} 
+> - ***Characteristics*** :  {{appearance.characteristics.text}}
+> - ***Personality*** :  {{appearance.personality}}
+> - ***Trait*** : {{backgroundTrait}}
+> - ***Ideal*** : {{backgroundIdea}}
 > 
 >___
 > - **Passive Perception** {{senses.perception.bonus}}{{#race}}{{#traits}}
@@ -26612,6 +26610,8 @@ ___
 >___
 > ### Gossip
 > > {{gossip}}
+>
+{.statblock}
 `;
 
 // src/NPC.js
@@ -28506,7 +28506,46 @@ rule_set["TERRAIN"] = [
   "Swamp",
   "Artic",
   "Coastal",
-  "Jungles"
+  "Jungle",
+  "Treacherous",
+  "Rainforest",
+  "Croplands",
+  "Grassland",
+  "Tundra",
+  "Underground",
+  "Urban",
+  "Marsh",
+  "Volcanic"
+];
+rule_set["CLIMATE"] = [
+  "Arctic",
+  "Arid",
+  "Other",
+  "Subtropical",
+  "Temperate",
+  "Tropical"
+];
+rule_set["ORGNAIZATIONSTRUCTURE"] = [
+  "Hierarchical",
+  "Flat",
+  "Functional",
+  "Divisional",
+  "Matrix",
+  "Network",
+  "Cellular"
+];
+rule_set["URBANAREA"] = [
+  "Precinct",
+  "Zone",
+  "Sector",
+  "[Merchant ]District",
+  "Borough",
+  "Ward",
+  "Neigborhood",
+  "Block",
+  "Quarter",
+  "Other",
+  "Travel Route"
 ];
 var RULSET = rule_set;
 
@@ -34261,454 +34300,6 @@ var APPEARANCE = appearance;
 // src/NPC.js
 var import_fantasy_name_generator = __toModule(require_dist());
 
-// src/naming/settlementNames.js
-var SETTLEMENT_NAME_PREFIX = ["shki"];
-var SETTLEMENT_NAME_MIDDLE = ["shki", "lar", "lare", "rak", "ong", "ok", "chyna", "giz", "kon", "nar", "haw", "zha", "wce", "owo", "pol", "auk", "iche", "ovo", "an", "chi", "kyi", "tik", "nya", "liy", "asi", "yer", "iki", "ran", "daj", "ma", "din", "aung", "kye", "lova", "loca", "am", "lut", "zu", "tsi", "tar", "naj", "ban", "kaj", "hin", "ino", "la", "ku", "ath", "thi", "ith", "eni", "ni", "ite", "tlu", "te", "tsy", "sen", "chy", "iya", "ki", "vy", "naw", "she", "pum", "ard", "ita", "bin", "i", "ika", "iki", "yak", "ore", "go", "ban", "rad", "nice", "zhe", "shka", "re", "mani", "ssa", "ritc", "rsk", "ati", "ryn", "rda", "vina", "jan", "leri", "sli", "jza", "jze", "ash", "ani", "icki", "ock", "maul", "llar", "sin", "zeik", "nym", "asy", "iza", "nin", "thit", "niki", "lsu", "ta", "kam", "phun", "sew", "swe", "ani", "nia", "iny", "din", "si", "ki", "dra", "khin", "zhano", "dauk", "gwe", "hin", "las", "rai", "lun", "adi", "gan", "win", "uri", "auk", "eik", "ung", "tun", "hu", "rio", "tha", "gwe", "je", "ja", "din", "bein", "kowzi", "hovi", "seik", "tera", "yan", "inzu", "vis", "vol", "stun", "syk", "ire", "are", "ski", "gon", "ras", "asy", "nio", "sut", "irk", "ino", "hawki", "ova", "resse", "luki", "lava", "te", "gulli", "ali", "les", "skaya", "chene", "seca", "zany", "tre", "uha", "uil", "ze", "vice", "pot", "athi", "sina", "ish", "aga", "zie", "na", "ma", "jan", "gal", "ke", "seki", "gu", "lau", "lai", "lovka"];
-var SETTLEMENT_NAME_SUFFIX = ["ali", "ulk", "dik", "dul", "ani", "dav", "ras", "yit", "dan", "rem", "mat", "jan", "chi", "mov", "mow", "lye", "nis", "lij", "ria", "lli", "adw", "atho", "em", "eik", "eik", "ula", "kai", "dam", "man", "mat", "ik", "gyi", "Kac", "kal", "kan", "hil", "ego", "mir", "eda", "ley", "lia", "van", "yak", "lus", "ani", "bil", "mel", "anc", "tos", "tus", "alo", "rip", "sal", "sas", "ahk", "me", "yuk", "set", "tap", "tra", "top", "eno", "tras", "str", "tro", "hal", "zhi", "tol", "lin", "kle", "kla", "kli", "ura", "ren", "ban", "bar", "bic", "gal", "gut", "la", "naw", "dim", "lin", "is", "ris", "das", "gov", "ala", "cab", "cod", "kov", "now", "mel", "chi", "ros", "din", "ci", "ai", "rug", "ryn", "lab", "mog", "ram", "ras", "vet", "leni", "gue", "tas", "rav", "ish", "kil", "ger", "nar", "erza", "rei", "bri", "cal", "dok", "hef", "lan", "lat", "lun", "mik", "mel", "rui", "ruz", "nym", "kad", "wet", "shki", "kov", "but", "uti", "pus", "khin", "bov", "uta", "hin", "kov", "rai", "lun", "da", "dan", "win", "hul", "uri", "gaz", "yin", "hit", "roh", "rio", "hahu", "je", "ja", "din", "bein", "teu", "tau", "yut", "wut", "zar", "taw", "ut", "rev", "try", "rit", "tel", "zin", "nio", "gos", "kya", "dho", "sab", "ali", "glim", "lep", "lot", "ing", "stri", "stru", "dos", "kaw", "sta", "stra", "stre", "pot", "athi", "sina", "aga", "ste", "lal", "kaw", "gal", "kodo", "kos", "nzu", "lai", "mak", "raj", "chi", "sovo", "hena", "sova", "tto", "den"];
-function getSettlementName() {
-  let returnSettlementName = "Alphatia";
-  stringName = "" + name;
-  if (Math.random() > 0.5) {
-    returnSettlementName = randomElement(SETTLEMENT_NAME_PREFIX) + randomElement(SETTLEMENT_NAME_MIDDLE) + randomElement(SETTLEMENT_NAME_SUFFIX);
-  } else {
-    returnSettlementName = randomElement(SETTLEMENT_NAME_PREFIX) + randomElement(SETTLEMENT_NAME_SUFFIX);
-  }
-  return returnSettlementName;
-}
-
-// src/NPC.js
-console.log("Loading NPC library");
-var NPCGenerator = function(options) {
-  var rulGen = rulGen_default;
-  function randomElement3(array) {
-    return array[Math.floor(Math.random() * array.length)];
-  }
-  function randomProperty2(obj) {
-    return obj[randomPropertyName3(obj)];
-  }
-  ;
-  function randomPropertyName3(obj) {
-    var keys = Object.keys(obj);
-    return keys[keys.length * Math.random() << 0];
-  }
-  ;
-  let raceFlags = {
-    "DRACONIC": "/adnd/images/banners/draconicBanner01.png",
-    "DWARVEN": "/adnd/images/banners/dwarvenBanner01.png",
-    "ELVEN": "/adnd/images/banners/elvenBanner01.png",
-    "HALFBREED": "/adnd/images/banners/halfbreedBanner01.png",
-    "HALFLING": "/adnd/images/banners/halflingBanner01.png",
-    "HALF-ORC": "/adnd/images/banners/half_orcBanner01.png",
-    "HUMAN": "/adnd/images/banners/humanBanner01.png",
-    "PLANER": "/adnd/images/banners/planerBanner01.png",
-    "ORC": "/adnd/images/banners/half_orcBanner01.png",
-    "UNDEAD": "/adnd/images/banners/undeadBanner01.png",
-    "MONSTEROUS": "/adnd/images/banners/monsterBanner01.png",
-    "UNKNOWN": "/adnd/images/banners/unknownBanner01.png"
-  };
-  var proficiencyBonus = [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6];
-  let npcObject = {
-    name: "characterName",
-    race: "",
-    alignment: "chaotic",
-    gender: "male",
-    type: "Humanoid",
-    class: {},
-    profession: {},
-    category: "",
-    proficiencyBonus: "2",
-    level: "1",
-    age: "1",
-    AC: "10",
-    hitpoints: "23",
-    movement: "30 ft",
-    stats: {
-      STR: "15",
-      DEX: "14",
-      CON: "20",
-      INT: "13",
-      WIS: "11",
-      CHR: "5",
-      modifier: function() {
-        return function(text, render3) {
-          var renderVal = render3(text);
-          var modifier = 0;
-          if (renderVal > 10) {
-            modifier = Math.floor((renderVal - 10) / 2);
-          } else {
-            modifier = Math.floor((renderVal - 10) / 2 + 0.5);
-          }
-          ;
-          var adjustment = "+";
-          if (modifier < 0) {
-            adjustment = "";
-          }
-          return adjustment + modifier;
-        };
-      },
-      mod: function(stat) {
-        if (stat > 10) {
-          return Math.floor((stat - 10) / 2);
-        } else {
-          return Math.floor((stat - 10) / 2 + 0.5);
-        }
-      }
-    },
-    backgroundTrait: "",
-    backgroundIdea: "",
-    appearance: {
-      hair: "",
-      hairColor: "",
-      speech: "",
-      facialFeatures: "",
-      characteristics: "",
-      personality: "",
-      instincts: "",
-      knacks: "",
-      eyes: "",
-      height: "",
-      build: ""
-    },
-    npcTemplate: ""
-  };
-  function computeLevelFromAge(age, raceMinAge) {
-    var years2Advance = [1, 2, 6, 13, 25, 30, 37, 47, 53, 70, 50, 67, 67, 83, 100, 100, 133, 133, 167, 167];
-    var level = 0;
-    var activeAge = raceMinAge;
-    var cnt2 = 0;
-    while (activeAge + years2Advance[level] <= age) {
-      activeAge += years2Advance[level++];
-      if (cnt2++ > 20) {
-        break;
-      }
-    }
-    ;
-    return level + 1;
-  }
-  function generateCharacter(characterOptions) {
-    if (typeof characterOptions.seed == "string" && characterOptions.seed != "") {
-      npcObject.seed = (0, import_seedrandom.default)(characterOptions.seed);
-    } else {
-      npcObject.seed = mRPG.generateSeededUUID();
-      (0, import_seedrandom.default)(npcObject.seed);
-    }
-    npcObject.race = Races.getRace(characterOptions.species, characterOptions.race);
-    if (npcObject.race == null) {
-      npcObject.race = Races.getRace("RANDOM", "RANDOM");
-    }
-    let gender = characterOptions.gender.toLowerCase();
-    if (npcObject.race.nameRace == null) {
-      npcObject.race.nameRace = "human";
-    }
-    npcObject.name = (0, import_fantasy_name_generator.nameByRace)(npcObject.race.nameRace, { gender: gender.toLowerCase() });
-    npcObject.race.flag = raceFlags[npcObject.race.species.toUpperCase()];
-    if (characterOptions.profession == null || characterOptions.profession == "" || characterOptions.profession.toUpperCase() == "RANDOM") {
-      npcObject.profession = PROFESSIONS_OBJECT[randomElement3(PROFESSIONS_LIST)];
-    } else if (PROFESSIONS_OBJECT.hasOwnProperty(characterOptions.profession)) {
-      npcObject.profession = PROFESSIONS_OBJECT[characterOptions.profession];
-    } else {
-      npcObject.profession = PROFESSIONS_OBJECT[randomElement3(PROFESSIONS_LIST)];
-    }
-    if (npcObject.profession.hasOwnProperty("stats")) {
-      npcObject.stats.STR = npcObject.profession.stats.STR;
-      npcObject.stats.DEX = npcObject.profession.stats.DEX;
-      npcObject.stats.CON = npcObject.profession.stats.CON;
-      npcObject.stats.INT = npcObject.profession.stats.INT;
-      npcObject.stats.WIS = npcObject.profession.stats.WIS;
-      npcObject.stats.CHR = npcObject.profession.stats.CHR;
-      if (npcObject.race.hasOwnProperty("stats")) {
-        for (var stat in npcObject.race.stats) {
-          npcObject.stats[stat] = npcObject.stats[stat] + npcObject.race.stats[stat];
-        }
-      }
-    }
-    if (typeof characterOptions.age == "number" && characterOptions.age > 1) {
-      npcObject.age = characterOptions.age;
-    } else {
-      var ageadjust = Math.floor(Math.random() * (npcObject.race.age.maxage - npcObject.race.age.adulthood));
-      npcObject.age = npcObject.race.age.adulthood + ageadjust;
-    }
-    if (typeof characterOptions.level == "number" && characterOptions.level > 0) {
-      npcObject.level = characterOptions.level;
-    } else if (typeof characterOptions.levelByAge == "boolean" && characterOptions.levelByAge) {
-      npcObject.level = computeLevelFromAge(npcObject.age, npcObject.race.age.adulthood);
-    } else if (typeof characterOptions.levelByAge != "boolean" && true) {
-      npcObject.level = computeLevelFromAge(npcObject.age, npcObject.race.age.adulthood);
-    } else {
-      npcObject.level = 1;
-    }
-    npcObject.senses = {};
-    npcObject.senses.perception = {};
-    npcObject.senses.perception.name = "Passive Perception";
-    npcObject.senses.perception.bonus = 10 + proficiencyBonus[npcObject.level] + npcObject.stats.mod(npcObject.stats.WIS);
-    npcObject.hitpointsBase = 8 + (npcObject.level - 1) * 5;
-    npcObject.hitpointsCON = npcObject.level * npcObject.stats.mod(npcObject.stats.CON);
-    npcObject.hitpointsCONModifier = npcObject.stats.mod(npcObject.stats.CON);
-    npcObject.hitpoints = npcObject.hitpointsBase + npcObject.hitpointsCON;
-    var genderRoll = Math.floor(Math.random() * 100);
-    if (genderRoll > npcObject.race.gender) {
-      npcObject.gender = "Female";
-    } else {
-      npcObject.gender = "Male";
-    }
-    npcObject.proficiencyBonus = proficiencyBonus[npcObject.level - 1];
-    npcObject.appearance.characteristics = randomElement3(APPEARANCE.characteristics);
-    npcObject.appearance.hair = randomElement3(APPEARANCE.hair);
-    npcObject.appearance.hairColor = randomElement3(APPEARANCE.hairColor);
-    npcObject.appearance.speech = randomElement3(APPEARANCE.speech);
-    npcObject.appearance.facialFeatures = randomElement3(APPEARANCE.facialFeatures);
-    npcObject.appearance.personality = randomElement3(APPEARANCE.personality);
-    npcObject.appearance.instincts = randomElement3(APPEARANCE.instincts);
-    npcObject.appearance.knacks = randomElement3(APPEARANCE.knacks);
-    npcObject.appearance.eyes = randomElement3(APPEARANCE.eyes);
-    npcObject.appearance.height = randomElement3(APPEARANCE.height);
-    npcObject.appearance.build = randomElement3(APPEARANCE.build);
-    npcObject.backgroundTrait = randomElement3(BACKGROUND_SET["traits"]);
-    npcObject.backgroundIdea = randomElement3(BACKGROUND_SET["ideas"]);
-    var itemsCarried = [];
-    var ruleSetModified = "SMALLVALUE";
-    if (RULSET.hasOwnProperty(ruleSetModified + npcObject.profession.category)) {
-      ruleSetModified = "SMALLVALUE" + npcObject.profession.category;
-    }
-    for (var itemCount = 0; itemCount < 8; itemCount++) {
-      var descriptionText = rulGen.generateRul(ruleSetModified, RULSET);
-      itemsCarried.push({ cnt: itemCount, description: descriptionText });
-    }
-    npcObject.items = itemsCarried;
-    npcObject.gossip = rulGen.generateRul("RUMORS", RULSET);
-    if (characterOptions.kingdomName == null || characterOptions.kingdomName.toUpperCase() == "RANDOM") {
-      npcObject.kingdomName = getLocationName(tempRace.nameRace);
-    } else {
-      npcObject.kingdomName = characterOptions.kingdomName;
-    }
-    if (characterOptions.areaName == null || characterOptions.areaName.toUpperCase() == "RANDOM") {
-      npcObject.areaName = rulGen.generateRul("AREANAMES", RULSET);
-      if (Math.random() >= 0.5) {
-        npcObject.areaName = merchantObject.areaName + " of " + getShortLocationName(tempRace.nameRace);
-      }
-    } else {
-      npcObject.areaName = characterOptions.areaName;
-    }
-    if (characterOptions.settlement == null || characterOptions.settlement.toUpperCase() == "RANDOM") {
-      npcObject.settlementName = getSettlementName();
-    } else {
-      npcObject.settlementName = characterOptions.settlement;
-    }
-    npcObject.npcTemplate = npcTemplate;
-    return npcObject;
-  }
-  return {
-    computeLevelFromAge,
-    generateCharacter
-  };
-}();
-
-// src/merchant.js
-var import_seedrandom2 = __toModule(require_seedrandom2());
-
-// src/templates/buildingTemplate.js
-var buildingTemplate = `---
-cssclass: oRPGPage
-fileType: structure
-structureType: merchant
-merchantType: {{merchantType}}
-kingdom: {{kingdomName}}
-area: {{areaName}}
-settlement: {{settlementName}}
-structure: {{type}}
-owner: {{owner.name}}
-services:   {{#services}}{{name}},{{/services}}
----
-> [!oRPG-Layout] 
-> # {{name}}
-> **Structure:** {{type}}
-> **Resides In** [[{{kingdomName}}]], [[{{settlementName}}]]
->  **Owner:** [[{{owner.name}}]]
-> ###### Services 
-> |Name | Quality/Adj | 
-> |:---|:---:| {{#services}}
-> |{{name}} | {{quality}} |{{/services}}
-
-# {{name}}
-
-{{description}}
-
-
-> |Item for sale | Price | 
-> |:---|:---:| {{#inventory}}
-> |{{name}} | {{price}} |{{/inventory}}
-> | needs | inventory |
-`;
-
-// src/merchant.js
-var import_fantasy_name_generator2 = __toModule(require_dist());
-console.log("Loading Merchant library");
-var Merchant = function() {
-  var qualityLevels = [
-    "Bad",
-    "Poor",
-    "Fair",
-    "Good",
-    "Excellent"
-  ];
-  var loadingMathSeedRandom = true;
-  var rulGen = rulGen_default;
-  function selectRandomProperty(obj) {
-    if (typeof obj === "object") {
-      var keys = Object.keys(obj);
-      return keys[keys.length * Math.random() << 0];
-    }
-  }
-  var proficiencyBonus = [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6];
-  var merchantObject2 = {
-    name: "Boar's Head Inn",
-    type: "Inn",
-    kingdomName: "Sample kingdom",
-    areaName: "Sample area",
-    settlementName: "Settlement name",
-    merchantType: "Sample",
-    owner: {
-      race: "Human",
-      name: "John Smith"
-    },
-    quality: "Poor",
-    services: [],
-    inventory: [
-      { name: "Stew", price: "2cp" },
-      { name: "Ale (Mug)", price: "2cp" }
-    ],
-    buildingTemplate: "Missing Template"
-  };
-  function getRandomItemFromArray(objArray) {
-    return objArray[Math.floor(Math.random() * objArray.length)];
-  }
-  function generateMerchant(merchantOptions) {
-    if (typeof merchantOptions.seed == "string" && merchantOptions.seed != "") {
-      merchantObject2.seed = (0, import_seedrandom2.default)(merchantOptions.seed);
-    } else {
-      merchantObject2.seed = mRPG.generateSeededUUID();
-      (0, import_seedrandom2.default)(merchantObject2.seed);
-    }
-    merchantOptions.gender = merchantOptions.gender || "Male";
-    let tempRace2 = {};
-    tempRace2 = Races.getRace(merchantOptions.species, merchantOptions.race);
-    merchantObject2.race = tempRace2;
-    var racialNameModifier = merchantObject2.race.name.toLowerCase() + merchantOptions.gender;
-    merchantObject2.owner.name = (0, import_fantasy_name_generator2.nameByRace)(merchantObject2.race.nameRace, { gender: "male" });
-    if (merchantOptions.profession == null || merchantOptions.profession != "" || merchantOptions.profession.toUpperCase != "RANDOM") {
-      merchantObject2.profession = PROFESSIONS_OBJECT[randomElement(PROFESSIONS_LIST)];
-    } else if (PROFESSIONS_OBJECT.hasOwnProperty(merchantOptions.profession)) {
-      merchantObject2.profession = PROFESSIONS_OBJECT[merchantOptions.profession];
-    } else {
-      merchantObject2.profession = PROFESSIONS_OBJECT[randomElement(PROFESSIONS_LIST)];
-    }
-    merchantObject2.merchantType = merchantObject2.profession.category;
-    merchantObject2.services = [];
-    for (let [key, value] of Object.entries(merchantObject2.profession.services).sort()) {
-      var service = {};
-      service.name = key;
-      service.quality = getRandomItemFromArray(qualityLevels);
-      merchantObject2.services.push(service);
-    }
-    merchantObject2.type = getRandomItemFromArray(merchantObject2.profession.buildings.structureNames);
-    merchantObject2.name = rulGen.generateRul(merchantObject2.profession.category.toUpperCase() + "NAME", RULSET);
-    var professionDescriptionRUL = merchantObject2.profession.name + "BUILDINGDESCRIPTION";
-    if (RULSET[professionDescriptionRUL] !== void 0) {
-      merchantObject2.description = rulGen.generateRul("professionDescriptionRUL", RULSET);
-    } else {
-      merchantObject2.description = rulGen.generateRul("BUILDINGDESCRIPTION", RULSET);
-    }
-    var inventory = [];
-    if (merchantOptions.kingdomName == null || merchantOptions.kingdomName.toUpperCase() == "RANDOM") {
-      merchantObject2.kingdomName = getLocationName(tempRace2.nameRace);
-    } else {
-      merchantObject2.kingdomName = merchantOptions.kingdomName;
-    }
-    if (merchantOptions.areaName == null || merchantOptions.areaName.toUpperCase() == "RANDOM") {
-      merchantObject2.areaName = rulGen.generateRul("AREANAMES", RULSET);
-      if (Math.random() >= 0.5) {
-        merchantObject2.areaName = merchantObject2.areaName + " of " + getShortLocationName(tempRace2.nameRace);
-      }
-    } else {
-      merchantObject2.areaName = merchantOptions.areaName;
-    }
-    if (merchantOptions.settlement == null || merchantOptions.settlement.toUpperCase() == "RANDOM") {
-      merchantObject2.settlementName = getSettlementName();
-    } else {
-      merchantObject2.settlementName = merchantOptions.settlement;
-    }
-    merchantObject2.inventory = inventory;
-    merchantObject2.gossip = rulGen.generateRul("RUMORS", RULSET);
-    merchantObject2.buildingTemplate = buildingTemplate;
-    return merchantObject2;
-  }
-  return {
-    generateMerchant
-  };
-}();
-
-// src/templates/kingdomTemplate.js
-var kingdomTemplate = `---
-cssclass: oRPGPage
-fileType: kingdom
-kingdom: {{kingdomName}}
-ruler: {{ruler}}
-trade: {{trades}}
----
-> [!oRPG-Layout] 
-> # {{kingdomName}}
-> ![[emptyGrid.jpg]]
-
-
-# {{kingdomName}}
-#### Kingdom
-|Kingdom||
-|:---|:---|
- |**Government:** |{{government}}|
-| **Rulers:**|{{ruler}}|
-|  **Cultural Archetype:** |{{culture}}|
-|  **Primary Races:** |{{race.name}}|
-|  **Secondary Races:** |{{secondaryRace}}|
-| **Trade:** |{{trades}} |
-| **Technology Level:** |{{technology}}|
-|**Terrain:** |{{terrain}}|
-| **Seasons:**|Spring, Summer, Fall, Winter|
-|  **Social Alignment:**|{{socialAlignment}}|
-| **Military:** |{{military}}|
-|  **Rebelliousness:**|{{rebelliousness}}|
-|  **Brigandage:**|{{brigandage}}|
-|  **Laguages/Literacy:** | {{#languages}}{{.}}, {{/languages}} |
-{.oRPGLocationHeader}
-
-
-
-### Regions or Provinces
-\`\`\`dataview
-table without ID file.link AS Name, population as Population, description as Description
-from ""
-where kingdom="{{kingdomName}}" and (fileType="area" or (fileType="settlement" and population > 1000))
-sort population DESC
-\`\`\`
-
-### NPC's of Note
-\`\`\`dataview
-table without ID file.link AS Name, race as Race, profession as Profession
-from ""
-where kingdom="{{kingdomName}}" and  (fileType="npc"  and importance > 5)
-sort importance DESC
-\`\`\`
-
-### History
-
-**Came to Power by:**
-
-
-
-`;
-
-// src/kingdom.ts
-var import_fantasy_name_generator3 = __toModule(require_dist());
-
 // src/naming/locationNames.js
 var CITY_NAMES_PREFIX = {};
 var CITY_NAMES_MIDDLE = {};
@@ -35295,22 +34886,23 @@ CITY_NAMES_SUFFIX["human"] = [
   "doria"
 ];
 var CITYNAMES_KEYS = Object.keys(CITY_NAMES_PREFIX);
-var stringName2 = "";
-function getLocationName2(name2) {
+var stringName = "";
+var rulGen = rulGen_default;
+function getKingdomName(name) {
   let returnLocationName = "Alphatia";
-  stringName2 = "" + name2;
-  if (stringName2 == null || stringName2 == "" || stringName2.toUpperCase() == "RANDOM") {
-    stringName2 = randomElement(CITY_NAMES_PREFIX);
-  } else if (!CITYNAMES_KEYS.hasOwnProperty(stringName2)) {
-    stringName2 = randomElement(CITYNAMES_KEYS);
+  stringName = "" + name;
+  if (stringName == null || stringName == "" || stringName.toUpperCase() == "RANDOM") {
+    stringName = randomElement(Object.keys(CITY_NAMES_PREFIX));
+  } else if (!CITY_NAMES_PREFIX.hasOwnProperty(stringName)) {
+    stringName = randomElement(Object.keys(CITY_NAMES_PREFIX));
   }
-  let namePrefix = randomElement(RULSET["KINGDOMPREFIX"]);
-  let tempName = randomElement(CITY_NAMES_PREFIX[stringName2]) + randomElement(CITY_NAMES_MIDDLE[stringName2]) + randomElement(CITY_NAMES_SUFFIX[stringName2]);
-  if (namePrefix != "") {
+  let namePrefix = rulGen.generateRul("KINGDOMPREFIX", RULSET);
+  let tempName = randomElement(CITY_NAMES_PREFIX[stringName]) + randomElement(CITY_NAMES_MIDDLE[stringName]) + randomElement(CITY_NAMES_SUFFIX[stringName]);
+  if (namePrefix.length > 2) {
     returnLocationName = namePrefix + " of " + tempName;
   } else {
-    namePrefix = randomElement(RULSET["KINGDOMPREFIX"]);
-    if (namePrefix != "") {
+    namePrefix = rulGen.generateRul("KINGDOMPREFIX", RULSET);
+    if (namePrefix.length > 2) {
       returnLocationName = tempName + " " + namePrefix;
     } else {
       returnLocationName = tempName;
@@ -35318,19 +34910,454 @@ function getLocationName2(name2) {
   }
   return returnLocationName;
 }
-function getShortLocationName2(name2) {
+function getLocationName(name) {
   let returnLocationName = "Alphatia";
-  stringName2 = "" + name2;
-  if (stringName2 == null || stringName2 == "" || stringName2.toUpperCase() == "RANDOM") {
-    stringName2 = randomElement(CITY_NAMES_PREFIX);
-  } else if (!CITYNAMES_KEYS.hasOwnProperty(stringName2)) {
-    stringName2 = randomElement(CITYNAMES_KEYS);
+  stringName = "" + name;
+  if (stringName == null || stringName == "" || stringName.toUpperCase() == "RANDOM") {
+    stringName = randomElement(Object.keys(CITY_NAMES_PREFIX));
+  } else if (!CITY_NAMES_PREFIX.hasOwnProperty(stringName)) {
+    stringName = randomElement(Object.keys(CITY_NAMES_PREFIX));
   }
-  returnLocationName = randomElement(CITY_NAMES_PREFIX[stringName2]) + randomElement(CITY_NAMES_MIDDLE[stringName2]) + randomElement(CITY_NAMES_SUFFIX[stringName2]);
+  returnLocationName = randomElement(CITY_NAMES_PREFIX[stringName]) + randomElement(CITY_NAMES_MIDDLE[stringName]) + randomElement(CITY_NAMES_SUFFIX[stringName]);
   return returnLocationName;
 }
 
+// src/NPC.js
+console.log("Loading NPC library");
+var NPCGenerator = function(options) {
+  var rulGen2 = rulGen_default;
+  function randomElement3(array) {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+  function randomProperty2(obj) {
+    return obj[randomPropertyName3(obj)];
+  }
+  ;
+  function randomPropertyName3(obj) {
+    var keys = Object.keys(obj);
+    return keys[keys.length * Math.random() << 0];
+  }
+  ;
+  let raceFlags = {
+    "DRACONIC": "/adnd/images/banners/draconicBanner01.png",
+    "DWARVEN": "/adnd/images/banners/dwarvenBanner01.png",
+    "ELVEN": "/adnd/images/banners/elvenBanner01.png",
+    "HALFBREED": "/adnd/images/banners/halfbreedBanner01.png",
+    "HALFLING": "/adnd/images/banners/halflingBanner01.png",
+    "HALF-ORC": "/adnd/images/banners/half_orcBanner01.png",
+    "HUMAN": "/adnd/images/banners/humanBanner01.png",
+    "PLANER": "/adnd/images/banners/planerBanner01.png",
+    "ORC": "/adnd/images/banners/half_orcBanner01.png",
+    "UNDEAD": "/adnd/images/banners/undeadBanner01.png",
+    "MONSTEROUS": "/adnd/images/banners/monsterBanner01.png",
+    "UNKNOWN": "/adnd/images/banners/unknownBanner01.png"
+  };
+  var proficiencyBonus = [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6];
+  let npcObject = {
+    name: "characterName",
+    race: "",
+    alignment: "chaotic",
+    gender: "male",
+    type: "Humanoid",
+    class: {},
+    profession: {},
+    category: "",
+    proficiencyBonus: "2",
+    level: "1",
+    age: "1",
+    AC: "10",
+    hitpoints: "23",
+    movement: "30 ft",
+    stats: {
+      STR: "15",
+      DEX: "14",
+      CON: "20",
+      INT: "13",
+      WIS: "11",
+      CHR: "5",
+      modifier: function() {
+        return function(text, render3) {
+          var renderVal = render3(text);
+          var modifier = 0;
+          if (renderVal > 10) {
+            modifier = Math.floor((renderVal - 10) / 2);
+          } else {
+            modifier = Math.floor((renderVal - 10) / 2 + 0.5);
+          }
+          ;
+          var adjustment = "+";
+          if (modifier < 0) {
+            adjustment = "";
+          }
+          return adjustment + modifier;
+        };
+      },
+      mod: function(stat) {
+        if (stat > 10) {
+          return Math.floor((stat - 10) / 2);
+        } else {
+          return Math.floor((stat - 10) / 2 + 0.5);
+        }
+      }
+    },
+    backgroundTrait: "",
+    backgroundIdea: "",
+    appearance: {
+      hair: "",
+      hairColor: "",
+      speech: "",
+      facialFeatures: "",
+      characteristics: "",
+      personality: "",
+      instincts: "",
+      knacks: "",
+      eyes: "",
+      height: "",
+      build: ""
+    },
+    npcTemplate: ""
+  };
+  function computeLevelFromAge(age, raceMinAge) {
+    var years2Advance = [1, 2, 6, 13, 25, 30, 37, 47, 53, 70, 50, 67, 67, 83, 100, 100, 133, 133, 167, 167];
+    var level = 0;
+    var activeAge = raceMinAge;
+    var cnt2 = 0;
+    while (activeAge + years2Advance[level] <= age) {
+      activeAge += years2Advance[level++];
+      if (cnt2++ > 20) {
+        break;
+      }
+    }
+    ;
+    return level + 1;
+  }
+  function generateCharacter(characterOptions) {
+    if (typeof characterOptions.seed == "string" && characterOptions.seed != "") {
+      npcObject.seed = (0, import_seedrandom.default)(characterOptions.seed);
+    } else {
+      npcObject.seed = mRPG.generateSeededUUID();
+      (0, import_seedrandom.default)(npcObject.seed);
+    }
+    npcObject.race = Races.getRace(characterOptions.species, characterOptions.race);
+    if (npcObject.race == null || characterOptions.race.toUpperCase() == "RANDOM") {
+      npcObject.race = Races.getRace("RANDOM", "RANDOM");
+    }
+    if (characterOptions.gender == null) {
+      characterOptions.gender = "male";
+    }
+    let gender = characterOptions.gender.toLowerCase();
+    if (npcObject.race.nameRace == null) {
+      npcObject.race.nameRace = "human";
+    }
+    npcObject.name = (0, import_fantasy_name_generator.nameByRace)(npcObject.race.nameRace, { gender: gender.toLowerCase() });
+    npcObject.race.flag = raceFlags[npcObject.race.species.toUpperCase()];
+    if (characterOptions.profession == null || characterOptions.profession == "" || characterOptions.profession.toUpperCase() == "RANDOM") {
+      npcObject.profession = PROFESSIONS_OBJECT[randomElement3(PROFESSIONS_LIST)];
+    } else if (PROFESSIONS_OBJECT.hasOwnProperty(characterOptions.profession)) {
+      npcObject.profession = PROFESSIONS_OBJECT[characterOptions.profession];
+    } else {
+      npcObject.profession = PROFESSIONS_OBJECT[randomElement3(PROFESSIONS_LIST)];
+    }
+    if (npcObject.profession.hasOwnProperty("stats")) {
+      npcObject.stats.STR = npcObject.profession.stats.STR;
+      npcObject.stats.DEX = npcObject.profession.stats.DEX;
+      npcObject.stats.CON = npcObject.profession.stats.CON;
+      npcObject.stats.INT = npcObject.profession.stats.INT;
+      npcObject.stats.WIS = npcObject.profession.stats.WIS;
+      npcObject.stats.CHR = npcObject.profession.stats.CHR;
+      if (npcObject.race.hasOwnProperty("stats")) {
+        for (var stat in npcObject.race.stats) {
+          npcObject.stats[stat] = npcObject.stats[stat] + npcObject.race.stats[stat];
+        }
+      }
+    }
+    if (typeof characterOptions.age == "number" && characterOptions.age > 1) {
+      npcObject.age = characterOptions.age;
+    } else {
+      var ageadjust = Math.floor(Math.random() * (npcObject.race.age.maxage - npcObject.race.age.adulthood));
+      npcObject.age = npcObject.race.age.adulthood + ageadjust;
+    }
+    if (typeof characterOptions.level == "number" && characterOptions.level > 0) {
+      npcObject.level = characterOptions.level;
+    } else if (typeof characterOptions.levelByAge == "boolean" && characterOptions.levelByAge) {
+      npcObject.level = computeLevelFromAge(npcObject.age, npcObject.race.age.adulthood);
+    } else if (typeof characterOptions.levelByAge != "boolean" && true) {
+      npcObject.level = computeLevelFromAge(npcObject.age, npcObject.race.age.adulthood);
+    } else {
+      npcObject.level = 1;
+    }
+    npcObject.senses = {};
+    npcObject.senses.perception = {};
+    npcObject.senses.perception.name = "Passive Perception";
+    npcObject.senses.perception.bonus = 10 + proficiencyBonus[npcObject.level] + npcObject.stats.mod(npcObject.stats.WIS);
+    npcObject.hitpointsBase = 8 + (npcObject.level - 1) * 5;
+    npcObject.hitpointsCON = npcObject.level * npcObject.stats.mod(npcObject.stats.CON);
+    npcObject.hitpointsCONModifier = npcObject.stats.mod(npcObject.stats.CON);
+    npcObject.hitpoints = npcObject.hitpointsBase + npcObject.hitpointsCON;
+    var genderRoll = Math.floor(Math.random() * 100);
+    if (genderRoll > npcObject.race.gender) {
+      npcObject.gender = "Female";
+    } else {
+      npcObject.gender = "Male";
+    }
+    npcObject.proficiencyBonus = proficiencyBonus[npcObject.level - 1];
+    npcObject.appearance.characteristics = randomElement3(APPEARANCE.characteristics);
+    npcObject.appearance.hair = randomElement3(APPEARANCE.hair);
+    npcObject.appearance.hairColor = randomElement3(APPEARANCE.hairColor);
+    npcObject.appearance.speech = randomElement3(APPEARANCE.speech);
+    npcObject.appearance.facialFeatures = randomElement3(APPEARANCE.facialFeatures);
+    npcObject.appearance.personality = randomElement3(APPEARANCE.personality);
+    npcObject.appearance.instincts = randomElement3(APPEARANCE.instincts);
+    npcObject.appearance.knacks = randomElement3(APPEARANCE.knacks);
+    npcObject.appearance.eyes = randomElement3(APPEARANCE.eyes);
+    npcObject.appearance.height = randomElement3(APPEARANCE.height);
+    npcObject.appearance.build = randomElement3(APPEARANCE.build);
+    npcObject.backgroundTrait = randomElement3(BACKGROUND_SET["traits"]);
+    npcObject.backgroundIdea = randomElement3(BACKGROUND_SET["ideas"]);
+    var itemsCarried = [];
+    var ruleSetModified = "SMALLVALUE";
+    if (RULSET.hasOwnProperty(ruleSetModified + npcObject.profession.category)) {
+      ruleSetModified = "SMALLVALUE" + npcObject.profession.category;
+    }
+    for (var itemCount = 0; itemCount < 8; itemCount++) {
+      var descriptionText = rulGen2.generateRul(ruleSetModified, RULSET);
+      itemsCarried.push({ cnt: itemCount, description: descriptionText });
+    }
+    npcObject.items = itemsCarried;
+    npcObject.gossip = rulGen2.generateRul("RUMORS", RULSET);
+    if (characterOptions.kingdomName == null || characterOptions.kingdomName.toUpperCase() == "RANDOM") {
+      npcObject.kingdomName = getKingdomName(npcObject.race.nameRace);
+    } else {
+      npcObject.kingdomName = characterOptions.kingdomName;
+    }
+    if (characterOptions.regionName == null || characterOptions.regionName.toUpperCase() == "RANDOM") {
+      npcObject.regionName = rulGen2.generateRul("AREANAMES", RULSET);
+      if (Math.random() >= 0.5) {
+        npcObject.regionName = npcObject.regionName + " of " + getLocationName(npcObject.race.nameRace);
+      }
+    } else {
+      npcObject.regionName = characterOptions.regionName;
+    }
+    if (characterOptions.settlement == null || characterOptions.settlement.toUpperCase() == "RANDOM") {
+      npcObject.settlementName = getLocationName();
+    } else {
+      npcObject.settlementName = characterOptions.settlement;
+    }
+    npcObject.npcTemplate = npcTemplate;
+    return npcObject;
+  }
+  return {
+    computeLevelFromAge,
+    generateCharacter
+  };
+}();
+
+// src/merchant.js
+var import_seedrandom2 = __toModule(require_seedrandom2());
+
+// src/templates/buildingTemplate.js
+var buildingTemplate = `---
+cssclass: oRPGPage
+fileType: structure
+structureType: merchant
+merchantType: {{merchantType}}
+kingdom: {{kingdomName}}
+region: {{regionName}}
+settlement: {{settlementName}}
+urbanArea: {{urbanArea}}
+structure: {{type}}
+owner: {{owner.name}}
+services:   {{#services}}{{name}},{{/services}}
+---
+> [!oRPG-Layout] 
+> # {{name}}
+> **Structure:** {{type}}
+> **Resides In** [[{{kingdomName}}]], [[{{settlementName}}]]
+>  **Owner:** [[{{owner.name}}]]
+> ###### Services 
+> |Name | Quality/Adj | 
+> |:---|:---:| {{#services}}
+> |{{name}} | {{quality}} |{{/services}}
+
+# {{name}}
+
+{{description}}
+
+
+|Item for sale | Price | 
+|:---|:---:| {{#inventory}}
+|{{name}} | {{price}} |{{/inventory}}
+| needs | inventory |
+`;
+
+// src/merchant.js
+var import_fantasy_name_generator2 = __toModule(require_dist());
+console.log("Loading Merchant library");
+var Merchant = function() {
+  var qualityLevels = [
+    "Bad",
+    "Poor",
+    "Fair",
+    "Good",
+    "Excellent"
+  ];
+  var loadingMathSeedRandom = true;
+  var rulGen2 = rulGen_default;
+  function selectRandomProperty(obj) {
+    if (typeof obj === "object") {
+      var keys = Object.keys(obj);
+      return keys[keys.length * Math.random() << 0];
+    }
+  }
+  var proficiencyBonus = [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6];
+  var merchantObject = {
+    name: "Boar's Head Inn",
+    type: "Inn",
+    kingdomName: "Sample kingdom",
+    regionName: "Sample region",
+    settlementName: "Settlement name",
+    merchantType: "Sample",
+    owner: {
+      race: "Human",
+      name: "John Smith"
+    },
+    quality: "Poor",
+    services: [],
+    inventory: [
+      { name: "Stew", price: "2cp" },
+      { name: "Ale (Mug)", price: "2cp" }
+    ],
+    buildingTemplate: "Missing Template"
+  };
+  function getRandomItemFromArray(objArray) {
+    return objArray[Math.floor(Math.random() * objArray.length)];
+  }
+  function generateMerchant(merchantOptions) {
+    if (typeof merchantOptions.seed == "string" && merchantOptions.seed != "") {
+      merchantObject.seed = (0, import_seedrandom2.default)(merchantOptions.seed);
+    } else {
+      merchantObject.seed = mRPG.generateSeededUUID();
+      (0, import_seedrandom2.default)(merchantObject.seed);
+    }
+    merchantOptions.gender = merchantOptions.gender || "Male";
+    let tempRace = {};
+    tempRace = Races.getRace(merchantOptions.species, merchantOptions.race);
+    merchantObject.race = tempRace;
+    var racialNameModifier = merchantObject.race.name.toLowerCase() + merchantOptions.gender;
+    merchantObject.owner.name = (0, import_fantasy_name_generator2.nameByRace)(merchantObject.race.nameRace, { gender: "male" });
+    if (merchantOptions.profession == null || merchantOptions.profession != "" || merchantOptions.profession.toUpperCase != "RANDOM") {
+      merchantObject.profession = PROFESSIONS_OBJECT[randomElement(PROFESSIONS_LIST)];
+    } else if (PROFESSIONS_OBJECT.hasOwnProperty(merchantOptions.profession)) {
+      merchantObject.profession = PROFESSIONS_OBJECT[merchantOptions.profession];
+    } else {
+      merchantObject.profession = PROFESSIONS_OBJECT[randomElement(PROFESSIONS_LIST)];
+    }
+    merchantObject.merchantType = merchantObject.profession.category;
+    merchantObject.services = [];
+    for (let [key, value] of Object.entries(merchantObject.profession.services).sort()) {
+      var service = {};
+      service.name = key;
+      service.quality = getRandomItemFromArray(qualityLevels);
+      merchantObject.services.push(service);
+    }
+    merchantObject.type = getRandomItemFromArray(merchantObject.profession.buildings.structureNames);
+    merchantObject.name = rulGen2.generateRul(merchantObject.profession.category.toUpperCase() + "NAME", RULSET);
+    var professionDescriptionRUL = merchantObject.profession.name + "BUILDINGDESCRIPTION";
+    if (RULSET[professionDescriptionRUL] !== void 0) {
+      merchantObject.description = rulGen2.generateRul("professionDescriptionRUL", RULSET);
+    } else {
+      merchantObject.description = rulGen2.generateRul("BUILDINGDESCRIPTION", RULSET);
+    }
+    var inventory = [];
+    if (merchantOptions.kingdomName == null || merchantOptions.kingdomName.toUpperCase() == "RANDOM") {
+      merchantObject.kingdomName = getKingdomName(tempRace.nameRace);
+    } else {
+      merchantObject.kingdomName = merchantOptions.kingdomName;
+    }
+    if (merchantOptions.regionName == null || merchantOptions.regionName.toUpperCase() == "RANDOM") {
+      merchantObject.regionName = rulGen2.generateRul("AREANAMES", RULSET);
+      if (Math.random() >= 0.5) {
+        merchantObject.regionName = merchantObject.regionName + " of " + getLocationName(tempRace.nameRace);
+      }
+    } else {
+      merchantObject.regionName = merchantOptions.regionName;
+    }
+    if (merchantOptions.settlement == null || merchantOptions.settlement.toUpperCase() == "RANDOM") {
+      merchantObject.settlementName = getLocationName();
+    } else {
+      merchantObject.settlementName = merchantOptions.settlement;
+    }
+    merchantObject.inventory = inventory;
+    merchantObject.gossip = rulGen2.generateRul("RUMORS", RULSET);
+    merchantObject.buildingTemplate = buildingTemplate;
+    return merchantObject;
+  }
+  return {
+    generateMerchant
+  };
+}();
+
+// src/templates/kingdomTemplate.js
+var kingdomTemplate = `---
+cssclass: oRPGPage
+fileType: kingdom
+kingdom: {{kingdomName}}
+ruler: {{ruler}}
+trade: {{trades}}
+---
+> [!oRPG-Layout] 
+> # {{kingdomName}}
+> ![[emptyGrid.jpg]]
+
+
+# {{kingdomName}}
+#### Kingdom
+|Kingdom||
+|:---|:---|
+ |**Government:** |{{government}}|
+| **Rulers:**|{{ruler}}|
+|  **Cultural Archetype:** |{{culture}}|
+|  **Primary Races:** |{{race.name}}|
+|  **Secondary Races:** |{{secondaryRace}}|
+| **Trade:** |{{trades}} |
+| **Technology Level:** |{{technology}}|
+|**Terrain:** |{{terrain}}|
+| **Seasons:**|Spring, Summer, Fall, Winter|
+|  **Social Alignment:**|{{socialAlignment}}|
+| **Military:** |{{military}}|
+|  **Rebelliousness:**|{{rebelliousness}}|
+|  **Brigandage:**|{{brigandage}}|
+|  **Laguages/Literacy:** | {{#languages}}{{.}}, {{/languages}} |
+{.oRPGLocationHeader}
+
+
+
+### Regions or Provinces
+\`\`\`dataview
+table without ID file.link AS Name, population as Population, description as Description
+from ""
+where kingdom="{{kingdomName}}" and (fileType="region" or (fileType="settlement" and population > 1000))
+sort population DESC
+\`\`\`
+
+### NPC's of Note
+\`\`\`dataview
+table without ID file.link AS Name, race as Race, profession as Profession
+from ""
+where kingdom="{{kingdomName}}" and  (fileType="npc"  and importance > 5)
+sort importance DESC
+\`\`\`
+
+### History
+
+**Came to Power by:**
+
+
+
+`;
+
 // src/kingdom.ts
+var import_fantasy_name_generator3 = __toModule(require_dist());
 console.log("Loading Kingdom library");
 var Kingdom = function() {
   var kingdomObject = {
@@ -35351,30 +35378,30 @@ var Kingdom = function() {
     kingdomTemplate: ""
   };
   function generateKingdom(kingdomOptions) {
-    var rulGen = rulGen_default;
-    let tempRace2 = {};
+    var rulGen2 = rulGen_default;
+    let tempRace = {};
     kingdomObject.government = randomElement(RULSET["GOVERNMENTTYPES"]);
     kingdomObject.race = Races.getRace(kingdomOptions.species, kingdomOptions.race);
-    tempRace2 = Races.getRace("RANDOM", "RANDOM");
-    kingdomObject.secondaryRace = tempRace2.name;
+    tempRace = Races.getRace("RANDOM", "RANDOM");
+    kingdomObject.secondaryRace = tempRace.name;
     kingdomObject.culture = randomElement(RULSET["CULTURE"]);
     let namePrefix = randomElement(RULSET["KINGDOMPREFIX"]);
-    tempRace2 = kingdomObject.race;
+    tempRace = kingdomObject.race;
     if (kingdomOptions.kingdomName == null || kingdomOptions.kingdomName.toUpperCase() == "RANDOM") {
-      kingdomObject.kingdomName = getLocationName2(tempRace2.nameRace);
+      kingdomObject.kingdomName = getKingdomName(tempRace.nameRace);
     } else {
       kingdomObject.kingdomName = kingdomOptions.kingdomName;
     }
-    let rulerName = (0, import_fantasy_name_generator3.nameByRace)(tempRace2.nameRace, { gender: "male" });
+    let rulerName = (0, import_fantasy_name_generator3.nameByRace)(tempRace.nameRace, { gender: "male" });
     kingdomObject.ruler = rulerName;
     kingdomObject.languages = ["Common"];
     kingdomObject.technology = randomElement(RULSET["TECHNOLOGY"]);
-    kingdomObject.terrain = rulGen.generateRul("TERRAIN", RULSET);
-    kingdomObject.trades = rulGen.generateRul("TRADESGOODLIST", RULSET);
-    kingdomObject.socialAlignment = rulGen.generateRul("SOCIALALIGNMENT", RULSET);
-    kingdomObject.military = rulGen.generateRul("MILITARYSTRENGHT", RULSET);
-    kingdomObject.brigandage = rulGen.generateRul("LEVELS", RULSET);
-    kingdomObject.rebelliousness = rulGen.generateRul("REBELLIOUSNESS", RULSET);
+    kingdomObject.terrain = rulGen2.generateRul("TERRAIN", RULSET);
+    kingdomObject.trades = rulGen2.generateRul("TRADESGOODLIST", RULSET);
+    kingdomObject.socialAlignment = rulGen2.generateRul("SOCIALALIGNMENT", RULSET);
+    kingdomObject.military = rulGen2.generateRul("MILITARYSTRENGHT", RULSET);
+    kingdomObject.brigandage = rulGen2.generateRul("LEVELS", RULSET);
+    kingdomObject.rebelliousness = rulGen2.generateRul("REBELLIOUSNESS", RULSET);
     kingdomObject.kingdomTemplate = kingdomTemplate;
     return kingdomObject;
   }
@@ -35383,20 +35410,20 @@ var Kingdom = function() {
   };
 }();
 
-// src/templates/areaTemplate.js
-var areaTemplate = `---
+// src/templates/regionTemplate.js
+var regionTemplate = `---
 cssclass: oRPGPage
-fileType: area
+fileType: region
 kingdom: {{kingdomName}}
-area: {{areaName}}
+region: {{regionName}}
 ruler: {{ruler}}
 trade: {{trades}}
 ---
 > [!oRPG-Layout] 
-> # {{area}}
+> # {{region}}
 > ![[emptyGrid.jpg]]
-# {{areaName}}
-#### Area
+# {{regionName}}
+#### region
 |||
 |:---|:---|
  |**Kingdom/Region:** |{{kingdomName}}|
@@ -35426,7 +35453,7 @@ trade: {{trades}}
 \`\`\`dataview
 table without ID file.link AS Name, population as Population, trade as Trade-Goods, description as Description
 from ""
-where kingdom="{{kingdomName}}" and area="{{areaName}}" and (fileType="settlement" and population > 1000)
+where kingdom="{{kingdomName}}" and region="{{regionName}}" and (fileType="settlement" and population > 1000)
 sort population DESC
 \`\`\`
 
@@ -35434,7 +35461,7 @@ sort population DESC
 \`\`\`dataview
 table without ID file.link AS Name, race as Race, profession as Profession
 from ""
-where kingdom="{{kingdomName}}" and area="{{areaName}}" and (fileType="npc"  and importance > 5)
+where kingdom="{{kingdomName}}" and region="{{regionName}}" and (fileType="npc"  and importance > 5)
 sort importance DESC
 \`\`\`
 
@@ -35447,12 +35474,12 @@ sort importance DESC
 
 `;
 
-// src/area.ts
+// src/region.ts
 var import_fantasy_name_generator4 = __toModule(require_dist());
-console.log("Loading Area library");
-var Area = function() {
-  var areaObject = {
-    areaName: "Sample area",
+console.log("Loading region library");
+var Region = function() {
+  var regionObject = {
+    regionName: "Sample region",
     kingdomName: "Kingdom Name",
     ruler: "Some ruler",
     terrain: "Flat",
@@ -35466,53 +35493,50 @@ var Area = function() {
     languages: [""],
     subsistenceSystem: "",
     brigandage: "",
-    areaTemplate: ""
+    regionTemplate: ""
   };
-  function generateArea(areaOptions) {
-    var rulGen = rulGen_default;
-    let tempRace2;
+  function generateregion(regionOptions) {
+    var rulGen2 = rulGen_default;
+    let tempRace;
     let races = [];
-    tempRace2 = Races.getRace("RANDOM", "RANDOM");
-    if (areaOptions.race == null || areaOptions.race.toUpperCase() == "RANDOM") {
-      races.push(tempRace2.name);
+    tempRace = Races.getRace("RANDOM", "RANDOM");
+    if (regionOptions.race == null || regionOptions.race.toUpperCase() == "RANDOM") {
+      races.push(tempRace.name);
     } else {
-      races.push(areaOptions.race);
+      races.push(regionOptions.race);
     }
-    let rulerName = (0, import_fantasy_name_generator4.nameByRace)(tempRace2.nameRace, { gender: "male" });
-    areaObject.ruler = rulerName;
-    if (areaOptions.secondaryRace == null || areaOptions.secondaryRace.toUpperCase() == "RANDOM") {
-      tempRace2 = Races.getRace("RANDOM", "RANDOM");
-      races.push(tempRace2.name);
+    let rulerName = (0, import_fantasy_name_generator4.nameByRace)(tempRace.nameRace, { gender: "male" });
+    regionObject.ruler = rulerName;
+    if (regionOptions.secondaryRace == null || regionOptions.secondaryRace.toUpperCase() == "RANDOM") {
+      tempRace = Races.getRace("RANDOM", "RANDOM");
+      races.push(tempRace.name);
     } else {
-      races.push(areaOptions.secondaryRace);
+      races.push(regionOptions.secondaryRace);
     }
-    areaObject.races = races;
-    if (areaOptions.kingdomName == null || areaOptions.kingdomName.toUpperCase() == "RANDOM") {
-      areaObject.kingdomName = getLocationName2(tempRace2.nameRace);
+    regionObject.races = races;
+    if (regionOptions.kingdomName == null || regionOptions.kingdomName.toUpperCase() == "RANDOM") {
+      regionObject.kingdomName = getKingdomName(tempRace.nameRace);
     }
-    if (areaOptions.areaName == null || areaOptions.areaName.toUpperCase() == "RANDOM") {
-      areaObject.areaName = rulGen.generateRul("AREANAMES", RULSET);
-      if (Math.random() >= 0.5) {
-        areaObject.areaName = areaObject.areaName + " of " + getShortLocationName2(tempRace2.nameRace);
-      }
+    if (regionOptions.regionName == null || regionOptions.regionName.toUpperCase() == "RANDOM") {
+      regionObject.regionName = rulGen2.generateRul("AREANAMES", RULSET);
     } else {
-      areaObject.areaName = areaOptions.areaName;
+      regionObject.regionName = regionOptions.regionName;
     }
-    tempRace2 = Races.getRace("RANDOM", "RANDOM");
-    areaObject.terrain = rulGen.generateRul("TERRAIN", RULSET);
-    areaObject.culture = rulGen.generateRul("CULTURE", RULSET);
-    areaObject.trades = rulGen.generateRul("TRADESGOODLIST", RULSET);
-    areaObject.technology = rulGen.generateRul("TECHNOLOGY", RULSET);
-    areaObject.populationLevel = rulGen.generateRul("POPULATIONLEVELS", RULSET);
-    areaObject.subsistenceSystem = rulGen.generateRul("SUBSISTENCESYSTEM", RULSET);
-    areaObject.languages = ["Common"];
-    areaObject.socialAlignment = rulGen.generateRul("SOCIALALIGNMENT", RULSET);
-    areaObject.terrain = rulGen.generateRul("TERRAIN", RULSET);
-    areaObject.areaTemplate = areaTemplate;
-    return areaObject;
+    tempRace = Races.getRace("RANDOM", "RANDOM");
+    regionObject.terrain = rulGen2.generateRul("TERRAIN", RULSET);
+    regionObject.culture = rulGen2.generateRul("CULTURE", RULSET);
+    regionObject.trades = rulGen2.generateRul("TRADESGOODLIST", RULSET);
+    regionObject.technology = rulGen2.generateRul("TECHNOLOGY", RULSET);
+    regionObject.populationLevel = rulGen2.generateRul("POPULATIONLEVELS", RULSET);
+    regionObject.subsistenceSystem = rulGen2.generateRul("SUBSISTENCESYSTEM", RULSET);
+    regionObject.languages = ["Common"];
+    regionObject.socialAlignment = rulGen2.generateRul("SOCIALALIGNMENT", RULSET);
+    regionObject.terrain = rulGen2.generateRul("TERRAIN", RULSET);
+    regionObject.regionTemplate = regionTemplate;
+    return regionObject;
   }
   return {
-    generateArea
+    generateregion
   };
 }();
 
@@ -35522,7 +35546,7 @@ cssclass: oRPGPage
 fileType: settlement
 settlementType: {{settlementType}}
 kingdom: {{kingdomName}}
-area: {{areaName}}
+region: {{regionName}}
 settlement: {{settlementName}}
 population: {{population}}
 ruler: {{ruler}}
@@ -35583,21 +35607,24 @@ var import_fantasy_name_generator5 = __toModule(require_dist());
 
 // src/settlementTypes.js
 var SETTLEMENTS = {
-  "Hamlet": { sizeMin: 10, sizeMax: 99 },
-  "Village": { sizeMin: 100, sizeMax: 999 },
-  "Small Town": { sizeMin: 1e3, sizeMax: 4999 },
-  "Large Town": { sizeMin: 5e3, sizeMax: 14999 },
-  "City": { sizeMin: 15e3, sizeMax: 49999 },
-  "Metropolis": { sizeMin: 5e4, sizeMax: 15e4 }
+  "Hamlet": { sizeMin: 10, sizeMax: 99, name: "Hamlet" },
+  "Village": { sizeMin: 100, sizeMax: 999, name: "Village" },
+  "Small Town": { sizeMin: 1e3, sizeMax: 4999, name: "Small Town" },
+  "Large Town": { sizeMin: 5e3, sizeMax: 14999, name: "Large Town" },
+  "City": { sizeMin: 15e3, sizeMax: 49999, name: "City" },
+  "Metropolis": { sizeMin: 5e4, sizeMax: 15e4, name: "Metropolis" }
 };
+var SETTLEMENT_TYPES = Object.keys(SETTLEMENTS);
 function randomElement2(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 function randomSettlementType() {
-  return randomElement2(Object.keys(SETTLEMENTS));
+  let settlement = randomElement2(SETTLEMENT_TYPES);
+  return settlement;
 }
 function randomSettlementSize(settlementType) {
-  return Math.floor(Math.random(SETTLEMENTS[settlementType].sizeMax) * SETTLEMENTS[settlementType].sizeMax + SETTLEMENTS[settlementType].sizeMin);
+  let size = Math.floor(Math.random(SETTLEMENTS[settlementType].sizeMax) * SETTLEMENTS[settlementType].sizeMax + SETTLEMENTS[settlementType].sizeMin);
+  return size;
 }
 
 // src/settlement.ts
@@ -35605,7 +35632,7 @@ console.log("Loading Settlement library");
 var Settlement = function() {
   var settlementObject = {
     kingdomName: "some kingdom",
-    areaName: "some area",
+    regionName: "some region",
     settlementName: "Sample settlement",
     settlementType: "Kingdom",
     government: "Government Type",
@@ -35624,50 +35651,49 @@ var Settlement = function() {
     population: "12"
   };
   function generateSettlement(settlementOptions) {
-    var rulGen = rulGen_default;
+    var rulGen2 = rulGen_default;
     settlementObject.government = randomElement(RULSET["GOVERNMENTTYPES"]);
-    let tempRace2;
-    tempRace2 = Races.getRace(settlementOptions.species, settlementOptions.race.name);
-    settlementObject.race = tempRace2;
-    tempRace2 = Races.getRace("RANDOM", "RANDOM");
-    settlementObject.secondaryRace = tempRace2.name;
+    let tempRace;
+    tempRace = Races.getRace(settlementOptions.species, settlementOptions.race.name);
+    settlementObject.race = tempRace;
+    tempRace = Races.getRace("RANDOM", "RANDOM");
+    settlementObject.secondaryRace = tempRace.name;
     settlementObject.culture = randomElement(RULSET["CULTURE"]);
     let namePrefix = randomElement(RULSET["KINGDOMPREFIX"]);
     if (settlementOptions.settlement == null || settlementOptions.settlement.toUpperCase() == "RANDOM") {
-      settlementObject.settlementName = getSettlementName();
+      settlementObject.settlementName = getLocationName();
     } else {
       settlementObject.settlementName = settlementOptions.settlement;
     }
     let settlementType = "Village";
-    if (settlementOptions.settlementType.toUpperCase() == "RANDOM") {
-      settlementOptions.settlementType = randomSettlementType();
+    if (settlementOptions.settlementType == null || settlementOptions.settlementType.toUpperCase() == "RANDOM") {
+      settlementType = randomSettlementType();
+    } else {
+      settlementType = settlementOptions.settlementType;
     }
-    settlementObject.settlementType = settlementOptions.settlementType;
-    let population = randomSettlementSize(settlementOptions.settlementType);
+    settlementObject.settlementType = settlementType;
+    let population = randomSettlementSize(settlementType);
     settlementObject.population = population.toLocaleString("en-US");
-    tempRace2 = settlementObject.race;
-    let rulerName = (0, import_fantasy_name_generator5.nameByRace)(tempRace2.nameRace, { gender: "male" });
+    tempRace = settlementObject.race;
+    let rulerName = (0, import_fantasy_name_generator5.nameByRace)(tempRace.nameRace, { gender: "male" });
     settlementObject.ruler = rulerName;
     if (settlementOptions.kingdomName == null || settlementOptions.kingdomName.toUpperCase() == "RANDOM") {
-      settlementObject.kingdomName = getLocationName2(tempRace2.nameRace);
+      settlementObject.kingdomName = getKingdomName(tempRace.nameRace);
     } else {
       settlementObject.kingdomName = settlementOptions.kingdomName;
     }
-    if (settlementOptions.areaName == null || settlementOptions.areaName.toUpperCase() == "RANDOM") {
-      settlementObject.areaName = rulGen.generateRul("AREANAMES", RULSET);
-      if (Math.random() >= 0.5) {
-        settlementObject.areaName = settlementObject.areaName + " of " + getShortLocationName2(tempRace2.nameRace);
-      }
+    if (settlementOptions.regionName == null || settlementOptions.regionName.toUpperCase() == "RANDOM") {
+      settlementObject.regionName = rulGen2.generateRul("AREANAMES", RULSET);
     } else {
-      settlementObject.areaName = settlementOptions.areaName;
+      settlementObject.regionName = settlementOptions.regionName;
     }
     settlementObject.languages = "Common";
     settlementObject.technology = randomElement(RULSET["TECHNOLOGY"]);
-    settlementObject.trades = rulGen.generateRul("TRADESGOODLIST", RULSET);
-    settlementObject.socialAlignment = rulGen.generateRul("SOCIALALIGNMENT", RULSET);
-    settlementObject.military = rulGen.generateRul("MILITARYSTRENGHT", RULSET);
-    settlementObject.brigandage = rulGen.generateRul("LEVELS", RULSET);
-    settlementObject.rebelliousness = rulGen.generateRul("REBELLIOUSNESS", RULSET);
+    settlementObject.trades = rulGen2.generateRul("TRADESGOODLIST", RULSET);
+    settlementObject.socialAlignment = rulGen2.generateRul("SOCIALALIGNMENT", RULSET);
+    settlementObject.military = rulGen2.generateRul("MILITARYSTRENGHT", RULSET);
+    settlementObject.brigandage = rulGen2.generateRul("LEVELS", RULSET);
+    settlementObject.rebelliousness = rulGen2.generateRul("REBELLIOUSNESS", RULSET);
     settlementObject.settlementTemplate = settlementTemplate;
     return settlementObject;
   }
@@ -35676,12 +35702,158 @@ var Settlement = function() {
   };
 }();
 
+// src/templates/urbanAreaTemplate.js
+var urbanAreaTemplate = `---
+cssclass: oRPGPage
+fileType: urbanArea
+settlementType: {{settlementType}}
+kingdom: {{kingdomName}}
+region: {{regionName}}
+settlement: {{settlementName}}
+urbanArea: {{urbanArea}}
+population: {{population}}
+ruler: {{ruler}}
+trade: {{trades}}
+---
+> [!oRPG-Layout] 
+> # {{region}}
+> ![[emptyGrid.jpg]]
+# {{regionName}}
+#### region
+|||
+|:---|:---|
+ |**Kingdom/Region:** |{{kingdomName}}|
+ |**Terrain:** |{{terrain}}|
+| **Seasons:**|Spring, Summer, Fall, Winter|
+|  **Races:** |{{races}}|
+| **Cultures:** |{{culture}} |
+| **Trade:** |{{trades}} |
+| **Technology Level:** |{{technology}}|
+|  **Social Alignment:**|{{socialAlignment}}|
+| **Population Level:** |{{populationLevel}}|
+|  **Subsistence System:**|{{subsistenceSystem}}|
+|  **Laguages/Literacy:** |{{languages}}|
+{.oRPGLocationHeader}
+
+
+
+### Cities, Towns, Villages
+| Name|Population| Trade Goods |Other Notes|
+|:---|:---|:---|:---|
+|Fort Tollo| 310 |Ore | Trading Village|
+{.rpgKingdomNPCs}
+
+
+
+### Cities, Towns, Villages
+\`\`\`dataview
+table without ID file.link AS Name, population as Population, trade as Trade-Goods, description as Description
+from ""
+where kingdom="{{kingdomName}}" and region="{{regionName}}" and (fileType="settlement" and population > 1000)
+sort population DESC
+\`\`\`
+
+### NPC's of Note
+\`\`\`dataview
+table without ID file.link AS Name, race as Race, profession as Profession
+from ""
+where kingdom="{{kingdomName}}" and region="{{regionName}}" and (fileType="npc"  and importance > 5)
+sort importance DESC
+\`\`\`
+
+
+### Places of Interest
+| Name|Description|
+|:---|:---|
+|Tremont Pass| A deep gorge splitting the mountains |
+{.rpgKingdomNPCs}
+
+`;
+
+// src/urbanArea.ts
+var import_fantasy_name_generator6 = __toModule(require_dist());
+console.log("Loading Settlement library");
+var UrbanArea = function() {
+  var urbanAreaObject = {
+    kingdomName: "some kingdom",
+    regionName: "some region",
+    settlementName: "Sample settlement",
+    settlementType: "Kingdom",
+    government: "Government Type",
+    ruler: "Some Ruler",
+    culture: "CULTURE",
+    race: {},
+    secondaryRace: "SECONDARY RACE",
+    trades: "",
+    technology: "",
+    socialAlignment: "",
+    military: "",
+    rebelliousness: "",
+    brigandage: "",
+    languages: "",
+    urbanAreaTemplate: "",
+    population: "12"
+  };
+  function generateUrbanArea(urbanAreaOptions) {
+    var rulGen2 = rulGen_default;
+    urbanAreaObject.government = randomElement(RULSET["GOVERNMENTTYPES"]);
+    let tempRace;
+    tempRace = Races.getRace(urbanAreaOptions.species, urbanAreaOptions.race.name);
+    urbanAreaObject.race = tempRace;
+    tempRace = Races.getRace("RANDOM", "RANDOM");
+    urbanAreaObject.secondaryRace = tempRace.name;
+    urbanAreaObject.culture = randomElement(RULSET["CULTURE"]);
+    let namePrefix = randomElement(RULSET["KINGDOMPREFIX"]);
+    if (urbanAreaOptions.settlement == null || urbanAreaOptions.settlement.toUpperCase() == "RANDOM") {
+      urbanAreaObject.settlementName = getLocationName();
+    } else {
+      urbanAreaObject.settlementName = urbanAreaOptions.settlement;
+    }
+    let settlementType = "Village";
+    if (urbanAreaOptions.settlementType == null || urbanAreaOptions.settlementType.toUpperCase() == "RANDOM") {
+      settlementType = randomSettlementType();
+    } else {
+      settlementType = urbanAreaOptions.settlementType;
+    }
+    urbanAreaObject.settlementType = settlementType;
+    let population = randomSettlementSize(settlementType);
+    urbanAreaObject.population = population.toLocaleString("en-US");
+    tempRace = urbanAreaObject.race;
+    let rulerName = (0, import_fantasy_name_generator6.nameByRace)(tempRace.nameRace, { gender: "male" });
+    urbanAreaObject.ruler = rulerName;
+    if (urbanAreaOptions.kingdomName == null || urbanAreaOptions.kingdomName.toUpperCase() == "RANDOM") {
+      urbanAreaObject.kingdomName = getKingdomName(tempRace.nameRace);
+    } else {
+      urbanAreaObject.kingdomName = urbanAreaOptions.kingdomName;
+    }
+    if (urbanAreaOptions.regionName == null || urbanAreaOptions.regionName.toUpperCase() == "RANDOM") {
+      urbanAreaObject.regionName = rulGen2.generateRul("AREANAMES", RULSET);
+    } else {
+      urbanAreaObject.regionName = urbanAreaOptions.regionName;
+    }
+    urbanAreaObject.languages = "Common";
+    urbanAreaObject.technology = randomElement(RULSET["TECHNOLOGY"]);
+    urbanAreaObject.trades = rulGen2.generateRul("TRADESGOODLIST", RULSET);
+    urbanAreaObject.socialAlignment = rulGen2.generateRul("SOCIALALIGNMENT", RULSET);
+    urbanAreaObject.military = rulGen2.generateRul("MILITARYSTRENGHT", RULSET);
+    urbanAreaObject.brigandage = rulGen2.generateRul("LEVELS", RULSET);
+    urbanAreaObject.rebelliousness = rulGen2.generateRul("REBELLIOUSNESS", RULSET);
+    urbanAreaObject.urbanAreaTemplate = urbanAreaTemplate;
+    return urbanAreaObject;
+  }
+  return {
+    generateUrbanArea
+  };
+}();
+
 // src/templates/placeOfInterestTemplate.js
 var placeOfInterestTemplate = `---
 cssclass: oRPGPage
 fileType: placeOfInterest
 kingdom: {{kingdomName}}
-area: {{areaName}}
+region: {{regionName}}
+settlement: {{settlementName}}
+urbanArea: {{urbanArea}}
 placeOfInterest: {{poiName}}
 ruler: {{ruler}}
 trade: {{trades}}
@@ -35689,7 +35861,7 @@ trade: {{trades}}
 > [!oRPG-Layout] 
 > # {{poiName}}
 > ![[emptyGrid.jpg]]
-# {{areaName}}
+# {{regionName}}
 #### Place of Interest
 |||
 |:---|:---|
@@ -35705,7 +35877,7 @@ trade: {{trades}}
 
 **Description:**
 
-**Surrounding Area:**
+**Surrounding Region:**
 
 **Local Rumors/Stores:**
 
@@ -35714,20 +35886,20 @@ trade: {{trades}}
 \`\`\`dataview
 table without ID file.link AS Name, race as Race, profession as Profession
 from ""
-where kingdom="{{kingdom}}" and area="{{areaName}}" and (fileType="npc"  and importance > 5)
+where kingdom="{{kingdom}}" and region="{{regionName}}" and (fileType="npc"  and importance > 5)
 sort importance DESC
 \`\`\`
 
 `;
 
 // src/placeOfInterest.ts
-var import_fantasy_name_generator6 = __toModule(require_dist());
+var import_fantasy_name_generator7 = __toModule(require_dist());
 console.log("Loading Merchant library");
 var PlaceOfInterest = function() {
   var poiObject = {
     poiName: "Sample Place of Interest",
     kingdomName: "Sample Kingdom",
-    areaName: "Sample Area",
+    regionName: "Sample region",
     government: "Government Type",
     ruler: "Some Ruler",
     culture: "CULTURE",
@@ -35745,40 +35917,37 @@ var PlaceOfInterest = function() {
     terrain: "Flat Land"
   };
   function generatePlaceOfInterest(poiOptions) {
-    var rulGen = rulGen_default;
-    let tempRace2 = {};
+    var rulGen2 = rulGen_default;
+    let tempRace = {};
     poiObject.government = randomElement(RULSET["GOVERNMENTTYPES"]);
-    tempRace2 = Races.getRace(poiOptions.species, poiOptions.race);
-    poiObject.race = tempRace2.name;
-    tempRace2 = Races.getRace("RANDOM", "RANDOM");
-    poiObject.secondaryRace = tempRace2.name;
+    tempRace = Races.getRace(poiOptions.species, poiOptions.race);
+    poiObject.race = tempRace.name;
+    tempRace = Races.getRace("RANDOM", "RANDOM");
+    poiObject.secondaryRace = tempRace.name;
     poiObject.size = poiOptions.size;
-    poiObject.culture = rulGen.generateRul("CULTURE", RULSET);
-    let namePrefix = rulGen.generateRul("KINGDOMPREFIX", RULSET);
-    poiObject.terrain = rulGen.generateRul("TERRAIN", RULSET);
-    poiObject.poiName = getSettlementName();
-    let rulerName = (0, import_fantasy_name_generator6.nameByRace)(tempRace2.nameRace, { gender: "male" });
+    poiObject.culture = rulGen2.generateRul("CULTURE", RULSET);
+    let namePrefix = rulGen2.generateRul("KINGDOMPREFIX", RULSET);
+    poiObject.terrain = rulGen2.generateRul("TERRAIN", RULSET);
+    poiObject.poiName = getLocationName();
+    let rulerName = (0, import_fantasy_name_generator7.nameByRace)(tempRace.nameRace, { gender: "male" });
     poiObject.ruler = rulerName;
     poiObject.languages = "Common";
     poiObject.technology = randomElement(RULSET["TECHNOLOGY"]);
     if (poiOptions.kingdomName == null || poiOptions.kingdomName.toUpperCase() == "RANDOM") {
-      poiObject.kingdomName = getLocationName2(tempRace2.nameRace);
+      poiObject.kingdomName = getKingdomName(tempRace.nameRace);
     } else {
       poiObject.kingdomName = poiOptions.kingdomName;
     }
-    if (poiOptions.areaName == null || poiOptions.areaName.toUpperCase() == "RANDOM") {
-      poiObject.areaName = rulGen.generateRul("AREANAMES", RULSET);
-      if (Math.random() >= 0.5) {
-        poiObject.areaName = poiOptions.areaName + " of " + getShortLocationName2(tempRace2.nameRace);
-      }
+    if (poiOptions.regionName == null || poiOptions.regionName.toUpperCase() == "RANDOM") {
+      poiObject.regionName = rulGen2.generateRul("AREANAMES", RULSET);
     } else {
-      poiObject.areaName = poiOptions.areaName;
+      poiObject.regionName = poiOptions.regionName;
     }
-    poiObject.trades = rulGen.generateRul("TRADESGOODLIST", RULSET);
-    poiObject.socialAlignment = rulGen.generateRul("SOCIALALIGNMENT", RULSET);
-    poiObject.military = rulGen.generateRul("MILITARYSTRENGHT", RULSET);
-    poiObject.brigandage = rulGen.generateRul("LEVELS", RULSET);
-    poiObject.rebelliousness = rulGen.generateRul("REBELLIOUSNESS", RULSET);
+    poiObject.trades = rulGen2.generateRul("TRADESGOODLIST", RULSET);
+    poiObject.socialAlignment = rulGen2.generateRul("SOCIALALIGNMENT", RULSET);
+    poiObject.military = rulGen2.generateRul("MILITARYSTRENGHT", RULSET);
+    poiObject.brigandage = rulGen2.generateRul("LEVELS", RULSET);
+    poiObject.rebelliousness = rulGen2.generateRul("REBELLIOUSNESS", RULSET);
     poiObject.poiTemplate = placeOfInterestTemplate;
     return poiObject;
   }
@@ -35787,128 +35956,185 @@ var PlaceOfInterest = function() {
   };
 }();
 
-// src/nameGenerator.js
-var name_set = name_set || {};
-var nameGenerator_default = NameGenerator = function() {
-  var chain_cache = {};
-  var numbered = ["I", "II", "", "III", "IV", "", "V", "VI", "", "VII", "VIII", ""];
-  function generateName(type, opt) {
-    opt = opt || 0;
-    var appendTxt = "";
-    var chain;
-    if (chain = markov_chain(type)) {
-      switch (opt) {
-        case "numbered":
-          var rand = Math.floor(Math.random() * numbered.length);
-          appendTxt = " " + numbered[rand];
-          break;
-        case "none":
-          break;
-      }
-      return markov_name(chain) + appendTxt;
-    }
-    return "";
-  }
-  function markov_chain(type) {
-    var chain;
-    if (chain = chain_cache[type]) {
-      return chain;
+// src/templates/organizationTemplate.js
+var organizationTemplate = `---
+cssclass: oRPGPage
+fileType: organization
+organizationType: Guild
+organization: {{organizationName}}
+kingdom: {{kingdomName}}
+region: {{regionName}}
+settlement: {{settlementName}}
+urbanArea: {{urbanArea}}
+leader: {{ruler}}
+purpose: 
+front: 
+structure:
+hierarchy: 
+---
+> [!oRPG-Layout] 
+> #  {{organizationName}}
+> ![[factionLogo01.png]]
+> **Headquarters** {{kingdomName}},{{regionName}}, {{settlementName}}
+>  **Leaders:** [[{{ruler}}]]
+> **Size:** 1 *(1-15)*
+> **Influence:** Strong
+> 
+> ######  
+> |Domain | Level | 
+> |:---|:---:| 
+> |Diplomacy | Good |
+> |Espionage| Excellent |
+> |Operations | Bad |
+> |Communications | Bad |
+> |Resolve| Bad |
+> |Resources | Bad |
+> |Power Die | Bad |
+
+
+# Cult of the Dragon
+#### Guild
+|Kingdom||
+|:---|:---|
+ |**Orgnaization/Structure:** |Theocracy|
+| **Rulers/Leader:**|Istolor|
+| **Headquarters:**|  |
+| **Alignment:**| {{socialAlignment}} |
+| **Purpose:** | Cultists  |
+| **Loyalty:**| Fanatic |
+| **Reputation:**| Fanatic |
+| **Loyalty:**| Fanatic |
+| **Opposition:**| Medium |
+{.oRPGLocationHeader}
+
+
+**Structure/Ranks:**
+
+|Rank|Title|
+|:---|:---|
+ |Leader |Protector of the Flame|
+| Officer | Scales|
+| Veteran| some title|
+| Member | Claws |
+|Initiate | Claws | 
+
+
+**Guild Skill Levels**
+Master
+Journyman
+Apprentice
+
+
+### Prominent Members
+\`\`\`dataview
+table without ID file.link AS Name, race as Race, profession as Profession
+from ""
+where member="Cult of the Dragon"  and (fileType="npc" )
+sort importance DESC
+\`\`\`
+
+### Powers (Perks):
+Powers are abilities Officer characters can use (often in combat)
+
+### Features
+Features are used during the Intrigue phase granting additional abiltiies of the Organization.
+
+### Activities
+Activities that organizationis involved in, both past, current and future.
+
+### Resources/Assets
+Any resources that the guild controls, including Buildings/Land/Labor and Trade Goods.
+
+
+
+### Mission
+
+### Private Agenda
+What is the organizations agend(or goals), these could be different than what the public perceives as it's goals.
+
+### Allies
+
+### Enemies
+
+### History/Background 
+
+### Membership/Requirements
+What is required to join and stay a member (dues).
+`;
+
+// src/organization.ts
+var import_fantasy_name_generator8 = __toModule(require_dist());
+console.log("Loading region library");
+var Organization = function() {
+  var organizationObject = {
+    organizationName: "Sample Cult",
+    gonernement: "Theocracy",
+    regionName: "Sample region",
+    kingdomName: "Kingdom Name",
+    settlementName: "Sample setttlement",
+    ruler: "Some ruler",
+    terrain: "Flat",
+    climate: "climate",
+    culture: "CULTURE",
+    populationLevel: "Low",
+    races: [""],
+    trades: "",
+    technology: "",
+    socialAlignment: "",
+    languages: [""],
+    subsistenceSystem: "",
+    brigandage: "",
+    template: ""
+  };
+  function generateOrganization(organizationOptions) {
+    var rulGen2 = rulGen_default;
+    let tempRace;
+    let races = [];
+    tempRace = Races.getRace("RANDOM", "RANDOM");
+    if (organizationOptions.race == null || organizationOptions.race.toUpperCase() == "RANDOM") {
+      races.push(tempRace.name);
     } else {
-      var list;
-      if (list = name_set[type]) {
-        var chain;
-        if (chain = construct_chain(list)) {
-          chain_cache[type] = chain;
-          return chain;
-        }
-      }
+      races.push(organizationOptions.race);
     }
-    return false;
-  }
-  function construct_chain(list) {
-    var chain = {};
-    var i2;
-    for (i2 = 0; i2 < list.length; i2++) {
-      var names = list[i2].split(/\s+/);
-      chain = incr_chain(chain, "parts", names.length);
-      var j;
-      for (j = 0; j < names.length; j++) {
-        var name2 = names[j];
-        chain = incr_chain(chain, "name_len", name2.length);
-        var c = name2.substr(0, 1);
-        chain = incr_chain(chain, "initial", c);
-        var string = name2.substr(1);
-        var last_c = c;
-        while (string.length > 0) {
-          var c = string.substr(0, 1);
-          chain = incr_chain(chain, last_c, c);
-          string = string.substr(1);
-          last_c = c;
-        }
-      }
-    }
-    return scale_chain(chain);
-  }
-  function incr_chain(chain, key, token2) {
-    if (chain[key]) {
-      if (chain[key][token2]) {
-        chain[key][token2]++;
-      } else {
-        chain[key][token2] = 1;
-      }
+    let leaderName = (0, import_fantasy_name_generator8.nameByRace)(tempRace.nameRace, { gender: "male" });
+    organizationObject.ruler = leaderName;
+    if (organizationOptions.secondaryRace == null || organizationOptions.secondaryRace.toUpperCase() == "RANDOM") {
+      tempRace = Races.getRace("RANDOM", "RANDOM");
+      races.push(tempRace.name);
     } else {
-      chain[key] = {};
-      chain[key][token2] = 1;
+      races.push(organizationOptions.secondaryRace);
     }
-    return chain;
-  }
-  function scale_chain(chain) {
-    var table_len = {};
-    var key;
-    for (key in chain) {
-      table_len[key] = 0;
-      var token2;
-      for (token2 in chain[key]) {
-        var count = chain[key][token2];
-        var weighted = Math.floor(Math.pow(count, 1.3));
-        chain[key][token2] = weighted;
-        table_len[key] += weighted;
-      }
+    organizationObject.races = races;
+    if (organizationOptions.kingdomName == null || organizationOptions.kingdomName.toUpperCase() == "RANDOM") {
+      organizationObject.kingdomName = getKingdomName(tempRace.nameRace);
     }
-    chain["table_len"] = table_len;
-    return chain;
-  }
-  function markov_name(chain) {
-    var parts = select_link(chain, "parts");
-    var names = [];
-    var i2;
-    for (i2 = 0; i2 < parts; i2++) {
-      var name_len = select_link(chain, "name_len");
-      var c = select_link(chain, "initial");
-      var name2 = c;
-      var last_c = c;
-      while (name2.length < name_len) {
-        c = select_link(chain, last_c);
-        name2 += c;
-        last_c = c;
-      }
-      names.push(name2);
+    if (organizationOptions.regionName == null || organizationOptions.regionName.toUpperCase() == "RANDOM") {
+      organizationObject.regionName = rulGen2.generateRul("AREANAMES", RULSET);
+    } else {
+      organizationObject.regionName = organizationOptions.regionName;
     }
-    return names.join(" ");
-  }
-  function select_link(chain, key) {
-    var len = chain["table_len"][key];
-    var idx = Math.floor(Math.random() * len);
-    var t = 0;
-    for (token in chain[key]) {
-      t += chain[key][token];
-      if (idx < t) {
-        return token;
-      }
+    if (organizationOptions.settlement == null || organizationOptions.settlement.toUpperCase() == "RANDOM") {
+      organizationObject.settlementName = getLocationName();
+    } else {
+      organizationObject.settlementName = organizationObject.settlementName;
     }
-    return "-";
+    tempRace = Races.getRace("RANDOM", "RANDOM");
+    organizationObject.terrain = rulGen2.generateRul("TERRAIN", RULSET);
+    organizationObject.culture = rulGen2.generateRul("CULTURE", RULSET);
+    organizationObject.trades = rulGen2.generateRul("TRADESGOODLIST", RULSET);
+    organizationObject.technology = rulGen2.generateRul("TECHNOLOGY", RULSET);
+    organizationObject.populationLevel = rulGen2.generateRul("POPULATIONLEVELS", RULSET);
+    organizationObject.subsistenceSystem = rulGen2.generateRul("SUBSISTENCESYSTEM", RULSET);
+    organizationObject.languages = ["Common"];
+    organizationObject.socialAlignment = rulGen2.generateRul("SOCIALALIGNMENT", RULSET);
+    organizationObject.terrain = rulGen2.generateRul("TERRAIN", RULSET);
+    organizationObject.template = organizationTemplate;
+    return organizationObject;
   }
-};
+  return {
+    generateOrganization
+  };
+}();
 
 // src/oRPGBuilder.js
 var oRPGBuilder = class {
@@ -35918,18 +36144,15 @@ var oRPGBuilder = class {
     console.log(rulGen_default.generateRul("TESTRULESET", RULSET));
   }
   generateObject(generateOptions) {
-    console.log("Generating Content");
-    console.log(generateOptions);
-    console.log(generateOptions.race);
     switch (generateOptions.generatorSelected) {
       case KINGDOM: {
         let kingdom = Kingdom.generateKingdom(generateOptions);
         this.generatedContent = mustache_default.render(kingdom.kingdomTemplate, kingdom);
         break;
       }
-      case AREA: {
-        let area = Area.generateArea(generateOptions);
-        this.generatedContent = mustache_default.render(area.areaTemplate, area);
+      case REGION: {
+        let region = Region.generateregion(generateOptions);
+        this.generatedContent = mustache_default.render(region.regionTemplate, region);
         break;
       }
       case SETTLEMENT: {
@@ -35937,10 +36160,20 @@ var oRPGBuilder = class {
         this.generatedContent = mustache_default.render(settlement.settlementTemplate, settlement);
         break;
       }
+      case URBANAREA: {
+        let urbanArea = UrbanArea.generateUrbanArea(generateOptions);
+        this.generatedContent = mustache_default.render(urbanArea.urbanAreaTemplate, urbanArea);
+        break;
+      }
       case PLACEOFINTEREST: {
         PlaceOfInterest;
         let placeOfInterest = PlaceOfInterest.generatePlaceOfInterest(generateOptions);
         this.generatedContent = mustache_default.render(placeOfInterest.poiTemplate, placeOfInterest);
+        break;
+      }
+      case ORGANIZATION: {
+        let organization = Organization.generateOrganization(generateOptions);
+        this.generatedContent = mustache_default.render(organization.template, organization);
         break;
       }
       case BUILDING: {
@@ -35956,22 +36189,27 @@ var oRPGBuilder = class {
     }
     return this.generatedContent;
   }
+  getGeneratedContent() {
+    return generatedContent;
+  }
 };
 
 // main.ts
-var import_fantasy_name_generator7 = __toModule(require_dist());
+var import_fantasy_name_generator9 = __toModule(require_dist());
 var oRPGDiv;
 var menuDiv;
 var contentDiv;
 var controlsDiv;
-var generatedTextArea;
+var generatedTextarea;
 var generatedNameField;
 var buttonGenerator;
+var populationSlider;
 var DEFAULT_SETTINGS = {
   kingdomName: "Random",
-  areaName: "Random",
+  regionName: "Random",
   settlement: "Random",
   settlementType: "Random",
+  urbanArea: "Random",
   profession: "Random",
   race: "Random",
   species: "Random",
@@ -35982,6 +36220,10 @@ var DEFAULT_SETTINGS = {
   seed: ""
 };
 var oRPGBuilderPlugin = class extends import_obsidian.Plugin {
+  constructor() {
+    super(...arguments);
+    this.generatedContent = "Nothing generated yet";
+  }
   onload() {
     return __async(this, null, function* () {
       (0, import_obsidian.addIcon)("oRPGIcon", oRPG_LOGO_ICON_SVG);
@@ -36019,19 +36261,13 @@ var oRPGBuilderPlugin = class extends import_obsidian.Plugin {
           }
         }
       });
-      this.addSettingTab(new oRPGSettingsTab(this.app, this));
       this.registerDomEvent(document, "click", (evt) => {
         const target = evt.target;
         let eventTargetId = String(target.id);
-        let generatedContent = "Nothing generated yet";
         switch (eventTargetId) {
           case "oRPGGenerateButton": {
-            console.log("settings");
-            console.log(this.settings);
-            generatedContent = builder.generateObject(this.settings);
-            console.log("retunred settings");
-            console.log(this.settings);
-            generatedTextArea.setText(generatedContent);
+            this.generatedContent = builder.generateObject(this.settings);
+            generatedTextarea.setText(this.generatedContent);
             break;
           }
           case "oRPGPopulationSlider": {
@@ -36040,48 +36276,66 @@ var oRPGBuilderPlugin = class extends import_obsidian.Plugin {
             break;
           }
           case "oRPGGenerateName": {
-            let tempRace2;
-            tempRace2 = Races.getRace(this.settings.species, this.settings.race);
-            generatedNameField.setAttr("value", (0, import_fantasy_name_generator7.nameByRace)(tempRace2.nameRace, { gender: "male" }));
+            let tempRace;
+            tempRace = Races.getRace(this.settings.species, this.settings.race);
+            generatedNameField.setAttr("value", (0, import_fantasy_name_generator9.nameByRace)(tempRace.nameRace, { gender: "male" }));
             new import_obsidian.Notice("Generate new Name!");
+            break;
+          }
+          case "oRPGCopyToClipboard": {
+            this.saveToClipboard(this.generatedContent);
+            new import_obsidian.Notice("Copied to Clipboard!");
             break;
           }
           default: {
             switch (eventTargetId) {
               case "openKingdomPaneButton": {
                 this.settings.generatorSelected = KINGDOM;
+                this.setActiveIndicator(eventTargetId);
                 break;
               }
-              case "openAreaPaneButton": {
-                this.settings.generatorSelected = AREA;
+              case "openRegionPaneButton": {
+                this.settings.generatorSelected = REGION;
+                this.setActiveIndicator(eventTargetId);
                 break;
               }
               case "openSettlementPaneButton": {
                 this.settings.generatorSelected = SETTLEMENT;
+                this.setActiveIndicator(eventTargetId);
                 break;
               }
               case "openPoIPaneButton": {
                 this.settings.generatorSelected = PLACEOFINTEREST;
+                this.setActiveIndicator(eventTargetId);
+                break;
+              }
+              case "openUrbanAreaPaneButton": {
+                this.settings.generatorSelected = URBANAREA;
+                this.setActiveIndicator(eventTargetId);
+                break;
+              }
+              case "openOrganizationPaneButton": {
+                this.settings.generatorSelected = ORGANIZATION;
+                this.setActiveIndicator(eventTargetId);
                 break;
               }
               case "openBuildingPaneButton": {
                 this.settings.generatorSelected = BUILDING;
+                this.setActiveIndicator(eventTargetId);
                 break;
               }
               case "openNPCPaneButton": {
                 this.settings.generatorSelected = NPC;
+                this.setActiveIndicator(eventTargetId);
                 break;
               }
               default: {
                 break;
               }
             }
-            this.removeActiveIndicator();
             let objLength = Object.keys(eventTargetId).length;
             if (eventTargetId == "") {
               this.setScreenSettings();
-            } else {
-              this.setActiveIndicator(eventTargetId);
             }
             if (buttonGenerator != null) {
               buttonGenerator.setText("Generate " + this.settings.generatorSelected);
@@ -36089,7 +36343,6 @@ var oRPGBuilderPlugin = class extends import_obsidian.Plugin {
           }
         }
       });
-      this.setScreenSettings();
       this.registerInterval(window.setInterval(() => console.log("setInterval"), 5 * 60 * 1e3));
     });
   }
@@ -36101,16 +36354,24 @@ var oRPGBuilderPlugin = class extends import_obsidian.Plugin {
         this.setActiveIndicator("openKingdomPaneButton");
         break;
       }
-      case AREA: {
-        this.setActiveIndicator("openAreaPaneButton");
+      case REGION: {
+        this.setActiveIndicator("openRegionPaneButton");
         break;
       }
       case SETTLEMENT: {
         this.setActiveIndicator("openSettlementPaneButton");
         break;
       }
+      case URBANAREA: {
+        this.setActiveIndicator("openUrbanAreaPaneButton");
+        break;
+      }
       case PLACEOFINTEREST: {
         this.setActiveIndicator("openPoIPaneButton");
+        break;
+      }
+      case ORGANIZATION: {
+        this.setActiveIndicator("openOrganizationPaneButton");
         break;
       }
       case BUILDING: {
@@ -36123,6 +36384,14 @@ var oRPGBuilderPlugin = class extends import_obsidian.Plugin {
       }
     }
   }
+  saveToClipboard(data) {
+    if (data.length > 0) {
+      navigator.clipboard.writeText(data);
+      return "data copied to clipboard";
+    } else {
+      return "Nothing copied.";
+    }
+  }
   setActiveIndicator(id) {
     this.removeActiveIndicator();
     if (id != "") {
@@ -36133,9 +36402,11 @@ var oRPGBuilderPlugin = class extends import_obsidian.Plugin {
   removeActiveIndicator() {
     return __async(this, null, function* () {
       (0, import_jquery.default)("#openKingdomPaneButton").removeClass("is-active");
-      (0, import_jquery.default)("#openAreaPaneButton").removeClass("is-active");
+      (0, import_jquery.default)("#openRegionPaneButton").removeClass("is-active");
       (0, import_jquery.default)("#openSettlementPaneButton").removeClass("is-active");
+      (0, import_jquery.default)("#openUrbanAreaPaneButton").removeClass("is-active");
       (0, import_jquery.default)("#openPoIPaneButton").removeClass("is-active");
+      (0, import_jquery.default)("#openOrganizationPaneButton").removeClass("is-active");
       (0, import_jquery.default)("#openBuildingPaneButton").removeClass("is-active");
       (0, import_jquery.default)("#openNPCPaneButton").removeClass("is-active");
     });
@@ -36157,14 +36428,6 @@ var oRPGModal = class extends import_obsidian.Modal {
     this.plugin = plugin;
     (0, import_jquery.default)(this.containerEl).find("div.modal").attr("class", "modal oRPGBuilder");
   }
-  saveToClipboard(data) {
-    if (data.length > 0) {
-      navigator.clipboard.writeText(data);
-      return "data copied to clipboard";
-    } else {
-      return "Nothing copied.";
-    }
-  }
   onOpen() {
     const { contentEl } = this;
     oRPGDiv = contentEl.createDiv({ attr: { "id": "oRPGMenuDiv" }, cls: "vertical-tabs-container" });
@@ -36175,9 +36438,11 @@ var oRPGModal = class extends import_obsidian.Modal {
     logoDiv.createEl("span", { text: "Generators" });
     let headergroupItems = headergroup.createDiv({ cls: "vertical-tab-header-group-items" });
     headergroupItems.createDiv({ text: KINGDOM, attr: { "id": "openKingdomPaneButton" }, cls: "vertical-tab-nav-item" });
-    headergroupItems.createDiv({ text: AREA, attr: { "id": "openAreaPaneButton" }, cls: "vertical-tab-nav-item" });
+    headergroupItems.createDiv({ text: REGION, attr: { "id": "openRegionPaneButton" }, cls: "vertical-tab-nav-item" });
     headergroupItems.createDiv({ text: SETTLEMENT, attr: { "id": "openSettlementPaneButton" }, cls: "vertical-tab-nav-item" });
+    headergroupItems.createDiv({ text: URBANAREA, attr: { "id": "openUrbanAreaPaneButton" }, cls: "vertical-tab-nav-item" });
     headergroupItems.createDiv({ text: PLACEOFINTEREST, attr: { "id": "openPoIPaneButton" }, cls: "vertical-tab-nav-item" });
+    headergroupItems.createDiv({ text: ORGANIZATION, attr: { "id": "openOrganizationPaneButton" }, cls: "vertical-tab-nav-item" });
     headergroupItems.createDiv({ text: BUILDING, attr: { "id": "openBuildingPaneButton" }, cls: "vertical-tab-nav-item" });
     headergroupItems.createDiv({ text: NPC, attr: { "id": "openNPCPaneButton" }, cls: "vertical-tab-nav-item" });
     controlsDiv = oRPGDiv.createDiv({ attr: { "id": "oRPGControlsContainerDiv" }, cls: "vertical-tab-content-container" });
@@ -36186,10 +36451,11 @@ var oRPGModal = class extends import_obsidian.Modal {
     buttonGenerator = notesDiv.createEl("button", { text: "Generate", attr: { "id": "oRPGGenerateButton" }, cls: "oRPGFloatRight" });
     contentDiv = oRPGDiv.createDiv({ attr: { "id": "oRPGContentContainerDiv" }, cls: "vertical-tab-content-container" });
     contentDiv.createEl("h3", { text: "Generated Content" });
-    generatedTextArea = contentDiv.createEl("textarea", { attr: { "id": "oRPGGeneratedContent" } });
+    generatedTextarea = contentDiv.createEl("textarea", { attr: { "id": "oRPGGeneratedContent" } });
     let nameDiv = contentDiv.createDiv({ cls: "oRGP-generatedNameDiv" });
     nameDiv.createEl("button", { text: "Random Name", attr: { "id": "oRPGGenerateName" }, cls: "" });
     generatedNameField = nameDiv.createEl("input", { attr: { "id": "oRPGGeneratedName" } });
+    nameDiv.createEl("button", { text: "Copy", attr: { "id": "oRPGCopyToClipboard" }, cls: "oRPGCopy" });
     new import_obsidian.Setting(controlsDiv).setName("Profession").setDesc("Profession of Building").addDropdown((dropdown) => {
       let methods = {};
       let temp = PROFESSIONS_LIST.sort();
@@ -36216,35 +36482,52 @@ var oRPGModal = class extends import_obsidian.Modal {
       this.plugin.settings.kingdomName = value;
       yield this.plugin.saveSettings();
     })));
-    new import_obsidian.Setting(controlsDiv).setName("Area Name").setDesc("Name of Area").addText((text) => text.setPlaceholder("Enter Area name").setValue(this.plugin.settings.areaName).onChange((value) => __async(this, null, function* () {
-      this.plugin.settings.areaName = value;
+    new import_obsidian.Setting(controlsDiv).setName("Region Name").setDesc("Name of Region").addText((text) => text.setPlaceholder("Enter Region name").setValue(this.plugin.settings.regionName).onChange((value) => __async(this, null, function* () {
+      this.plugin.settings.regionName = value;
       yield this.plugin.saveSettings();
     })));
     new import_obsidian.Setting(controlsDiv).setName("Settlement Name").setDesc("Name of Settlement").addText((text) => text.setPlaceholder("Enter Settlement name").setValue(this.plugin.settings.settlement).onChange((value) => __async(this, null, function* () {
       this.plugin.settings.settlement = value;
       yield this.plugin.saveSettings();
     })));
+    new import_obsidian.Setting(controlsDiv).setName("Ubran Area Name").setDesc("Name of Ubran Area").addText((text) => text.setPlaceholder("Enter Ubran Area name").setValue(this.plugin.settings.urbanArea).onChange((value) => __async(this, null, function* () {
+      this.plugin.settings.urbanArea = value;
+      yield this.plugin.saveSettings();
+    })));
     let populationsDiv = controlsDiv.createDiv({ attr: { "id": "oRPGPopulations" }, cls: "setting-item" }).createEl("div", { cls: "setting-item-info" });
     populationsDiv.createEl("div", { cls: "setting-item-name", text: "Population Size" });
     let popSizeDiv = populationsDiv.createDiv({ attr: { id: "oRPGPopulationsRadio" }, cls: "setting-item-description" });
     let radioButtons = popSizeDiv.createDiv({ cls: "oRPGPopulationsRadioDiv" });
-    radioButtons.innerHTML = "<label class='oRPG-setting-label'><input type='radio' name='disp' id='Hamlet' value='10' class='oRPG-pop-radio' checked><div class='oRPG-setting-radio-label'>Hamlet (10-99)</div></label>		<label class='oRPG-setting-label'><input type='radio' name='disp' id='Village' value='100' class='oRPG-pop-radio' checked><div class='oRPG-setting-radio-label'>Village (100-999)</div></label>		<label class='oRPG-setting-label'><input type='radio' name='disp' id='SmallTown' value='1000' class='oRPG-pop-radio' checked><div class='oRPG-setting-radio-label'>Small Town (1000-4999)</div></label>		<label class='oRPG-setting-label'><input type='radio' id='LargeTown' name='disp' value='5000' class='oRPG-pop-radio' checked><div class='oRPG-setting-radio-label'>Large Town (5,000-14,999)</div></label>		<label class='oRPG-setting-label'><input type='radio' id='City' name='disp' value='15000' class='oRPG-pop-radio' checked><div class='oRPG-setting-radio-label'>City (15,000 - 49,000)</div></label>		<label class='oRPG-setting-label'><input type='radio' id='Metropolis name='disp' value='50000' class='oRPG-pop-radio'><div class='oRPG-setting-radio-label'>Metropolis (50,000+)</div></label> ";
+    radioButtons.innerHTML = "<label class='oRPG-setting-label'><input type='radio' name='disp' id='Hamlet' value='10' class='oRPG-pop-radio'><div class='oRPG-setting-radio-label'>Hamlet (10-99)</div></label>		<label class='oRPG-setting-label'><input type='radio' name='disp' id='Village' value='100' class='oRPG-pop-radio' ><div class='oRPG-setting-radio-label'>Village (100-999)</div></label>		<label class='oRPG-setting-label'><input type='radio' name='disp' id='SmallTown' value='1000' class='oRPG-pop-radio' ><div class='oRPG-setting-radio-label'>Small Town (1000-4999)</div></label>		<label class='oRPG-setting-label'><input type='radio' id='LargeTown' name='disp' value='5000' class='oRPG-pop-radio' ><div class='oRPG-setting-radio-label'>Large Town (5,000-14,999)</div></label>		<label class='oRPG-setting-label'><input type='radio' id='City' name='disp' value='15000' class='oRPG-pop-radio' ><div class='oRPG-setting-radio-label'>City (15,000 - 49,000)</div></label>		<label class='oRPG-setting-label'><input type='radio' id='Metropolis' name='disp' value='50000' class='oRPG-pop-radio'><div class='oRPG-setting-radio-label'>Metropolis (50,000+)</div></label> ";
     let popSizeInputDiv = popSizeDiv.createDiv({ attr: { id: "oRPGPopulationsRadioInput" } });
     popSizeInputDiv.createDiv().innerHTML = "<input id='oRPGPopulationInput' type='text' />";
     let populationValueDiv = popSizeInputDiv.find("#oRPGPopulationInput");
     popSizeInputDiv.createDiv().innerHTML = "<input id='oRPGPopulationSlider' class='slider' type='range' min='10' max='1000' />";
+    populationSlider = populationsDiv.find("#oRPGPopulationSlider");
+    populationSlider.setAttr("value", this.plugin.settings.populationValue);
     let idName = this.plugin.settings.settlementType;
-    idName.replace(" ", "");
-    radioButtons.find("input:checkbox").setAttr("checked", false);
-    radioButtons.find("#" + idName).setAttr("checked", true);
-    this.populationInputChange(this.plugin.settings.populationRange);
+    if (idName == "" || idName.toUpperCase() == "RANDOM") {
+      idName = randomSettlementType();
+    }
+    let tempId = idName.replace(" ", "");
+    radioButtons.find("#" + tempId).setAttr("checked", true);
     this.plugin.registerDomEvent(radioButtons, "change", (evt) => {
       const target = evt.target;
       const popSliderValue = target.value;
       let range = +popSliderValue;
       this.populationInputChange(range);
+      this.clearPopulationSelections(radioButtons);
+      let tempId2 = target.id;
+      radioButtons.find("#" + tempId2).setAttr("checked", true);
       (0, import_jquery.default)("#oRPGPopulationInput").val(popSliderValue);
       (0, import_jquery.default)("#oRPGPopulationSlider").val(popSliderValue);
+      radioButtons.find("#" + tempId2).setAttr("checked", true);
+    });
+    this.plugin.registerDomEvent(populationSlider, "change", (evt) => {
+      const target = evt.target;
+      const popSliderValue = target.value;
+      let range = +popSliderValue;
+      this.plugin.settings.populationValue = range;
     });
     this.plugin.registerDomEvent(populationValueDiv, "keydown", (evt) => {
       const target = evt.target;
@@ -36253,6 +36536,14 @@ var oRPGModal = class extends import_obsidian.Modal {
       this.plugin.saveSettings();
     });
     this.plugin.setScreenSettings();
+  }
+  clearPopulationSelections(radioButtons) {
+    radioButtons.find("#Hamlet").setAttr("checked", false);
+    radioButtons.find("#Village").setAttr("checked", false);
+    radioButtons.find("#SmallTown").setAttr("checked", false);
+    radioButtons.find("#LargeTown").setAttr("checked", false);
+    radioButtons.find("#City").setAttr("checked", false);
+    radioButtons.find("#Metropolis").setAttr("checked", false);
   }
   populationInputChange(range) {
     switch (range) {
@@ -36304,23 +36595,13 @@ var oRPGModal = class extends import_obsidian.Modal {
         this.plugin.settings.populationRange = 5e4;
         break;
       }
+      default: {
+      }
     }
   }
   onClose() {
     const { contentEl } = this;
     contentEl.empty();
-  }
-};
-var oRPGSettingsTab = class extends import_obsidian.PluginSettingTab {
-  constructor(app, plugin) {
-    super(app, plugin);
-    this.plugin = plugin;
-  }
-  display() {
-    const { containerEl } = this;
-    containerEl.empty();
-    containerEl.createEl("h2", { text: "oRPG Builder." });
-    containerEl.createEl("p", { text: "Settings are controlled on the generator popup window." });
   }
 };
 /*!
