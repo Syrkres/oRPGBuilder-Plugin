@@ -1,6 +1,10 @@
 # oRPGBuilder-Plugin
 Obsidian RPG Builder plugin
+# CURRENTLY BROKEN because of CALLOUT Updates - WIP.
+
 ![oRPG Builder](https://miniworld.com/obsidian/oRPGBuilder.jpg)
+
+
 
 ## Suggested Plugins
 The code expects  certain plugins to properly format and such.
