@@ -28027,10 +28027,12 @@ rule_set["ARTISANNAME"] = [
   "The Well Oiled Canvas"
 ];
 rule_set["BLACKSMITHNAME"] = [
+  "MERCHANTNAME",
   "The METALLOW Anvil",
   "The METALLOW Armor"
 ];
 rule_set["BUTCHERNAME"] = [
+  "MERCHANTNAME",
   "The DOMESTICANIMAL Cutters",
   "The DOMESTICANIMAL Butcher",
   "The Bloody DOMESTICANIMAL"
@@ -28075,6 +28077,7 @@ rule_set["CLERGYNAME"] = [
   "[The ][High ]WORSHIP[ of the TRANQUILPLACES]"
 ];
 rule_set["CARPENTERNAME"] = [
+  "MERCHANTNAME",
   "[The ]WOOD FURNITURE",
   "[The ]Long [WOOD ]FURNITURE",
   "[The ]Fine [WOOD ]FURNITURE"
@@ -28083,9 +28086,11 @@ rule_set["CONSTRUCTIONNAME"] = [
   "[The ][WOOD ]Workshop"
 ];
 rule_set["CRAFTSMANNAME"] = [
+  "MERCHANTNAME",
   "[The ][WOOD ]Workshop"
 ];
 rule_set["BLACKMARKET"] = [
+  "MERCHANTNAME",
   "Alley",
   "Warehouse"
 ];
@@ -28096,23 +28101,31 @@ rule_set["ELECTEDOFFICIALNAME"] = [
   "The Office"
 ];
 rule_set["ENTERTAINERNAME"] = [
+  "MERCHANTNAME",
   "The [DARKCOLOR ]Theatre",
   "The [DARKCOLOR ][Open ]Stage"
 ];
 rule_set["COOKNAME"] = [
+  "MERCHANTNAME",
   "The DOMESTICANIMAL Meat Processors",
   "The DOMESTICANIMAL Butcher",
   "The Bloody DOMESTICANIMAL",
   "The Cooked DOMESTICANIMAL"
 ];
 rule_set["GARMENTTRADENAME"] = [
+  "MERCHANTNAME",
   "[The ]Warehouse",
   "The Garment Shop"
 ];
 rule_set["GUARDNAME"] = [
   "The [Old ]Barracks"
 ];
+rule_set["QUALITYCONDITION"] = [
+  "rugged",
+  "fancy"
+];
 rule_set["HOSTELERSNAME"] = [
+  "MERCHANTNAME",
   "The [COLOR]  CREATURES",
   "The [COLOR] [DESCRIPTORS] JEWELERYTYPES",
   "The [COLOR]  MONSTERHUMANOIDS [CLAWTEETH]",
@@ -28127,16 +28140,239 @@ rule_set["HOSTELERSNAME"] = [
   "The METAL DRINKS [TAVERNENDINGS]",
   "The WOOD  DRINKS [TAVERNENDINGS]"
 ];
-rule_set["KNIGHTNAME"] = [];
-rule_set["LABORERNAME"] = [];
-rule_set["MERCNAME"] = [];
-rule_set["MERCHANTNAME"] = [];
-rule_set["NOBLENAME"] = [];
-rule_set["PROFESSIONALSPECIALTIESNAME"] = [];
-rule_set["SAGENAME"] = [];
-rule_set["SPECIALTYSERVICENAME"] = [];
+rule_set["KNIGHTNAME"] = [
+  "MERCHANTNAME",
+  "The[ COLOR] Barracks",
+  "The[ COLOR] House"
+];
+rule_set["LABORERNAME"] = [
+  "MERCHANTNAME",
+  "The[ COLOR] Warehouse"
+];
+rule_set["LAUNDRESSNAME"] = [
+  "MERCHANTNAME",
+  "The[ QUALITYCONDITION]  Shop"
+];
+rule_set["LIBRARIANNAME"] = [
+  "MERCHANTNAME",
+  "The[ QUALITYCONDITION]  Shop",
+  "The[ BOOKTYPE1] Shop",
+  "The[ BOOKTYPE2] Shop",
+  "The[ BOOKTYPE1] House",
+  "The[ BOOKTYPE2] House"
+];
+rule_set["LOCKSMITHNAME"] = [
+  "MERCHANTNAME",
+  "The[ QUALITYCONDITION] Lock"
+];
+rule_set["MAGICALARTISANNAME"] = [
+  "MERCHANTNAME",
+  "The[ QUALITYCONDITION] Shop"
+];
+rule_set["MAGICALTUTORNAME"] = [
+  "MERCHANTNAME",
+  "The[ QUALITYCONDITION] Shop"
+];
+rule_set["MERCNAME"] = [
+  "The[ QUALITYCONDITION] shop"
+];
+rule_set["MAIDSERVANTNAME"] = [
+  "The[ QUALITYCONDITION] shop"
+];
+rule_set["MERCHANTNAME"] = [
+  "The Sellers House",
+  "The Shop around the corner",
+  "The[ QUALITYCONDITION] shop"
+];
+rule_set["MASONNAME"] = [
+  "MERCHANTNAME"
+];
+rule_set["MAYORNAME"] = [
+  "MERCHANTNAME"
+];
+rule_set["MEATBUTCHERNAME"] = [
+  "MERCHANTNAME"
+];
+rule_set["MERCERNAME"] = [
+  "MERCHANTNAME"
+];
+rule_set["MESSENGERNAME"] = [
+  "MERCHANTNAME"
+];
+rule_set["MILLERNAME"] = [
+  "MERCHANTNAME"
+];
+rule_set["MISTRALNAME"] = [
+  "MERCHANTNAME"
+];
+rule_set["MISSIONARYNAME"] = [
+  "MERCHANTNAME"
+];
+rule_set["MONEYCHANGERNAME"] = [
+  "MERCHANTNAME"
+];
+rule_set["MOUNTAINMANNAME"] = [
+  "MERCHANTNAME"
+];
+rule_set["NOBLENAME"] = [
+  "House of Vegora",
+  "Delrose Villa",
+  "Walton Manor"
+];
+rule_set["OILTRADERNAME"] = [
+  "[The ]Oily Barrel"
+];
+rule_set["PAINTERARTNAME"] = [
+  "The[ COLOR] Canvas"
+];
+rule_set["PAINTERBUILDINGNAME"] = [
+  "The[ COLOR] Wall Painter"
+];
+rule_set["PASTRYMAKERNAME"] = [
+  "The Cook",
+  "Pastry Shop"
+];
+rule_set["PAWNBROKERNAME"] = [
+  "We Trade it"
+];
+rule_set["PHYSICCHIRURGEONNAME"] = [
+  "Mental Surgery"
+];
+rule_set["PIRATENAME"] = [
+  "Lost Galleon"
+];
+rule_set["PLASTERERNAME"] = [
+  "The Stone Wall",
+  "Mortar Masters"
+];
+rule_set["PORTERNAME"] = [
+  "We carry Everything"
+];
+rule_set["POTTERNAME"] = [
+  "The Pottery Barn"
+];
+rule_set["PREACHERNAME"] = [
+  "Sandbox WORSHIP"
+];
+rule_set["PRIESTNAME"] = [
+  "Place of worship",
+  "WORSHIP of Prayers"
+];
+rule_set["PRINCENAME"] = [
+  "Castle"
+];
+rule_set["PLACESOFLEARNING"] = [
+  "Library",
+  "School",
+  "College",
+  "Academy",
+  "Conservatory",
+  "Lyceum",
+  "Museum",
+  "Seminary",
+  "University",
+  "Institute",
+  "Campus"
+];
+rule_set["PROFESSORNAME"] = [
+  "PLACESOFLEARNING of learning",
+  "PLACESOFLEARNING of Teaching"
+];
+rule_set["PURSEMAKERNAME"] = [
+  "The Handy Holder",
+  "Purse of Holding"
+];
+rule_set["ROOFERNAME"] = [
+  "We Top it",
+  "Roofs are us",
+  "Roof Carpenter"
+];
+rule_set["ROPEMAKERNAME"] = [
+  "Roper Shop"
+];
+rule_set["RUGMAKERNAME"] = [
+  "Under your feet",
+  "Rug Maker"
+];
+rule_set["SADDLERNAME"] = [
+  "Saddler"
+];
+rule_set["PROFESSIONALSPECIALTIESNAME"] = [
+  "Specialist"
+];
+rule_set["SAGENAME"] = [
+  "PLACESOFLEARNING Tower"
+];
+rule_set["SAILMAKERNAME"] = [
+  "Linen Warf",
+  "Warfs Sails",
+  "The Outrigger"
+];
+rule_set["SAILORNAME"] = [
+  "Dockside",
+  "The Outrigger"
+];
+rule_set["SCOUTNAME"] = [
+  "Ranger"
+];
+rule_set["SCRIBENAME"] = [
+  "Town Scribe"
+];
+rule_set["SCULPTORNAME"] = [
+  "Stone Carvings"
+];
+rule_set["SELLSPELLNAME"] = [
+  "You pay, we cast"
+];
+rule_set["SHIPBUILDERNAME"] = [
+  "Shipwright warehouse"
+];
+rule_set["SHOEMAKERNAME"] = [
+  "The Foots shop"
+];
+rule_set["SOAPMAKERNAME"] = [
+  "Make it clean"
+];
+rule_set["SPICERMAKERNAME"] = [
+  "Exoitic Spices"
+];
+rule_set["SQUIRENAME"] = [];
+rule_set["STABLERNAME"] = [];
+rule_set["TAILORNAME"] = [];
+rule_set["TANNERNAME"] = [];
+rule_set["TAVERNERNAME"] = [];
+rule_set["TEAMSTERNAME"] = [];
+rule_set["THIEFNAME"] = [];
+rule_set["THUGNAME"] = [];
+rule_set["TINKERNAME"] = [];
+rule_set["TOWNJUSTICENAME"] = [];
 rule_set["TRACKERNAME"] = [];
+rule_set["TROUBADOURSNAME"] = [];
+rule_set["TUTORNAME"] = [];
+rule_set["USEDGARMENTTRADERNAME"] = [];
+rule_set["VISCOUNTNAME"] = [];
+rule_set["SPECIALTYSERVICENAME"] = [];
+rule_set["WAGONMAKERNAME"] = [];
+rule_set["WATERCARRIERNAME"] = [];
+rule_set["WEAPONDEALERNAME"] = [];
+rule_set["WEAPONSMITHNAME"] = [];
+rule_set["WEAVERNAME"] = [];
+rule_set["WHEELWRIGHTNAME"] = [];
+rule_set["WINESELLERNAME"] = [];
+rule_set["WOODCARVERNAME"] = [];
+rule_set["WOODSELLERNAME"] = [];
 rule_set["FARMERNAME"] = [];
+rule_set["FARMERCABBAGENAME"] = [];
+rule_set["FARMERCATTLEHERDERNAME"] = [];
+rule_set["FARMERCORNNAME"] = [];
+rule_set["FARMERCOWHERDERNAME"] = [];
+rule_set["FARMERGOATHERDERNAME"] = [];
+rule_set["FARMERPIGHERDERNAME"] = [];
+rule_set["FARMERPOTATONAME"] = [];
+rule_set["FARMERSHEEPHERDERNAME"] = [];
+rule_set["FARMERWHEATNAME"] = [];
+rule_set["FARMERSPECIALNAME"] = [];
+rule_set["FARMERFISHMONGERNAME"] = [];
 rule_set["BUILDINGHEIGHT"] = [
   "tall",
   "two story",
@@ -28525,7 +28761,60 @@ rule_set["CLIMATE"] = [
   "Temperate",
   "Tropical"
 ];
-rule_set["ORGNAIZATIONSTRUCTURE"] = [
+rule_set["ORGANIZATIONNAME"] = [
+  "[ORGANIZATIONNAMEPREFIX ]Woodland",
+  "[ORGANIZATIONNAMEPREFIX ]Elder",
+  "[ORGANIZATIONNAMEPREFIX ]Storm",
+  "[ORGANIZATIONNAMEPREFIX ]Lord",
+  "[ORGANIZATIONNAMEPREFIX ]Lady",
+  "[ORGANIZATIONNAMEPREFIX ]Sand",
+  "[ORGANIZATIONNAMEPREFIX ]Fire",
+  "[ORGANIZATIONNAMEPREFIX ]Hallow",
+  "[ORGANIZATIONNAMEPREFIX ]Land's",
+  "[ORGANIZATIONNAMEPREFIX ]Shell",
+  "[ORGANIZATIONNAMEPREFIX ]Foundry",
+  "[ORGANIZATIONNAMEPREFIX ]Florist",
+  "[ORGANIZATIONNAMEPREFIX ]Birchstone",
+  "[ORGANIZATIONNAMEPREFIX ]Mountain",
+  "[ORGANIZATIONNAMEPREFIX ]Hammer",
+  "[ORGANIZATIONNAMEPREFIX ]Crusaders"
+];
+rule_set["ORGANIZATIONNAMEPREFIX"] = [
+  "Dusk",
+  "Azure",
+  "Crimson",
+  "Emerald",
+  "Silver",
+  "Mystical"
+];
+rule_set["ORGANIZATIONTYPE"] = [
+  "Alliance",
+  "Brotherhood",
+  "Church",
+  "Circle",
+  "Clan",
+  "Club",
+  "Company",
+  "Congregation",
+  "Contingent",
+  "Council",
+  "Court",
+  "Coven",
+  "Cult",
+  "Enclave",
+  "Faction",
+  "Group",
+  "Guard",
+  "Guild",
+  "Institution",
+  "League",
+  "Organization",
+  "Secret Society",
+  "Society",
+  "Syndicate",
+  "Union"
+];
+rule_set["ORGANIZATIONSTRUCTURE"] = [
   "Hierarchical",
   "Flat",
   "Functional",
@@ -35170,7 +35459,7 @@ owner: {{owner.name}}
 services:   {{#services}}{{name}},{{/services}}
 ---
 > [!oRPG-Layout] 
-> # {{name}}
+> # {{merchantType}}
 > **Structure:** {{type}}
 > **Resides In** [[{{kingdomName}}]], [[{{settlementName}}]]
 >  **Owner:** [[{{owner.name}}]]
@@ -35306,12 +35595,11 @@ ruler: {{ruler}}
 trade: {{trades}}
 ---
 > [!oRPG-Layout] 
-> # {{kingdomName}}
+> # Kingdom
 > ![[emptyGrid.jpg]]
 
 
 # {{kingdomName}}
-#### Kingdom
 |Kingdom||
 |:---|:---|
  |**Government:** |{{government}}|
@@ -35420,13 +35708,12 @@ ruler: {{ruler}}
 trade: {{trades}}
 ---
 > [!oRPG-Layout] 
-> # {{region}}
+> # Region
 > ![[emptyGrid.jpg]]
 # {{regionName}}
-#### region
 |||
 |:---|:---|
- |**Kingdom/Region:** |{{kingdomName}}|
+ |**Kingdom:** |{{kingdomName}}|
  |**Terrain:** |{{terrain}}|
 | **Seasons:**|Spring, Summer, Fall, Winter|
 |  **Races:** |{{races}}|
@@ -35553,12 +35840,11 @@ ruler: {{ruler}}
 trade: {{trades}}
 ---
 > [!oRPG-Layout] 
-> # {{settlementName}}
+> # {{settlementType}}
 > ![[emptyGrid.jpg]]
 
 
 # {{settlementName}}
-#### {{settlementType}}
 |City/Town/Village||
 |:---|:---|
 |  **Ruler/Leader:**|{{ruler}}|
@@ -35707,19 +35993,18 @@ var urbanAreaTemplate = `---
 cssclass: oRPGPage
 fileType: urbanArea
 settlementType: {{settlementType}}
+urbanArea: {{urbanAreaType}}
 kingdom: {{kingdomName}}
 region: {{regionName}}
 settlement: {{settlementName}}
-urbanArea: {{urbanArea}}
 population: {{population}}
 ruler: {{ruler}}
 trade: {{trades}}
 ---
 > [!oRPG-Layout] 
-> # {{region}}
+> # {{urbanAreaType}}
 > ![[emptyGrid.jpg]]
 # {{regionName}}
-#### region
 |||
 |:---|:---|
  |**Kingdom/Region:** |{{kingdomName}}|
@@ -35779,6 +36064,7 @@ var UrbanArea = function() {
     regionName: "some region",
     settlementName: "Sample settlement",
     settlementType: "Kingdom",
+    urbanAreaType: "District",
     government: "Government Type",
     ruler: "Some Ruler",
     culture: "CULTURE",
@@ -35796,6 +36082,7 @@ var UrbanArea = function() {
   };
   function generateUrbanArea(urbanAreaOptions) {
     var rulGen2 = rulGen_default;
+    urbanAreaObject.urbanAreaType = rulGen2.generateRul("URBANAREA", RULSET);
     urbanAreaObject.government = randomElement(RULSET["GOVERNMENTTYPES"]);
     let tempRace;
     tempRace = Races.getRace(urbanAreaOptions.species, urbanAreaOptions.race.name);
@@ -35859,10 +36146,9 @@ ruler: {{ruler}}
 trade: {{trades}}
 ---
 > [!oRPG-Layout] 
-> # {{poiName}}
+> # Place of Interest
 > ![[emptyGrid.jpg]]
 # {{regionName}}
-#### Place of Interest
 |||
 |:---|:---|
 |**Kingdom/Region:** |{{kingdomName}}|
@@ -35960,7 +36246,7 @@ var PlaceOfInterest = function() {
 var organizationTemplate = `---
 cssclass: oRPGPage
 fileType: organization
-organizationType: Guild
+organizationType: {{organizationType}}
 organization: {{organizationName}}
 kingdom: {{kingdomName}}
 region: {{regionName}}
@@ -35973,7 +36259,7 @@ structure:
 hierarchy: 
 ---
 > [!oRPG-Layout] 
-> #  {{organizationName}}
+> #  {{organizationType}}
 > ![[factionLogo01.png]]
 > **Headquarters** {{kingdomName}},{{regionName}}, {{settlementName}}
 >  **Leaders:** [[{{ruler}}]]
@@ -35992,9 +36278,8 @@ hierarchy:
 > |Power Die | Bad |
 
 
-# Cult of the Dragon
-#### Guild
-|Kingdom||
+# {{organizationName}}
+|Organization||
 |:---|:---|
  |**Orgnaization/Structure:** |Theocracy|
 | **Rulers/Leader:**|Istolor|
@@ -36068,6 +36353,7 @@ console.log("Loading region library");
 var Organization = function() {
   var organizationObject = {
     organizationName: "Sample Cult",
+    organizationType: "Guild",
     gonernement: "Theocracy",
     regionName: "Sample region",
     kingdomName: "Kingdom Name",
@@ -36105,6 +36391,12 @@ var Organization = function() {
       races.push(organizationOptions.secondaryRace);
     }
     organizationObject.races = races;
+    organizationObject.organizationType = rulGen2.generateRul("ORGANIZATIONTYPE", RULSET);
+    if (Math.random() > 0.5) {
+      organizationObject.organizationName = rulGen2.generateRul("ORGANIZATIONNAME", RULSET) + " " + organizationObject.organizationType;
+    } else {
+      organizationObject.organizationName = organizationObject.organizationType + " of " + rulGen2.generateRul("ORGANIZATIONNAME", RULSET);
+    }
     if (organizationOptions.kingdomName == null || organizationOptions.kingdomName.toUpperCase() == "RANDOM") {
       organizationObject.kingdomName = getKingdomName(tempRace.nameRace);
     }
@@ -36129,6 +36421,7 @@ var Organization = function() {
     organizationObject.socialAlignment = rulGen2.generateRul("SOCIALALIGNMENT", RULSET);
     organizationObject.terrain = rulGen2.generateRul("TERRAIN", RULSET);
     organizationObject.template = organizationTemplate;
+    console.log(organizationObject);
     return organizationObject;
   }
   return {
