@@ -4,6 +4,15 @@ Obsidian RPG Builder plugin
 ![oRPG Builder](https://miniworld.com/obsidian/oRPGBuilder.jpg)
 
 
+## Generators for
+- Kingdom 
+- Region
+- Settlement
+- Urban Area
+- Place of Interest
+- Business
+- NPC
+
 
 ## Suggested Plugins
 The code expects  certain plugins to properly format and such.
