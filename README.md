@@ -9,9 +9,9 @@ Obsidian RPG Builder plugin
 ## Suggested Plugins
 The code expects  certain plugins to properly format and such.
 - [DataView](https://github.com/blacksmithgu/obsidian-dataview) for dynamic table lists, NPC's etc
-- [Admonitions](https://github.com/valentine195/obsidian-admonition)  used for proper display, extra css included in styles.css
 - [Markdown Attributes](https://github.com/valentine195/obsidian-markdown-attributes)  used for blocks
 - Callouts (Obsidian Core plugin).
+- - ~~[Admonitions](https://github.com/valentine195/obsidian-admonition)~~ No longer required with Callouts
 
 ### Admonition Setting
 The following admonition settings are required for proper layout named "oRPG-Layout".
