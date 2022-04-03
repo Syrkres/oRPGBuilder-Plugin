@@ -24,3 +24,8 @@ The code expects  certain plugins to properly format and such.
 ### Working on improving
 - Business/Merchant naming
 - Missing Rules (especially for name generation).
+
+### Looking to do:
+- Externalize templates
+- NPC Formatting 
+- Random Rules (allow users to generate text from the rules)
