@@ -28336,43 +28336,119 @@ rule_set["SOAPMAKERNAME"] = [
 rule_set["SPICERMAKERNAME"] = [
   "Exoitic Spices"
 ];
-rule_set["SQUIRENAME"] = [];
-rule_set["STABLERNAME"] = [];
-rule_set["TAILORNAME"] = [];
-rule_set["TANNERNAME"] = [];
-rule_set["TAVERNERNAME"] = [];
-rule_set["TEAMSTERNAME"] = [];
-rule_set["THIEFNAME"] = [];
-rule_set["THUGNAME"] = [];
-rule_set["TINKERNAME"] = [];
-rule_set["TOWNJUSTICENAME"] = [];
-rule_set["TRACKERNAME"] = [];
-rule_set["TROUBADOURSNAME"] = [];
-rule_set["TUTORNAME"] = [];
-rule_set["USEDGARMENTTRADERNAME"] = [];
-rule_set["VISCOUNTNAME"] = [];
-rule_set["SPECIALTYSERVICENAME"] = [];
-rule_set["WAGONMAKERNAME"] = [];
-rule_set["WATERCARRIERNAME"] = [];
+rule_set["SQUIRENAME"] = [
+  "The Squires Roost"
+];
+rule_set["STABLERNAME"] = [
+  "Horses Correl"
+];
+rule_set["TAILORNAME"] = [
+  "The [COLOR] CLOTH Seemstress"
+];
+rule_set["TANNERNAME"] = [
+  "Tanners Shop"
+];
+rule_set["TAVERNERNAME"] = [
+  "HOSTELERSNAME"
+];
+rule_set["TEAMSTERNAME"] = [
+  "Works Warehouse"
+];
+rule_set["THIEFNAME"] = [
+  "MERCHANTNAME",
+  "Alley",
+  "Warehouse"
+];
+rule_set["THUGNAME"] = [
+  "MERCHANTNAME",
+  "Alley",
+  "Warehouse"
+];
+rule_set["TINKERNAME"] = [
+  "The Tinkerers Workshop"
+];
+rule_set["TOWNJUSTICENAME"] = [
+  "Citys Center"
+];
+rule_set["TRACKERNAME"] = [
+  "The Mountain Men"
+];
+rule_set["TROUBADOURSNAME"] = [
+  "The Music Hall"
+];
+rule_set["TUTORNAME"] = [
+  "PLACESOFLEARNING Tower"
+];
+rule_set["USEDGARMENTTRADERNAME"] = [
+  "The [COLOR] CLOTH Seemstress"
+];
+rule_set["VISCOUNTNAME"] = [
+  "The Viscount Keep"
+];
+rule_set["SPECIALTYSERVICENAME"] = [
+  "Specialty Shop"
+];
+rule_set["WAGONMAKERNAME"] = [
+  "Wagon Maker"
+];
+rule_set["WATERCARRIERNAME"] = [
+  "Water Porter"
+];
 rule_set["WEAPONDEALERNAME"] = [];
-rule_set["WEAPONSMITHNAME"] = [];
-rule_set["WEAVERNAME"] = [];
-rule_set["WHEELWRIGHTNAME"] = [];
-rule_set["WINESELLERNAME"] = [];
-rule_set["WOODCARVERNAME"] = [];
-rule_set["WOODSELLERNAME"] = [];
-rule_set["FARMERNAME"] = [];
-rule_set["FARMERCABBAGENAME"] = [];
-rule_set["FARMERCATTLEHERDERNAME"] = [];
-rule_set["FARMERCORNNAME"] = [];
-rule_set["FARMERCOWHERDERNAME"] = [];
-rule_set["FARMERGOATHERDERNAME"] = [];
-rule_set["FARMERPIGHERDERNAME"] = [];
-rule_set["FARMERPOTATONAME"] = [];
-rule_set["FARMERSHEEPHERDERNAME"] = [];
-rule_set["FARMERWHEATNAME"] = [];
-rule_set["FARMERSPECIALNAME"] = [];
-rule_set["FARMERFISHMONGERNAME"] = [];
+rule_set["WEAPONSMITHNAME"] = [
+  "[The] WEIGHT BLACKSSMITHITEMS"
+];
+rule_set["WEAVERNAME"] = [
+  "The [COLOR] CLOTH Weaver"
+];
+rule_set["WHEELWRIGHTNAME"] = [
+  "Wheelwright"
+];
+rule_set["WINESELLERNAME"] = [
+  "Corked Grapes"
+];
+rule_set["WOODCARVERNAME"] = [
+  "Make if from Wood"
+];
+rule_set["WOODSELLERNAME"] = [
+  "We have things to burn"
+];
+rule_set["FARMERNAME"] = [
+  "The [COLOR] ANIMAL Farm"
+];
+rule_set["FARMERCABBAGENAME"] = [
+  "Cabbage Patch Kids"
+];
+rule_set["FARMERCATTLEHERDERNAME"] = [
+  "The [COLOR] ANIMAL herder"
+];
+rule_set["FARMERCORNNAME"] = [
+  "Corn Farmer"
+];
+rule_set["FARMERCOWHERDERNAME"] = [
+  "Cow Herder"
+];
+rule_set["FARMERGOATHERDERNAME"] = [
+  "Goat Herder"
+];
+rule_set["FARMERPIGHERDERNAME"] = [
+  "Pig Herder"
+];
+rule_set["FARMERPOTATONAME"] = [
+  "Potato Farmer"
+];
+rule_set["FARMERSHEEPHERDERNAME"] = [
+  "Sheep Herder"
+];
+rule_set["FARMERWHEATNAME"] = [
+  "Wheat Farmer"
+];
+rule_set["FARMERSPECIALNAME"] = [
+  "Special Farmer"
+];
+rule_set["FARMERFISHMONGERNAME"] = [
+  "Fish Farmer"
+];
 rule_set["BUILDINGHEIGHT"] = [
   "tall",
   "two story",
@@ -28812,7 +28888,8 @@ rule_set["ORGANIZATIONTYPE"] = [
   "Secret Society",
   "Society",
   "Syndicate",
-  "Union"
+  "Union",
+  "Knighthood"
 ];
 rule_set["ORGANIZATIONSTRUCTURE"] = [
   "Hierarchical",
@@ -35591,7 +35668,9 @@ var kingdomTemplate = `---
 cssclass: oRPGPage
 fileType: kingdom
 kingdom: {{kingdomName}}
+government: {{government}}
 ruler: {{ruler}}
+capital: {{capital}}
 trade: {{trades}}
 ---
 > [!oRPG-Layout] 
@@ -35602,8 +35681,9 @@ trade: {{trades}}
 # {{kingdomName}}
 |Kingdom||
 |:---|:---|
- |**Government:** |{{government}}|
+ |**Government:** |[[{{government}}]]|
 | **Rulers:**|{{ruler}}|
+| **Capital:**| {{capital}} |
 |  **Cultural Archetype:** |{{culture}}|
 |  **Primary Races:** |{{race.name}}|
 |  **Secondary Races:** |{{secondaryRace}}|
@@ -35653,6 +35733,7 @@ var Kingdom = function() {
     government: "Government Type",
     terrain: "Sample",
     ruler: "Some Ruler",
+    capital: "Some city",
     culture: "CULTURE",
     race: {},
     secondaryRace: "SECONDARY RACE",
@@ -35682,6 +35763,11 @@ var Kingdom = function() {
     }
     let rulerName = (0, import_fantasy_name_generator3.nameByRace)(tempRace.nameRace, { gender: "male" });
     kingdomObject.ruler = rulerName;
+    if (kingdomOptions.settlement == null || kingdomOptions.settlement.toUpperCase() == "RANDOM") {
+      kingdomObject.capital = getLocationName();
+    } else {
+      kingdomObject.capital = kingdomOptions.settlement;
+    }
     kingdomObject.languages = ["Common"];
     kingdomObject.technology = randomElement(RULSET["TECHNOLOGY"]);
     kingdomObject.terrain = rulGen2.generateRul("TERRAIN", RULSET);
