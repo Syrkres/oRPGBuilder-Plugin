@@ -26655,22 +26655,36 @@ rule_set["USELESS"] = [
   "rocks"
 ];
 rule_set["SMALLVALUEProfessional Specialties"] = [
-  "[COLOR] SOFTMATERIAL",
-  "[COLOR] CLOTH",
+  "[COLOR] SOFTMATERIAL Dress",
+  "[COLOR] CLOTH Bolt",
   "METAL scissors",
   "[COLOR] CLOTH pouch containing FOODSTUFF",
   "[COLOR] CLOTH pouch containing [WOOD wood] buttons",
-  "fine METALLOW pin",
+  "Fine METALLOW pin",
   "[[Small] CLOTH SACKTYPE with] VALUECARRIED"
 ];
 rule_set["SMALLVALUEGarment Trade"] = [
-  "[COLOR] SOFTMATERIAL",
-  "[COLOR] CLOTH",
+  "[COLOR] SOFTMATERIAL [CLOTHES]",
+  "[COLOR] CLOTH CLOTHES",
   "METAL scissors",
-  "[COLOR] CLOTH pouch containing FOODSTUFF",
-  "[COLOR] CLOTH pouch containing [WOOD wood] buttons",
-  "fine METALLOW pin",
-  "[[Small] CLOTH SACKTYPE with] VALUECARRIED"
+  "[COLOR] CLOTH pouch",
+  "Fine METALLOW pin",
+  "[[Small] CLOTH SACKTYPE]"
+];
+rule_set["CLOTHES"] = [
+  "Dress",
+  "Pants",
+  "Shirt",
+  "Smock",
+  "Hose",
+  "Kirtle",
+  "Dress",
+  "Belt",
+  "Surcoat",
+  "Girdle",
+  "Cape",
+  "Hood",
+  "Bonnet"
 ];
 rule_set["SMALLVALUEBlacksmith"] = [
   "NATURALMATERIAL Comb",
@@ -28089,7 +28103,7 @@ rule_set["CRAFTSMANNAME"] = [
   "MERCHANTNAME",
   "[The ][WOOD ]Workshop"
 ];
-rule_set["BLACKMARKET"] = [
+rule_set["BLACKMARKETTYPE"] = [
   "MERCHANTNAME",
   "Alley",
   "Warehouse"
@@ -28503,6 +28517,19 @@ rule_set["WINDOWINFO"] = [
   "broken",
   "boarded"
 ];
+rule_set["INDUSTRY"] = [
+  "Agriculture",
+  "Trade",
+  "Miners",
+  "Fishing",
+  "Manufacturing"
+];
+rule_set["MARKET"] = [
+  "Trade Route",
+  "Market",
+  "Barter",
+  "Local Fair"
+];
 rule_set["HOUSESIDINGINFO"] = [
   "with SIDINGTYPES siding[ with a few [WINDOWINFO] windows]"
 ];
@@ -28592,6 +28619,9 @@ rule_set["KINGDOMPREFIX"] = [
   "",
   "",
   ""
+];
+rule_set["KINGDOMGOALS"] = [
+  "Kingdom goals"
 ];
 rule_set["CULTURE"] = [
   "Aboriginal",
@@ -28913,6 +28943,68 @@ rule_set["URBANAREA"] = [
   "Other",
   "Travel Route"
 ];
+var RULESET_LIST = [
+  "ARMOR",
+  "ARMORITEMS",
+  "BARRELSMALL",
+  "BLACKSSMITHITEMS",
+  "BROADSWORD",
+  "CHARMS",
+  "CRAFTEDWEAPONS",
+  "CRATEMEDIUM",
+  "CRATESMALL",
+  "CUTLASS",
+  "DAGGER",
+  "DRINKS",
+  "DRUSUS",
+  "FALCHION",
+  "FLAIL",
+  "JEWELERY",
+  "KATANA",
+  "KRYSS",
+  "LARGESCALYTHINGS",
+  "LARGEVALUE",
+  "LONGSWORD",
+  "MACE",
+  "MATERIAL",
+  "MEDIUMVALUE",
+  "METAL",
+  "NECKLACETYPES",
+  "PLACESOFLEARNING",
+  "PLATINUM",
+  "SACKTYPE",
+  "SCROLL",
+  "SHIELD",
+  "SHORTSWORD",
+  "SMALLITEMS",
+  "SMALLTOOL",
+  "SMALLVALUE",
+  "SMALLVALUEArtisan",
+  "SMALLVALUEBlacksmith",
+  "SMALLVALUEClergy",
+  "SMALLVALUECraftsman",
+  "SMALLVALUECriminal",
+  "SMALLVALUEFarmer",
+  "SMALLVALUEGarmentTrade",
+  "SMALLVALUEMerc",
+  "SMALLVALUEMerchant",
+  "SMALLVALUEProfessionalSpecialties",
+  "SMALLVALUESage",
+  "SPEAR",
+  "STORAGECONTAINER",
+  "SWORD",
+  "TOOLS",
+  "TRADEGOODS",
+  "TWOHANDEDSWORD",
+  "VALUECARRIED",
+  "VALUELARGE",
+  "VALUEMEDIUM",
+  "VALUESMALL",
+  "WEAPONS"
+];
+console.log("Rule set-----------------------------");
+console.log(rule_set);
+console.log(Object.keys(rule_set));
 var RULSET = rule_set;
 
 // src/diceRoll.js
@@ -35672,6 +35764,7 @@ government: {{government}}
 ruler: {{ruler}}
 capital: {{capital}}
 trade: {{trades}}
+goals: {{goals}}
 ---
 > [!oRPG-Layout] 
 > # Kingdom
@@ -35688,7 +35781,9 @@ trade: {{trades}}
 |  **Primary Races:** |{{race.name}}|
 |  **Secondary Races:** |{{secondaryRace}}|
 | **Trade:** |{{trades}} |
-| **Technology Level:** |{{technology}}|
+| **Goals:**|{{goals}} |
+| **Industry Level:** |{{industry}}|
+| **Market Level:** |{{market}}|
 |**Terrain:** |{{terrain}}|
 | **Seasons:**|Spring, Summer, Fall, Winter|
 |  **Social Alignment:**|{{socialAlignment}}|
@@ -35738,13 +35833,15 @@ var Kingdom = function() {
     race: {},
     secondaryRace: "SECONDARY RACE",
     trades: "",
-    technology: "",
+    industry: "",
+    market: "",
     socialAlignment: "",
     military: "",
     rebelliousness: "",
     brigandage: "",
     languages: [""],
-    kingdomTemplate: ""
+    kingdomTemplate: "",
+    goals: "Kingdom goals"
   };
   function generateKingdom(kingdomOptions) {
     var rulGen2 = rulGen_default;
@@ -35769,7 +35866,8 @@ var Kingdom = function() {
       kingdomObject.capital = kingdomOptions.settlement;
     }
     kingdomObject.languages = ["Common"];
-    kingdomObject.technology = randomElement(RULSET["TECHNOLOGY"]);
+    kingdomObject.industry = randomElement(RULSET["INDUSTRY"]);
+    kingdomObject.market = randomElement(RULSET["MARKET"]);
     kingdomObject.terrain = rulGen2.generateRul("TERRAIN", RULSET);
     kingdomObject.trades = rulGen2.generateRul("TRADESGOODLIST", RULSET);
     kingdomObject.socialAlignment = rulGen2.generateRul("SOCIALALIGNMENT", RULSET);
@@ -35889,6 +35987,8 @@ var Region = function() {
     regionObject.races = races;
     if (regionOptions.kingdomName == null || regionOptions.kingdomName.toUpperCase() == "RANDOM") {
       regionObject.kingdomName = getKingdomName(tempRace.nameRace);
+    } else {
+      regionObject.kingdomName = regionOptions.kingdomName;
     }
     if (regionOptions.regionName == null || regionOptions.regionName.toUpperCase() == "RANDOM") {
       regionObject.regionName = rulGen2.generateRul("AREANAMES", RULSET);
@@ -35939,7 +36039,7 @@ trade: {{trades}}
 |  **Secondary Races:** |{{secondaryRace}}|
 | **Culture Archetype:** |{{culture}} |
 | **Primary Trade:** |{{trades}}|
-| **Technology Level:** |{{techoology}}|
+| **Market Level:** |{{market}}|
 {.oRPGLocationHeader}
 
 **Description:** {{description}}
@@ -36013,7 +36113,7 @@ var Settlement = function() {
     race: {},
     secondaryRace: "SECONDARY RACE",
     trades: "",
-    technology: "",
+    market: "",
     socialAlignment: "",
     military: "",
     rebelliousness: "",
@@ -36060,7 +36160,7 @@ var Settlement = function() {
       settlementObject.regionName = settlementOptions.regionName;
     }
     settlementObject.languages = "Common";
-    settlementObject.technology = randomElement(RULSET["TECHNOLOGY"]);
+    settlementObject.market = randomElement(RULSET["MARKET"]);
     settlementObject.trades = rulGen2.generateRul("TRADESGOODLIST", RULSET);
     settlementObject.socialAlignment = rulGen2.generateRul("SOCIALALIGNMENT", RULSET);
     settlementObject.military = rulGen2.generateRul("MILITARYSTRENGHT", RULSET);
@@ -36596,12 +36696,14 @@ var DEFAULT_SETTINGS = {
   populationRange: 100,
   populationValue: 100,
   generatorSelected: KINGDOM,
-  seed: ""
+  seed: "",
+  randomItem: ""
 };
 var oRPGBuilderPlugin = class extends import_obsidian.Plugin {
   constructor() {
     super(...arguments);
     this.generatedContent = "Nothing generated yet";
+    this.rulGen = rulGen_default;
   }
   onload() {
     return __async(this, null, function* () {
@@ -36658,7 +36760,10 @@ var oRPGBuilderPlugin = class extends import_obsidian.Plugin {
             let tempRace;
             tempRace = Races.getRace(this.settings.species, this.settings.race);
             generatedNameField.setAttr("value", (0, import_fantasy_name_generator9.nameByRace)(tempRace.nameRace, { gender: "male" }));
-            new import_obsidian.Notice("Generate new Name!");
+            break;
+          }
+          case "oRPGGenerateItem": {
+            generatedTextarea.setText(this.rulGen.generateRul(this.settings.randomItem, RULSET));
             break;
           }
           case "oRPGCopyToClipboard": {
@@ -36835,6 +36940,18 @@ var oRPGModal = class extends import_obsidian.Modal {
     nameDiv.createEl("button", { text: "Random Name", attr: { "id": "oRPGGenerateName" }, cls: "" });
     generatedNameField = nameDiv.createEl("input", { attr: { "id": "oRPGGeneratedName" } });
     nameDiv.createEl("button", { text: "Copy", attr: { "id": "oRPGCopyToClipboard" }, cls: "oRPGCopy" });
+    let randomItemDiv = contentDiv.createDiv({ cls: "oRGP-generatedRandomeItemDiv" });
+    randomItemDiv.createEl("button", { text: "Random Item", attr: { "id": "oRPGGenerateItem" }, cls: "" });
+    new import_obsidian.Setting(randomItemDiv).setName("").setDesc("").addDropdown((dropdown) => {
+      let methods = {};
+      let temp = RULESET_LIST.sort();
+      temp.map((method) => methods[method] = method);
+      dropdown.addOptions(methods);
+      dropdown.setValue(this.plugin.settings.randomItem).onChange((randomItem) => {
+        this.plugin.settings.randomItem = randomItem;
+        this.plugin.saveSettings();
+      });
+    });
     new import_obsidian.Setting(controlsDiv).setName("Profession").setDesc("Profession of Building").addDropdown((dropdown) => {
       let methods = {};
       let temp = PROFESSIONS_LIST.sort();

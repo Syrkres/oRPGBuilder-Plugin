@@ -1,7 +1,4 @@
-/* Sets all the text color to red! */
-body {
-    color: red;
-}
+
 #oRPGheader {
     border: 2px solid var(--headers);
 }
