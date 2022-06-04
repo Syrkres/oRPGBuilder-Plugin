@@ -29,3 +29,12 @@ The code expects  certain plugins to properly format and such.
 - Externalize templates
 - NPC Formatting 
 - Random Rules (allow users to generate text from the rules)
+
+### Sample Images
+![Random Kingdom](https://miniworld.com/obsidian/images/KingdomSample.jpg)
+
+![Random Region](https://miniworld.com/obsidian/images/RegionSample.jpg)
+
+![Random Merchant](https://miniworld.com/obsidian/images/MerchantSample.jpg)
+
+![Random NPC](https://miniworld.com/obsidian/images/NPCSample.jpg)
